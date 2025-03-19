@@ -18,6 +18,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
-rootProject.name = "POCKIE"
+rootProject.name = "Pockie"
 include(":app")
+ 
