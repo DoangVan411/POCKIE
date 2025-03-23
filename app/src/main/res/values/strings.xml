@@ -2,4 +2,27 @@
     <string name="app_name">Pockie</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="treasure_the_beautiful_moments_shared_with_those_you_love">Treasure the beautiful moments shared with those you love</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="sign_in">Sign In</string>
+    <string name="what_s_your_phone_number">What\'s your phone number?</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="Continue">Continue</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="password">Password</string>
+    <string name="you_forgot_password">You forgot password?</string>
+    <string name="required_password">Password must be at least <b><font color="#EB4E4E">8 characters</font></b> including <b><font color="#EB4E4E">uppercase</font></b>, <b><font color="#EB4E4E">lowercase</font></b>, and <b><font color="#EB4E4E">numbers</font></b></string>
+    <string name="what_s_your_name">What\'s your name?</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="verify_your_phone_number">Verify your phone number</string>
+    <string name="otp_resend">Didn\'t receive the OTP? <b><font color="#FEA6B6">Resend OTP</font></b></string>
+    <string name="import_your_contacts">Import your contacts</string>
+    <string name="add_contact">Add your <font color="#FEA6B6">best friend</font></string>
+    <string name="pick_best_friend">Pick best friend</string>
+    <string name="add">Add</string>
+    <string name="your_pockie_is_set_up">Your Pockie is set up</string>
+    <string name="send_connection_invitation_to_best_friends">Send connection invitation to best friends</string>
+    <string name="we_ll_notify_you_once_your_friends_have_set_up_theirs">We\'ll notify you once your friends have set up theirs</string>
+    <string name="finish">Finish</string>
 </resources>
