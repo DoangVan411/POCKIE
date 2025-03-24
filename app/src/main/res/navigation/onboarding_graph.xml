@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/onboarding_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_graph"
+    app:startDestination="@id/onboardingFragment">
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.onboarding.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_phoneFragment"
+            app:destination="@id/phoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.phone.PhoneFragment"
+        android:label="fragment_phone"
+        tools:layout="@layout/fragment_phone" >
+        <action
+            android:id="@+id/action_phoneFragment_to_verifyPhoneNumberFragment"
+            app:destination="@id/verifyPhoneNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.password.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_nameUserFragment"
+            app:destination="@id/nameUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyPhoneNumberFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.verifyphonenumber.VerifyPhoneNumberFragment"
+        android:label="fragment_verify_phone_number"
+        tools:layout="@layout/fragment_verify_phone_number" >
+        <action
+            android:id="@+id/action_verifyPhoneNumberFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nameUserFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.nameuser.NameUserFragment"
+        android:label="fragment_name_user"
+        tools:layout="@layout/fragment_name_user" >
+        <action
+            android:id="@+id/action_nameUserFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.addcontacts.ContactsFragment"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" >
+        <action
+            android:id="@+id/action_contactsFragment_to_setUpFragment"
+            app:destination="@id/setUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setUpFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.setup.SetUpFragment"
+        android:label="fragment_set_up"
+        tools:layout="@layout/fragment_set_up" />
 
 </navigation>

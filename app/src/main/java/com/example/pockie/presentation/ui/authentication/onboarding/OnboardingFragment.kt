@@ -1,11 +1,11 @@
-package com.example.pockie.presentation.ui.onboarding
+package com.example.pockie.presentation.ui.authentication.onboarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.pockie.R
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.pockie.databinding.FragmentOnboardingBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +20,18 @@ class OnboardingFragment : Fragment() {
     ): View? {
         _binding = FragmentOnboardingBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.signIn.setOnClickListener{
+            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToPhoneFragment())
+        }
+
+        binding.signUp.setOnClickListener{
+            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToPhoneFragment())
+        }
     }
 
     override fun onDestroyView() {
