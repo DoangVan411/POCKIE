@@ -2,6 +2,9 @@
     <string name="app_name">Pockie</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notifications">Notifications</string>
+    <string name="mark_all_as_read">Mark all as read</string>
+    <string name="setting">Setting</string>
     <string name="treasure_the_beautiful_moments_shared_with_those_you_love">Treasure the beautiful moments shared with those you love</string>
     <string name="create_an_account">Create an account</string>
     <string name="sign_in">Sign In</string>
