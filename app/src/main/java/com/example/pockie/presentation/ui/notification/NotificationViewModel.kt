@@ -1,10 +1,9 @@
-package com.example.pockie.presentation.ui.onboarding
+package com.example.pockie.presentation.ui.notification
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class OnboardingViewModel @Inject constructor(): ViewModel(){
-
+class NotificationViewModel @Inject constructor(): ViewModel() {
 }
