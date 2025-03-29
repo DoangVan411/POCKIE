@@ -1,6 +1,7 @@
 package com.example.pockie.domain.model
 
 data class User(
+    val userName: String,
     val fullName: String,
     val avatar: Int,
     val latestMessage: String,

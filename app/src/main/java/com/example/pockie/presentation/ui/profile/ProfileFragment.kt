@@ -30,6 +30,19 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        with(binding) {
+            toolbar.setNavigationOnClickListener {
+                //navigation
+            }
+            btnShare.setOnClickListener {
+
+            }
+            btnAddFriend.setOnClickListener {
+
+            }
+        }
+
         setUpRecyclerView()
     }
 
