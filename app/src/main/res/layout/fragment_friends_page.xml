@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    tools:context=".presentation.ui.friends.friends.FriendsPage">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        android:layout_margin="20dp"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/background_field"
+        />
+
+    <TextView
+        android:id="@+id/tvFriendsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friend(120)"
+        android:textColor="@color/gray_text"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="20dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFriends"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/friend_item"
+        android:layout_margin="5dp"
+        />
+
+
+</LinearLayout>

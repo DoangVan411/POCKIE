@@ -30,4 +30,6 @@
     <string name="finish">Finish</string>
     <string name="add_to_friend">+ Add to friend</string>
     <string name="chat">Chat</string>
+    <string name="show_more">Show more</string>
+    <string name="show_less">Show less</string>
 </resources>

@@ -6,13 +6,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.pockie.R
+import com.example.pockie.databinding.FragmentNotificationBinding
 
 class NotificationFragment : Fragment() {
+
+    private var _binding: FragmentNotificationBinding? = null
+    private val binding get() = _binding!!
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notification, container, false)
+    ): View {
+        _binding = FragmentNotificationBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        with(binding) {
+            toolbar.setNavigationOnClickListener {
+                //navigation
+            }
+            btnSetting.setOnClickListener {
+                //notification setting
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -29,14 +29,20 @@ class ChatListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        with(binding) {
+            toolbar.setNavigationOnClickListener {
+                //navigation
+            }
+        }
+
         setUpRecyclerView()
     }
 
     private fun setUpRecyclerView () {
         val sampleList = listOf(
-            User("Vân Đoàn", R.drawable.setting, "xin chao", "19h"),
-            User("Vân Đoàn", R.drawable.setting, "xin chao", "19h"),
-            User("Vân Đoàn", R.drawable.setting, "xin chao", "19h"),
+            User("vandoan", "Vân Đoàn", R.drawable.setting, "Hello", "19h"),
+            User("vandoan", "Vân Đoàn", R.drawable.setting, "Hello", "19h"),
+            User("vandoan", "Vân Đoàn", R.drawable.setting, "Hello", "19h"),
         )
         val adapter = ChatListAdapter(){}
         with(binding) {
