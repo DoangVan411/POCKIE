@@ -32,4 +32,10 @@
     <string name="chat">Chat</string>
     <string name="show_more">Show more</string>
     <string name="show_less">Show less</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="full_name">Full Name</string>
+    <string name="username">Username</string>
+    <string name="bio">Bio</string>
+    <string name="save">Save</string>
+    <string name="type_a_message">Type a message...</string>
 </resources>
