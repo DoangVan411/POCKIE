@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".presentation.ui.chat.chatlist.ChatListFragment">
+    tools:context=".presentation.ui.mainapp.chatlist.ChatListFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
