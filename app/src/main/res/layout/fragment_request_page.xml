@@ -6,7 +6,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
-    tools:context=".presentation.ui.friends.requests.RequestPage">
+    tools:context=".presentation.ui.mainapp.friends.requests.RequestPage">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
