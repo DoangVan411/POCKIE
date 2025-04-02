@@ -2,12 +2,12 @@ package com.example.pockie.presentation.ui.mainactivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pockie.presentation.ui.profile.ProfileFragment
+import com.example.pockie.presentation.ui.mainapp.profile.ProfileFragment
 import com.example.pockie.R
 import com.example.pockie.databinding.ActivityMainBinding
-import com.example.pockie.presentation.ui.chat.chatlist.ChatListFragment
-import com.example.pockie.presentation.ui.friends.FriendsFragment
-import com.example.pockie.presentation.ui.notification.NotificationFragment
+import com.example.pockie.presentation.ui.mainapp.chatlist.ChatListFragment
+import com.example.pockie.presentation.ui.mainapp.friends.FriendsFragment
+import com.example.pockie.presentation.ui.mainapp.notification.NotificationFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,12 +20,12 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (savedInstanceState == null) {
-            val fragment = NotificationFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.main, fragment)
-                .commit()
-        }
+//        if (savedInstanceState == null) {
+//            val fragment = ProfileFragment()
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.main, fragment)
+//                .commit()
+//        }
     }
 
     override fun onDestroy() {
