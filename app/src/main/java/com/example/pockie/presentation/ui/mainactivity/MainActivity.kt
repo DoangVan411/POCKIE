@@ -7,6 +7,7 @@ import com.example.pockie.R
 import com.example.pockie.databinding.ActivityMainBinding
 import com.example.pockie.presentation.ui.chat.chatlist.ChatListFragment
 import com.example.pockie.presentation.ui.friends.FriendsFragment
+import com.example.pockie.presentation.ui.notification.NotificationFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (savedInstanceState == null) {
-            val fragment = FriendsFragment()
+            val fragment = NotificationFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main, fragment)
                 .commit()
