@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="Van Doan"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/poppins_semibold"
 
                 android:layout_marginHorizontal="10dp"

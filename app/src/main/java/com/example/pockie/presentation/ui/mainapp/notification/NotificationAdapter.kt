@@ -1,4 +1,4 @@
-package com.example.pockie.presentation.ui.notification
+package com.example.pockie.presentation.ui.mainapp.notification
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pockie.databinding.NotiItemBinding
 import com.example.pockie.domain.model.Notification
 
-class NotificationAdapter(private val onClick: (Notification) -> Unit): ListAdapter<Notification, RecyclerView.ViewHolder>(NotificationDiffUtilCallback()) {
+class NotificationAdapter(private val onClick: (Notification) -> Unit): ListAdapter<Notification, RecyclerView.ViewHolder>(
+    NotificationDiffUtilCallback()
+) {
 
     inner class NotificationViewHolder(private val binding: NotiItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(notification: Notification) {

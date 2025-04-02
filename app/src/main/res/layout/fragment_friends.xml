@@ -12,6 +12,7 @@
         android:background="@color/black"
         app:tabTextColor="@color/white"
         android:layout_width="0dp"
+        style="@style/CustomTabLayout"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
