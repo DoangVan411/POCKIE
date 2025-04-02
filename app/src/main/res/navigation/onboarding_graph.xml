@@ -93,9 +93,13 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/chatListFragment"
-        android:name="com.example.pockie.presentation.ui.mainapp.chatlist.ChatListFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.chat.chatlist.ChatListFragment"
         android:label="fragment_chat_list"
-        tools:layout="@layout/fragment_chat_list" />
+        tools:layout="@layout/fragment_chat_list" >
+        <action
+            android:id="@+id/action_chatListFragment_to_singleChatFragment"
+            app:destination="@id/singleChatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/friendsFragment"
         android:name="com.example.pockie.presentation.ui.mainapp.friends.FriendsFragment"
@@ -106,6 +110,10 @@
         android:name="com.example.pockie.presentation.ui.mainapp.notification.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/singleChatFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.chat.singlechat.SingleChatFragment"
+        android:label="SingleChatFragment" />
 
 
 </navigation>

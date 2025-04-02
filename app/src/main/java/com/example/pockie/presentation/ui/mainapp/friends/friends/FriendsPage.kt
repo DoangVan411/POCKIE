@@ -8,17 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentFriendsBinding
 import com.example.pockie.databinding.FragmentFriendsPageBinding
 import com.example.pockie.domain.model.User
+import com.example.pockie.presentation.ui.friends.friends.FriendsPageViewModel
 
 class FriendsPage : Fragment() {
 
     private var _binding: FragmentFriendsPageBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: FriendsPageViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

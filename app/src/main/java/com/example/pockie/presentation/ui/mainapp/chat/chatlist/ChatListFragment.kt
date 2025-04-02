@@ -1,4 +1,4 @@
-package com.example.pockie.presentation.ui.mainapp.chatlist
+package com.example.pockie.presentation.ui.mainapp.chat.chatlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -45,7 +45,9 @@ class ChatListFragment : Fragment() {
             User("vandoan", "Vân Đoàn", R.drawable.setting, "Hello", "19h"),
             User("vandoan", "Vân Đoàn", R.drawable.setting, "Hello", "19h"),
         )
-        val adapter = ChatListAdapter(){}
+        val adapter = ChatListAdapter(){
+            findNavController().navigate(R.id.action_chatListFragment_to_singleChatFragment)
+        }
         with(binding) {
             rvChats.adapter = adapter
             rvChats.layoutManager = LinearLayoutManager(requireContext())

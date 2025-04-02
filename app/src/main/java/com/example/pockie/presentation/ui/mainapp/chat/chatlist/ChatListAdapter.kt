@@ -1,4 +1,4 @@
-package com.example.pockie.presentation.ui.mainapp.chatlist
+package com.example.pockie.presentation.ui.mainapp.chat.chatlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

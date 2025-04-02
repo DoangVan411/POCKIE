@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.pockie.presentation.ui.mainapp.profile.ProfileFragment
 import com.example.pockie.R
 import com.example.pockie.databinding.ActivityMainBinding
-import com.example.pockie.presentation.ui.mainapp.chatlist.ChatListFragment
+import com.example.pockie.presentation.ui.mainapp.chat.chatlist.ChatListFragment
 import com.example.pockie.presentation.ui.mainapp.friends.FriendsFragment
 import com.example.pockie.presentation.ui.mainapp.notification.NotificationFragment
 import dagger.hilt.android.AndroidEntryPoint

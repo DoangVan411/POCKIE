@@ -37,4 +37,10 @@
     <string name="send_a_message">Send a message</string>
     <string name="download">Download</string>
     <string name="cancel">Cancel</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="full_name">Full Name</string>
+    <string name="username">Username</string>
+    <string name="bio">Bio</string>
+    <string name="save">Save</string>
+    <string name="type_a_message">Type a message...</string>
 </resources>

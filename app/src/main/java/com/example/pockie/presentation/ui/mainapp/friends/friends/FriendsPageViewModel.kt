@@ -1,9 +1,9 @@
-package com.example.pockie.presentation.ui.mainapp.chatlist
+package com.example.pockie.presentation.ui.friends.friends
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ChatListViewModel @Inject constructor(): ViewModel() {
+class FriendsPageViewModel @Inject constructor(): ViewModel() {
 }
