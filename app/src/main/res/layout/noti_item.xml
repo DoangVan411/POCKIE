@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Helen"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:fontFamily="@font/poppins_semibold"
             android:textColor="@color/white"
             android:layout_marginStart="15dp"
@@ -57,7 +57,7 @@
                 android:text="React on photo "
                 android:textColor="@color/gray"
                 android:fontFamily="@font/poppins_semibold"
-                android:textSize="13sp"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/tvTime"
@@ -66,7 +66,7 @@
                 android:text="3m"
                 android:textColor="@color/gray"
                 android:fontFamily="@font/poppins"
-                android:textSize="13sp"
+                android:textSize="12sp"
                 android:layout_marginStart="10dp"/>
 
             <ImageView

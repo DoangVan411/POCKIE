@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".presentation.ui.chat.chatlist.ChatListFragment">
+    tools:context=".presentation.ui.mainapp.chat.chatlist.ChatListFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -22,7 +22,7 @@
             android:text="@string/chat"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
     </Toolbar>
 

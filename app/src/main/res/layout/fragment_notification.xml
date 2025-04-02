@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".presentation.ui.notification.NotificationFragment">
+    tools:context=".presentation.ui.mainapp.notification.NotificationFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/notifications"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_medium"/>
@@ -42,6 +42,7 @@
         />
     
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNoti"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="10dp"

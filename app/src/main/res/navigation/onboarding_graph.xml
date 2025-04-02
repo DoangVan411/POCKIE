@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/onboarding_graph"
-    app:startDestination="@id/onboardingFragment">
+    app:startDestination="@id/setUpFragment">
 
     <fragment
         android:id="@+id/onboardingFragment"
@@ -63,6 +63,57 @@
         android:id="@+id/setUpFragment"
         android:name="com.example.pockie.presentation.ui.authentication.setup.SetUpFragment"
         android:label="fragment_set_up"
-        tools:layout="@layout/fragment_set_up" />
+        tools:layout="@layout/fragment_set_up" >
+        <action
+            android:id="@+id/action_setUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_friendsFragment"
+            app:destination="@id/friendsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.chat.chatlist.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list" >
+        <action
+            android:id="@+id/action_chatListFragment_to_singleChatFragment"
+            app:destination="@id/singleChatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendsFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.friends.FriendsFragment"
+        android:label="fragment_friends"
+        tools:layout="@layout/fragment_friends" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/singleChatFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.chat.singlechat.SingleChatFragment"
+        android:label="SingleChatFragment" />
+
 
 </navigation>

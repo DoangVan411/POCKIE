@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.profile.ProfileFragment"
+    tools:context=".presentation.ui.mainapp.profile.ProfileFragment"
     android:background="@color/black">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="Van Doan"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/poppins_semibold"
 
                 android:layout_marginHorizontal="10dp"

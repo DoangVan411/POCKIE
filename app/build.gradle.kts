@@ -70,6 +70,9 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     implementation (libs.androidx.core.splashscreen)
+    implementation (libs.glide)
+
+    implementation (libs.emoji.google)
 
 }
 

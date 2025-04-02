@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".presentation.ui.friends.FriendsFragment">
+    tools:context=".presentation.ui.mainapp.friends.FriendsFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:background="@color/black"
         app:tabTextColor="@color/white"
         android:layout_width="0dp"
+        style="@style/CustomTabLayout"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
