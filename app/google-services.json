@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "827200053974",
+    "project_id": "pockie-d50fb",
+    "storage_bucket": "pockie-d50fb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827200053974:android:7fe2ddb1ffe4a348d59f77",
+        "android_client_info": {
+          "package_name": "com.example.pockie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJKOkOfHia0Jh7TiY2MFQpz55GdHhCS64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

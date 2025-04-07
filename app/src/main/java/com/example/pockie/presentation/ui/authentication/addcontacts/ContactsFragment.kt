@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pockie.R
@@ -38,14 +39,18 @@ class ContactsFragment : Fragment() {
 
         init()
 
-        binding.next.setOnClickListener{
-            findNavController().navigate(ContactsFragmentDirections.actionContactsFragmentToSetUpFragment())
+        binding.next.setOnClickListener {
+            findNavController().navigate(
+                ContactsFragmentDirections.actionContactsFragmentToSetUpFragment(),
+                navOptions = NavOptions.Builder().setPopUpTo(R.id.contactsFragment, true).build()
+            )
         }
 
     }
 
-    private fun showDialog(){
-        val dialogView = LayoutInflater.from(context).inflate(R.layout.fragment_dialog_add_contacts, null)
+    private fun showDialog() {
+        val dialogView =
+            LayoutInflater.from(context).inflate(R.layout.fragment_dialog_add_contacts, null)
         val dialog = AlertDialog.Builder(context)
             .setView(dialogView)
             .setCancelable(false)
@@ -59,12 +64,12 @@ class ContactsFragment : Fragment() {
             ).toInt()
         )
 
-        dialogView.findViewById<Button>(R.id.next).setOnClickListener{
+        dialogView.findViewById<Button>(R.id.next).setOnClickListener {
             dialog.dismiss()
         }
     }
 
-    private fun init(){
+    private fun init() {
         val sampleList = listOf(
             Contact("A", "0"),
             Contact("B", "0"),
@@ -72,7 +77,8 @@ class ContactsFragment : Fragment() {
         )
         val contactsAdapter = ContactsAdapter()
         binding.contactRecyclerview.adapter = contactsAdapter
-        binding.contactRecyclerview.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.contactRecyclerview.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         contactsAdapter.submitList(sampleList)
     }
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentVerifyPhoneNumberBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,8 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class VerifyPhoneNumberFragment : Fragment() {
     private var _binding: FragmentVerifyPhoneNumberBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: VerifyPhoneNumberViewModel by viewModels()
+    private val args: VerifyPhoneNumberFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,9 +29,12 @@ class VerifyPhoneNumberFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val status = args.status
         binding.next.setOnClickListener{
-            findNavController().navigate(VerifyPhoneNumberFragmentDirections.actionVerifyPhoneNumberFragmentToPasswordFragment())
+//            if(status == "Sign Up") findNavController().navigate(VerifyPhoneNumberFragmentDirections.actionVerifyPhoneNumberFragmentToPasswordFragment("Sign Up"))
+//            else {
+//
+//            }
         }
         binding.back.setOnClickListener{
             findNavController().popBackStack()

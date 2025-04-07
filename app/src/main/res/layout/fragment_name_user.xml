@@ -29,6 +29,7 @@
         android:id="@+id/first_name_layout"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintTop_toBottomOf="@id/text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,10 +40,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/first_name"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:padding="10dp"
             android:drawablePadding="10dp"
             android:textSize="15dp"
+            android:inputType="text"
             android:background="@drawable/background_field"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_medium"
@@ -57,6 +59,7 @@
         android:id="@+id/last_name_layout"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        app:helperTextTextColor="@color/red"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintTop_toBottomOf="@id/first_name_layout"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,11 +70,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/last_name"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:padding="10dp"
             android:drawablePadding="10dp"
             android:textSize="15dp"
             android:maxLines="1"
+            android:inputType="text"
             android:imeOptions="actionDone"
             android:background="@drawable/background_field"
             android:textColor="@color/white"
@@ -95,6 +99,17 @@
         android:fontFamily="@font/poppins_semibold"
         android:background="@drawable/white_button"/>
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/next"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:indeterminateTint="@color/white"
+        android:visibility="invisible"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
