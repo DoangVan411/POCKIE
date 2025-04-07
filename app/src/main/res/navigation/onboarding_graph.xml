@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/onboarding_graph"
-    app:startDestination="@id/setUpFragment">
+    app:startDestination="@id/onboardingFragment">
 
     <fragment
         android:id="@+id/onboardingFragment"
@@ -11,26 +11,44 @@
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
-            android:id="@+id/action_onboardingFragment_to_phoneFragment"
-            app:destination="@id/phoneFragment" />
+            android:id="@+id/action_onboardingFragment_to_emailFragment"
+            app:destination="@id/emailFragment" />
+        <action
+            android:id="@+id/action_onboardingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/phoneFragment"
-        android:name="com.example.pockie.presentation.ui.authentication.phone.PhoneFragment"
-        android:label="fragment_phone"
-        tools:layout="@layout/fragment_phone" >
+        android:id="@+id/emailFragment"
+        android:name="com.example.pockie.presentation.ui.authentication.email.EmailFragment"
+        android:label="fragment_email"
+        tools:layout="@layout/fragment_email" >
+        <argument
+            android:name="status"
+            app:argType="string" />
         <action
-            android:id="@+id/action_phoneFragment_to_verifyPhoneNumberFragment"
-            app:destination="@id/verifyPhoneNumberFragment" />
+            android:id="@+id/action_emailFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
     </fragment>
     <fragment
         android:id="@+id/passwordFragment"
         android:name="com.example.pockie.presentation.ui.authentication.password.PasswordFragment"
         android:label="fragment_password"
         tools:layout="@layout/fragment_password" >
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_passwordFragment_to_verifyPhoneNumberFragment"
+            app:destination="@id/verifyPhoneNumberFragment" />
+        <argument
+            android:name="email"
+            app:argType="string" />
         <action
             android:id="@+id/action_passwordFragment_to_nameUserFragment"
             app:destination="@id/nameUserFragment" />
+        <action
+            android:id="@+id/action_passwordFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/verifyPhoneNumberFragment"
@@ -40,12 +58,21 @@
         <action
             android:id="@+id/action_verifyPhoneNumberFragment_to_passwordFragment"
             app:destination="@id/passwordFragment" />
+        <argument
+            android:name="status"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/nameUserFragment"
         android:name="com.example.pockie.presentation.ui.authentication.nameuser.NameUserFragment"
         android:label="fragment_name_user"
         tools:layout="@layout/fragment_name_user" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
         <action
             android:id="@+id/action_nameUserFragment_to_contactsFragment"
             app:destination="@id/contactsFragment" />
@@ -85,6 +112,9 @@
         <action
             android:id="@+id/action_homeFragment_to_friendsFragment"
             app:destination="@id/friendsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

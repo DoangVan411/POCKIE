@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.example.pockie.R
 import com.example.pockie.databinding.FragmentOnboardingBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class OnboardingFragment : Fragment() {
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: OnboardingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,13 +29,19 @@ class OnboardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(viewModel.checkLogin()){
+            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToHomeFragment(), navOptions = NavOptions.Builder().setPopUpTo(
+                R.id.onboardingFragment, true).build())
+        }
+
         binding.signIn.setOnClickListener{
-            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToPhoneFragment())
+            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToEmailFragment("Sign In"))
         }
 
         binding.signUp.setOnClickListener{
-            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToPhoneFragment())
+            findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToEmailFragment("Sign Up"))
         }
+
     }
 
     override fun onDestroyView() {

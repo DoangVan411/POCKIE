@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.transition.Visibility
 import androidx.viewpager2.widget.ViewPager2
+import com.example.pockie.R
 import com.example.pockie.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -35,7 +39,7 @@ class HomeFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if(position == 1){
-                    binding.navBar.visibility = View.GONE
+                    binding.navBar.visibility = View.VISIBLE
                 }
                 else{
                     binding.navBar.visibility = View.VISIBLE
@@ -43,6 +47,12 @@ class HomeFragment : Fragment() {
             }
         })
 
+        binding.nameApp.setOnClickListener {
+            //Tam cai Pockie la nut dang xuat
+            viewModel.LogOut()
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToOnboardingFragment(), navOptions = NavOptions.Builder().setPopUpTo(
+                R.id.homeFragment, true).build())
+        }
 
         binding.profile.setOnClickListener{
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())

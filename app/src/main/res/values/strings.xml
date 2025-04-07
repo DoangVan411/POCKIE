@@ -8,8 +8,6 @@
     <string name="treasure_the_beautiful_moments_shared_with_those_you_love">Treasure the beautiful moments shared with those you love</string>
     <string name="create_an_account">Create an account</string>
     <string name="sign_in">Sign In</string>
-    <string name="what_s_your_phone_number">What\'s your phone number?</string>
-    <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="Continue">Continue</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="password">Password</string>
@@ -43,4 +41,6 @@
     <string name="bio">Bio</string>
     <string name="save">Save</string>
     <string name="type_a_message">Type a message...</string>
+    <string name="abc_example_com">abc@example.com</string>
+    <string name="what_s_your_email">What\'s your email?</string>
 </resources>
