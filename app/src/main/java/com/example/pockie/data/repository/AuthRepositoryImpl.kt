@@ -45,12 +45,26 @@ class AuthRepositoryImpl @Inject constructor(
         trySend(NetworkState.Loading)
         try {
             val uid = firebaseAuth.currentUser?.uid ?: "null"
-            firestore.collection("Accounts").document(uid).set(account).await()
+            firestore.collection("accounts").document(uid).set(account).await()
             trySend(NetworkState.Success<Unit>())
         }
         catch (e: Exception){
             trySend(NetworkState.Error(e.message.toString()))
         }
         awaitClose {  }
+    }
+
+    override fun resetPassword(email: String): Flow<NetworkState> = callbackFlow{
+        trySend(NetworkState.Loading)
+            firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener {result ->
+                if(result.isSuccessful){
+                    trySend(NetworkState.Success<String>("A link has just been sent to your email. Please check and retrieve your password."))
+                }
+                else{
+                    trySend(NetworkState.Error(result.exception?.message ?: "Failed to reset password"))
+                }
+            }
+
+        awaitClose{}
     }
 }

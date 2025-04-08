@@ -52,7 +52,7 @@ class PasswordFragment : Fragment() {
         }
 
         binding.forgotPasswd.setOnClickListener {
-            // Email Authen
+            findNavController().navigate(PasswordFragmentDirections.actionPasswordFragmentToEmailFragment("ForgotPass"))
         }
 
         binding.back.setOnClickListener {

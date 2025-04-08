@@ -8,4 +8,5 @@ interface AuthRepository {
     fun register(email: String, password: String): Flow<NetworkState>
     fun login(email: String, passwd: String): Flow<NetworkState>
     fun saveAccountToFireStore(account: Account): Flow<NetworkState>
+    fun resetPassword(email: String): Flow<NetworkState>
 }
