@@ -39,9 +39,9 @@ class PasswordFragment : Fragment() {
 
         binding.next.setOnClickListener {
             if (status == "Sign Up") {
-                if (checkPasswordValid()) signUp()
+                if (checkPasswordSignUpValid()) signUp()
             } else {
-                signIn()
+                if(checkPasswordSignInValid()) signIn()
             }
 
         }
@@ -60,7 +60,7 @@ class PasswordFragment : Fragment() {
         }
     }
 
-    private fun checkPasswordValid(): Boolean {
+    private fun checkPasswordSignUpValid(): Boolean {
         val passwd = binding.passwd.text.toString()
         val isLengthValid = passwd.length >= 8
         val hasUpperCase = passwd.any { it.isUpperCase() }
@@ -75,6 +75,20 @@ class PasswordFragment : Fragment() {
             binding.passwdLayout.helperText = "Please enter valid password."
             binding.passwd.setBackgroundResource(R.drawable.background_field_error)
             return false
+        }
+    }
+
+    private fun checkPasswordSignInValid(): Boolean{
+        val passwd = binding.passwd.text.toString()
+        if(passwd.isNullOrEmpty()) {
+            binding.passwdLayout.helperText = "Password can not be blank"
+            binding.passwd.setBackgroundResource(R.drawable.background_field_error)
+            return false
+        }
+        else {
+            binding.passwdLayout.helperText = ""
+            binding.passwd.setBackgroundResource(R.drawable.background_field)
+            return true
         }
     }
 
