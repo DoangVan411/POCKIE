@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentEmailBinding
+import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EmailFragment : Fragment() {
@@ -34,9 +37,38 @@ class EmailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val status = args.status
 
+        if(status == "ForgotPass"){
+            binding.text.text = "Please enter email to retrieve password"
+        }
+
         binding.next.setOnClickListener {
-            if (checkValidEmail()) {
-                findNavController().navigate(EmailFragmentDirections.actionEmailFragmentToPasswordFragment(status, binding.email.text.toString()))
+            if (checkValidEmail()){
+                if(status == "ForgotPass"){
+                    viewModel.resetPassword(binding.email.text.toString())
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.resetPasswordState.collect{result ->
+                            when(result){
+                                is NetworkState.Loading, is NetworkState.Init -> {
+                                    binding.loading.visibility = View.VISIBLE
+                                    binding.next.isEnabled = false
+                                }
+                                is NetworkState.Success<*> -> {
+                                    Toast.makeText(requireContext(), result.data.toString(), Toast.LENGTH_LONG).show()
+                                    binding.loading.visibility = View.INVISIBLE
+                                    findNavController().popBackStack()
+                                }
+                                is NetworkState.Error -> {
+                                    Toast.makeText(requireContext(), result.message, Toast.LENGTH_LONG).show()
+                                    binding.loading.visibility = View.INVISIBLE
+                                    binding.next.isEnabled = true
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    findNavController().navigate(EmailFragmentDirections.actionEmailFragmentToPasswordFragment(status, binding.email.text.toString()))
+                }
             }
         }
 

@@ -3,6 +3,7 @@ package com.example.pockie.di
 import com.example.pockie.domain.repository.AuthRepository
 import com.example.pockie.domain.usecases.LoginUseCase
 import com.example.pockie.domain.usecases.RegisterUseCase
+import com.example.pockie.domain.usecases.ResetPasswordUseCase
 import com.example.pockie.domain.usecases.SaveAccountUseCase
 import dagger.Module
 import dagger.Provides
@@ -36,5 +37,13 @@ object UseCaseModule {
         repository: AuthRepository
     ): SaveAccountUseCase{
         return SaveAccountUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideResetPasswordUseCase(
+        repository: AuthRepository
+    ): ResetPasswordUseCase{
+        return ResetPasswordUseCase(repository)
     }
 } 

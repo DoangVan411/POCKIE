@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentPostItemBinding
-import com.example.pockie.domain.model.Contact
 import com.example.pockie.domain.model.PostItem
 import com.example.pockie.presentation.utils.OnPostItemClickListener
 import com.vanniktech.emoji.EmojiManager
