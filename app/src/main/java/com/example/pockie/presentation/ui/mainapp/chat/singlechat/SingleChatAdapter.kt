@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pockie.databinding.ReceivedMessageItemBinding
 import com.example.pockie.databinding.SentMessageItemBinding
 import com.example.pockie.domain.model.Chat
+import com.example.pockie.presentation.utils.Utils.getTime
 
 class SingleChatAdapter:
     ListAdapter<Chat, RecyclerView.ViewHolder>(MessageDiffUtilCallback()) {
@@ -18,6 +19,7 @@ class SingleChatAdapter:
         fun bind(chat: Chat) {
             with(binding) {
                 tvMessage.text = chat.content
+                tvTime.text = getTime(chat.createdAt)
                 itemView.setOnClickListener {
                     binding.tvTime.visibility =
                         if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE
@@ -28,9 +30,10 @@ class SingleChatAdapter:
 
     inner class ReceivedMessageViewHolder(private val binding: ReceivedMessageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(message: Chat) {
+        fun bind(chat: Chat) {
             with(binding) {
-                tvMessage.text = message.content
+                tvMessage.text = chat.content
+                tvTime.text = getTime(chat.createdAt)
                 itemView.setOnClickListener {
                     binding.tvTime.visibility =
                         if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE

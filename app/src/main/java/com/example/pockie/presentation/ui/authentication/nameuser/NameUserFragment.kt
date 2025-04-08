@@ -53,7 +53,7 @@ class NameUserFragment : Fragment() {
 
                             is NetworkState.Success<*> -> {
                                 findNavController().navigate(
-                                    NameUserFragmentDirections.actionNameUserFragmentToContactsFragment(),
+                                    NameUserFragmentDirections.actionNameUserFragmentToSetUpFragment(),
                                     navOptions = NavOptions.Builder().setPopUpTo(R.id.nameUserFragment, true).build()
                                 )
                             }

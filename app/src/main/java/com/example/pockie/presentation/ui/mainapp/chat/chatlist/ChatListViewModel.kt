@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pockie.domain.model.Account
 import com.example.pockie.domain.usecase.GetAccountsUseCase
+import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,13 +16,18 @@ import javax.inject.Inject
 class ChatListViewModel @Inject constructor(
     private val getAccountsUseCase: GetAccountsUseCase
 ): ViewModel() {
-    private val _userList = MutableStateFlow<List<Account>>(emptyList())
-    val userList: StateFlow<List<Account>> = _userList.asStateFlow()
+    private val _usersState = MutableStateFlow<NetworkState>(NetworkState.Init)
+    val usersState: StateFlow<NetworkState> = _usersState.asStateFlow()
 
     fun getAccounts() {
         viewModelScope.launch {
-            getAccountsUseCase().collect{userList ->
-                _userList.value = userList
+            _usersState.value = NetworkState.Loading
+            try {
+                getAccountsUseCase().collect{state ->
+                    _usersState.value = state
+                }
+            } catch (e: Exception) {
+                _usersState.value = NetworkState.Error(e.message.toString())
             }
         }
     }

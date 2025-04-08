@@ -8,6 +8,7 @@ import com.example.pockie.domain.usecase.GetAccountUseCase
 import com.example.pockie.domain.usecase.GetAccountsUseCase
 import com.example.pockie.domain.usecase.GetMessagesUseCase
 import com.example.pockie.domain.usecase.SendMessageUseCase
+import com.example.pockie.presentation.utils.networkstate.NetworkState
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,8 +26,8 @@ class SingleChatViewModel @Inject constructor(
     private val auth: FirebaseAuth
 ) : ViewModel() {
 
-    private val _messages = MutableStateFlow<List<Chat>>(emptyList())
-    val messages: StateFlow<List<Chat>> = _messages.asStateFlow()
+    private val _messageState = MutableStateFlow<NetworkState>(NetworkState.Init)
+    val messageState: StateFlow<NetworkState> = _messageState.asStateFlow()
 
     private val _account = MutableStateFlow<Account>(Account())
     val account: StateFlow<Account> = _account.asStateFlow()
@@ -37,8 +38,14 @@ class SingleChatViewModel @Inject constructor(
 
     fun getMessages(chatId: String) {
         viewModelScope.launch {
-            getMessagesUseCase(chatId).collect {messages ->
-                _messages.value = messages
+            _messageState.value = NetworkState.Loading
+            try {
+                getMessagesUseCase(chatId).collect {state ->
+                    _messageState.value = state
+                }
+            }
+            catch (e: Exception) {
+                _messageState.value = NetworkState.Error(e.message.toString())
             }
         }
     }

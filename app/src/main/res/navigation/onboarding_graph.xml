@@ -37,9 +37,6 @@
         <argument
             android:name="status"
             app:argType="string" />
-        <action
-            android:id="@+id/action_passwordFragment_to_verifyPhoneNumberFragment"
-            app:destination="@id/verifyPhoneNumberFragment" />
         <argument
             android:name="email"
             app:argType="string" />
@@ -49,18 +46,9 @@
         <action
             android:id="@+id/action_passwordFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/verifyPhoneNumberFragment"
-        android:name="com.example.pockie.presentation.ui.authentication.verifyphonenumber.VerifyPhoneNumberFragment"
-        android:label="fragment_verify_phone_number"
-        tools:layout="@layout/fragment_verify_phone_number" >
         <action
-            android:id="@+id/action_verifyPhoneNumberFragment_to_passwordFragment"
-            app:destination="@id/passwordFragment" />
-        <argument
-            android:name="status"
-            app:argType="string" />
+            android:id="@+id/action_passwordFragment_to_emailFragment"
+            app:destination="@id/emailFragment" />
     </fragment>
     <fragment
         android:id="@+id/nameUserFragment"
@@ -74,18 +62,10 @@
             android:name="password"
             app:argType="string" />
         <action
-            android:id="@+id/action_nameUserFragment_to_contactsFragment"
-            app:destination="@id/contactsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/contactsFragment"
-        android:name="com.example.pockie.presentation.ui.authentication.addcontacts.ContactsFragment"
-        android:label="fragment_contacts"
-        tools:layout="@layout/fragment_contacts" >
-        <action
-            android:id="@+id/action_contactsFragment_to_setUpFragment"
+            android:id="@+id/action_nameUserFragment_to_setUpFragment"
             app:destination="@id/setUpFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/setUpFragment"
         android:name="com.example.pockie.presentation.ui.authentication.setup.SetUpFragment"

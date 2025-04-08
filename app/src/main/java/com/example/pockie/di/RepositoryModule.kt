@@ -6,6 +6,10 @@ import com.example.pockie.data.source.remote.FirebaseChatDataSource
 import com.example.pockie.data.source.remote.FirebaseUserDataSource
 import com.example.pockie.domain.repository.AccountRepository
 import com.example.pockie.domain.repository.ChatRepository
+import com.example.pockie.data.repository.AuthRepositoryImpl
+import com.example.pockie.domain.repository.AuthRepository
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,4 +30,12 @@ object RepositoryModule {
     fun provideAccountRepository(firebaseUserDataSource: FirebaseUserDataSource): AccountRepository {
         return AccountRepositoryImpl(firebaseUserDataSource)
     }
+
+    @Provides
+    @Singleton
+    fun provideAuthRepositoryImpl(firebaseAuth: FirebaseAuth, firestore: FirebaseFirestore): AuthRepository{
+        return AuthRepositoryImpl(firebaseAuth, firestore)
+    }
+
+
 }

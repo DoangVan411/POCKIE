@@ -1,0 +1,454 @@
+kotlin version: 2.1.0
+error message: org.jetbrains.kotlin.backend.common.BackendException: Backend Internal error: Exception during IR lowering
+File being compiled: C:/Users/dell/AndroidStudioProjects/POCKIE/app/src/main/java/com/example/pockie/presentation/ui/authentication/email/EmailViewModel.kt
+The root cause java.lang.RuntimeException was thrown at: org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:48)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException(CodegenUtil.kt:253)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException$default(CodegenUtil.kt:236)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:55)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:42)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:28)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:27)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:14)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompilerPhaseKt.invokeToplevel(CompilerPhase.kt:62)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.invokeCodegen(JvmIrCodegenFactory.kt:371)
+	at org.jetbrains.kotlin.codegen.CodegenFactory.generateModule(CodegenFactory.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.generateModuleInFrontendIRMode(JvmIrCodegenFactory.kt:433)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.generateCodeFromIr(jvmCompilerPipeline.kt:192)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.runBackend(jvmCompilerPipeline.kt:80)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineLightTreeKt.compileModule(jvmCompilerPipelineLightTree.kt:264)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineLightTreeKt.compileSingleModuleUsingFrontendIrAndLightTree(jvmCompilerPipelineLightTree.kt:231)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineLightTreeKt.compileModulesUsingFrontendIrAndLightTree(jvmCompilerPipelineLightTree.kt:86)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:146)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:43)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:102)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.exec(CLICompiler.kt:316)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:464)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:73)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.doCompile(IncrementalCompilerRunner.kt:506)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:423)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally$lambda$9$compile(IncrementalCompilerRunner.kt:249)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally(IncrementalCompilerRunner.kt:267)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:120)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execIncrementalCompiler(CompileServiceImpl.kt:674)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execIncrementalCompiler(CompileServiceImpl.kt:91)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1659)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN name:resetPassword visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel, email:kotlin.String) returnType:kotlin.Unit
+  $this: VALUE_PARAMETER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel
+  VALUE_PARAMETER name:email index:0 type:kotlin.String
+  BLOCK_BODY
+    CALL 'public abstract fun <set-value> (<set-?>: T of kotlinx.coroutines.flow.MutableStateFlow): kotlin.Unit declared in kotlinx.coroutines.flow.MutableStateFlow' type=kotlin.Unit origin=EQ
+      $this: GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:_resetPasswordState type:kotlinx.coroutines.flow.MutableStateFlow<com.example.pockie.presentation.utils.networkstate.NetworkState> visibility:private [final]' type=kotlinx.coroutines.flow.MutableStateFlow<com.example.pockie.presentation.utils.networkstate.NetworkState> origin=null
+        receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+      <set-?>: GET_FIELD 'FIELD FIELD_FOR_OBJECT_INSTANCE name:INSTANCE type:com.example.pockie.presentation.utils.networkstate.NetworkState.Loading visibility:public [final,static] declared in com.example.pockie.presentation.utils.networkstate.NetworkState.Loading' type=com.example.pockie.presentation.utils.networkstate.NetworkState.Loading origin=null
+    COMPOSITE type=kotlin.Unit origin=null
+      CALL 'public final fun launch$default (context: kotlin.coroutines.CoroutineContext?, start: kotlinx.coroutines.CoroutineStart?, block: @[ExtensionFunctionType] kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope, kotlin.Unit>, $mask0: kotlin.Int, $handler: kotlin.Any?): kotlinx.coroutines.Job declared in kotlinx.coroutines.BuildersKt' type=kotlinx.coroutines.Job origin=DEFAULT_DISPATCH_CALL
+        $receiver: CALL 'public final fun <get-viewModelScope> (): kotlinx.coroutines.CoroutineScope declared in androidx.lifecycle.ViewModelKt' type=kotlinx.coroutines.CoroutineScope origin=GET_PROPERTY
+          $receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+        context: COMPOSITE type=kotlin.coroutines.CoroutineContext? origin=DEFAULT_VALUE
+          CONST Null type=kotlin.coroutines.CoroutineContext? value=null
+        start: COMPOSITE type=kotlinx.coroutines.CoroutineStart? origin=DEFAULT_VALUE
+          CONST Null type=kotlinx.coroutines.CoroutineStart? value=null
+        block: BLOCK type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+          CLASS SUSPEND_LAMBDA CLASS name:<no name provided> modality:FINAL visibility:public/*package*/ superTypes:[kotlin.coroutines.jvm.internal.SuspendLambda; kotlin.jvm.functions.Function2<kotlinx.coroutines.CoroutineScope, kotlin.coroutines.Continuation<kotlin.Unit>?, kotlin.Any?>]
+            $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>
+            FIELD name:label type:kotlin.Int visibility:public/*package*/
+            CONSTRUCTOR SUSPEND_LAMBDA visibility:public/*package*/ <> (this$0:com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $email:kotlin.String, $completion:kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>>?) returnType:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> [primary]
+              VALUE_PARAMETER BOUND_RECEIVER_PARAMETER name:this$0 index:0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel
+              VALUE_PARAMETER BOUND_VALUE_PARAMETER name:$email index:1 type:kotlin.String
+              VALUE_PARAMETER name:$completion index:2 type:kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>>?
+              BLOCK_BODY
+                SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                  receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                  value: GET_VAR 'this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.<init>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$email type:kotlin.String visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                  receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                  value: GET_VAR '$email: kotlin.String declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.<init>' type=kotlin.String origin=null
+                DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> (arity: kotlin.Int, $completion: kotlin.coroutines.Continuation<kotlin.Any?>?) declared in kotlin.coroutines.jvm.internal.SuspendLambda'
+                  arity: CONST Int type=kotlin.Int value=2
+                  $completion: GET_VAR '$completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>>? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.<init>' type=kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>>? origin=null
+                BLOCK type=kotlin.Unit origin=null
+            FUN name:invokeSuspend visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>, $result:kotlin.Result<kotlin.Any?>) returnType:kotlin.Any?
+              overridden:
+                protected abstract fun invokeSuspend ($result: kotlin.Result<kotlin.Any?>): kotlin.Any? declared in kotlin.coroutines.jvm.internal.SuspendLambda
+              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>
+              VALUE_PARAMETER name:$result index:0 type:kotlin.Result<kotlin.Any?>
+              BLOCK_BODY
+                CALL 'public abstract fun collect (collector: kotlinx.coroutines.flow.FlowCollector<T of kotlinx.coroutines.flow.Flow>, $completion: kotlin.coroutines.Continuation<kotlin.Unit>): kotlin.Any? [suspend] declared in kotlinx.coroutines.flow.Flow' type=kotlin.Unit origin=null
+                  $this: CALL 'public final fun invoke (email: kotlin.String): kotlinx.coroutines.flow.Flow<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)])> [operator] declared in com.example.pockie.domain.usecase.ResetPasswordUseCase' type=kotlinx.coroutines.flow.Flow<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)])> origin=null
+                    $this: CALL 'public final fun access$getResetPasswordUseCase$p ($this: com.example.pockie.presentation.ui.authentication.email.EmailViewModel): com.example.pockie.domain.usecase.ResetPasswordUseCase declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel' type=com.example.pockie.domain.usecase.ResetPasswordUseCase origin=null
+                      $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                        receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                    email: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$email type:kotlin.String visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.String origin=null
+                      receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                  collector: BLOCK type=@[RawType] kotlinx.coroutines.flow.FlowCollector<T of kotlinx.coroutines.flow.FlowCollector> origin=null
+                    VAR IR_TEMPORARY_VARIABLE name:tmp type:kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> [val]
+                      TYPE_OP type=kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> origin=IMPLICIT_CAST typeOperand=kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit>
+                        BLOCK type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                          CLASS SUSPEND_LAMBDA CLASS name:<no name provided> modality:FINAL visibility:public/*package*/ superTypes:[kotlin.coroutines.jvm.internal.SuspendLambda; kotlin.jvm.functions.Function2<com.example.pockie.presentation.utils.networkstate.NetworkState, kotlin.coroutines.Continuation<kotlin.Unit>?, kotlin.Any?>]
+                            $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                            FIELD name:label type:kotlin.Int visibility:public/*package*/
+                            FIELD FIELD_FOR_CAPTURED_VALUE name:L$0 type:kotlin.Any? visibility:public/*package*/
+                            CONSTRUCTOR SUSPEND_LAMBDA visibility:public/*package*/ <> (this$0:com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $completion:kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?) returnType:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [primary]
+                              VALUE_PARAMETER BOUND_RECEIVER_PARAMETER name:this$0 index:0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel
+                              VALUE_PARAMETER name:$completion index:1 type:kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?
+                              BLOCK_BODY
+                                SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                                  receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                  value: GET_VAR 'this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.<init>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                                DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> (arity: kotlin.Int, $completion: kotlin.coroutines.Continuation<kotlin.Any?>?) declared in kotlin.coroutines.jvm.internal.SuspendLambda'
+                                  arity: CONST Int type=kotlin.Int value=2
+                                  $completion: GET_VAR '$completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.<init>' type=kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>? origin=null
+                                BLOCK type=kotlin.Unit origin=null
+                            FUN name:invokeSuspend visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, $result:kotlin.Result<kotlin.Any?>) returnType:kotlin.Any?
+                              overridden:
+                                protected abstract fun invokeSuspend ($result: kotlin.Result<kotlin.Any?>): kotlin.Any? declared in kotlin.coroutines.jvm.internal.SuspendLambda
+                              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                              VALUE_PARAMETER name:$result index:0 type:kotlin.Result<kotlin.Any?>
+                              BLOCK_BODY
+                                VAR name:it type:com.example.pockie.presentation.utils.networkstate.NetworkState [val]
+                                  BLOCK type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                                    GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:L$0 type:kotlin.Any? visibility:public/*package*/ declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                                      receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                CALL 'public abstract fun <set-value> (<set-?>: T of kotlinx.coroutines.flow.MutableStateFlow): kotlin.Unit declared in kotlinx.coroutines.flow.MutableStateFlow' type=kotlin.Unit origin=EQ
+                                  $this: CALL 'public final fun access$get_resetPasswordState$p ($this: com.example.pockie.presentation.ui.authentication.email.EmailViewModel): kotlinx.coroutines.flow.MutableStateFlow<com.example.pockie.presentation.utils.networkstate.NetworkState> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel' type=kotlinx.coroutines.flow.MutableStateFlow<com.example.pockie.presentation.utils.networkstate.NetworkState> origin=null
+                                    $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                                      receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                  <set-?>: GET_VAR 'val it: com.example.pockie.presentation.utils.networkstate.NetworkState [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                            FUN name:create visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, value:kotlin.Any?, $completion:kotlin.coroutines.Continuation<kotlin.Nothing>) returnType:kotlin.coroutines.Continuation<kotlin.Unit>
+                              overridden:
+                                public open fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in kotlin.coroutines.jvm.internal.SuspendLambda
+                              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                              VALUE_PARAMETER name:value index:0 type:kotlin.Any?
+                              VALUE_PARAMETER name:$completion index:1 type:kotlin.coroutines.Continuation<kotlin.Nothing>
+                              BLOCK_BODY
+                                VAR IR_TEMPORARY_VARIABLE name:tmp0_result type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [val]
+                                  CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                    this$0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                                      receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                    $completion: GET_VAR '$completion: kotlin.coroutines.Continuation<kotlin.Nothing> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=kotlin.coroutines.Continuation<kotlin.Nothing> origin=null
+                                SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:L$0 type:kotlin.Any? visibility:public/*package*/ declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Unit origin=null
+                                  receiver: GET_VAR 'val tmp0_result: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                  value: GET_VAR 'value: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=kotlin.Any? origin=null
+                                RETURN type=kotlin.Nothing from='public final fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>'
+                                  GET_VAR 'val tmp0_result: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                            FUN name:invoke visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, p1:com.example.pockie.presentation.utils.networkstate.NetworkState, p2:kotlin.coroutines.Continuation<kotlin.Unit>?) returnType:kotlin.Any?
+                              overridden:
+                                public abstract fun invoke (p1: P1 of kotlin.jvm.functions.Function2, p2: P2 of kotlin.jvm.functions.Function2): R of kotlin.jvm.functions.Function2 declared in kotlin.jvm.functions.Function2
+                              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                              VALUE_PARAMETER name:p1 index:0 type:com.example.pockie.presentation.utils.networkstate.NetworkState
+                              VALUE_PARAMETER name:p2 index:1 type:kotlin.coroutines.Continuation<kotlin.Unit>?
+                              BLOCK_BODY
+                                RETURN type=kotlin.Nothing from='public final fun invoke (p1: com.example.pockie.presentation.utils.networkstate.NetworkState, p2: kotlin.coroutines.Continuation<kotlin.Unit>?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>'
+                                  CALL 'public final fun invokeSuspend ($result: kotlin.Result<kotlin.Any?>): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Any? origin=null
+                                    $this: TYPE_OP type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=IMPLICIT_CAST typeOperand=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                                      CALL 'public final fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.coroutines.Continuation<kotlin.Unit> origin=null
+                                        $this: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                        value: GET_VAR 'p1: com.example.pockie.presentation.utils.networkstate.NetworkState declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                                        $completion: GET_VAR 'p2: kotlin.coroutines.Continuation<kotlin.Unit>? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=kotlin.coroutines.Continuation<kotlin.Unit>? origin=null
+                                    $result: CALL 'public final fun <unsafe-coerce> <T, R> (v: T of kotlin.jvm.internal.<unsafe-coerce>): R of kotlin.jvm.internal.<unsafe-coerce> declared in kotlin.jvm.internal' type=kotlin.Result<kotlin.Any?> origin=null
+                                      <T>: kotlin.Any?
+                                      <R>: kotlin.Result<kotlin.Any?>
+                                      v: GET_FIELD 'FIELD FIELD_FOR_OBJECT_INSTANCE name:INSTANCE type:kotlin.Unit visibility:public [final,static] declared in kotlin.Unit' type=kotlin.Unit origin=null
+                            FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final]
+                            FUN BRIDGE name:invoke visibility:public modality:OPEN <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, p1:kotlin.Any?, p2:kotlin.Any?) returnType:kotlin.Any?
+                              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                              VALUE_PARAMETER BRIDGE name:p1 index:0 type:kotlin.Any?
+                              VALUE_PARAMETER BRIDGE name:p2 index:1 type:kotlin.Any?
+                              EXPRESSION_BODY
+                                RETURN type=kotlin.Nothing from='public open fun invoke (p1: kotlin.Any?, p2: kotlin.Any?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>'
+                                  CALL 'public final fun invoke (p1: com.example.pockie.presentation.utils.networkstate.NetworkState, p2: kotlin.coroutines.Continuation<kotlin.Unit>?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Any? origin=BRIDGE_DELEGATION
+                                    $this: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                                    p1: TYPE_OP type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=IMPLICIT_CAST typeOperand=com.example.pockie.presentation.utils.networkstate.NetworkState
+                                      GET_VAR 'p1: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=kotlin.Any? origin=null
+                                    p2: TYPE_OP type=kotlin.coroutines.Continuation<*> origin=IMPLICIT_CAST typeOperand=kotlin.coroutines.Continuation<*>
+                                      GET_VAR 'p2: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=kotlin.Any? origin=null
+                          CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                            this$0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                              receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                            $completion: CONST Null type=kotlin.Nothing? value=null
+                    CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (function: @[RawType] kotlin.coroutines.SuspendFunction1<P1 of kotlin.coroutines.SuspendFunction1, R of kotlin.coroutines.SuspendFunction1>) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.sam$kotlinx_coroutines_flow_FlowCollector$0' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.sam$kotlinx_coroutines_flow_FlowCollector$0 origin=null
+                      function: GET_VAR 'val tmp: kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> origin=null
+                  $completion: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+            FUN name:create visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>, value:kotlin.Any?, $completion:kotlin.coroutines.Continuation<kotlin.Nothing>) returnType:kotlin.coroutines.Continuation<kotlin.Unit>
+              overridden:
+                public open fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in kotlin.coroutines.jvm.internal.SuspendLambda
+              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>
+              VALUE_PARAMETER name:value index:0 type:kotlin.Any?
+              VALUE_PARAMETER name:$completion index:1 type:kotlin.coroutines.Continuation<kotlin.Nothing>
+              BLOCK_BODY
+                RETURN type=kotlin.Nothing from='public final fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>'
+                  CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $email: kotlin.String, $completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>>?) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                    this$0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                      receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                    $email: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$email type:kotlin.String visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.String origin=null
+                      receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                    $completion: GET_VAR '$completion: kotlin.coroutines.Continuation<kotlin.Nothing> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.create' type=kotlin.coroutines.Continuation<kotlin.Nothing> origin=null
+            FUN name:invoke visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>, p1:kotlinx.coroutines.CoroutineScope, p2:kotlin.coroutines.Continuation<kotlin.Unit>?) returnType:kotlin.Any?
+              overridden:
+                public abstract fun invoke (p1: P1 of kotlin.jvm.functions.Function2, p2: P2 of kotlin.jvm.functions.Function2): R of kotlin.jvm.functions.Function2 declared in kotlin.jvm.functions.Function2
+              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>
+              VALUE_PARAMETER name:p1 index:0 type:kotlinx.coroutines.CoroutineScope
+              VALUE_PARAMETER name:p2 index:1 type:kotlin.coroutines.Continuation<kotlin.Unit>?
+              BLOCK_BODY
+                RETURN type=kotlin.Nothing from='public final fun invoke (p1: kotlinx.coroutines.CoroutineScope, p2: kotlin.coroutines.Continuation<kotlin.Unit>?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>'
+                  CALL 'public final fun invokeSuspend ($result: kotlin.Result<kotlin.Any?>): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.Any? origin=null
+                    $this: TYPE_OP type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=IMPLICIT_CAST typeOperand=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>
+                      CALL 'public final fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.coroutines.Continuation<kotlin.Unit> origin=null
+                        $this: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invoke' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                        value: GET_VAR 'p1: kotlinx.coroutines.CoroutineScope declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invoke' type=kotlinx.coroutines.CoroutineScope origin=null
+                        $completion: GET_VAR 'p2: kotlin.coroutines.Continuation<kotlin.Unit>? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invoke' type=kotlin.coroutines.Continuation<kotlin.Unit>? origin=null
+                    $result: CALL 'public final fun <unsafe-coerce> <T, R> (v: T of kotlin.jvm.internal.<unsafe-coerce>): R of kotlin.jvm.internal.<unsafe-coerce> declared in kotlin.jvm.internal' type=kotlin.Result<kotlin.Any?> origin=null
+                      <T>: kotlin.Any?
+                      <R>: kotlin.Result<kotlin.Any?>
+                      v: GET_FIELD 'FIELD FIELD_FOR_OBJECT_INSTANCE name:INSTANCE type:kotlin.Unit visibility:public [final,static] declared in kotlin.Unit' type=kotlin.Unit origin=null
+            FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final]
+            FIELD FIELD_FOR_CAPTURED_VALUE name:$email type:kotlin.String visibility:public/*package*/ [final]
+            FUN BRIDGE name:invoke visibility:public modality:OPEN <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>, p1:kotlin.Any?, p2:kotlin.Any?) returnType:kotlin.Any?
+              $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>
+              VALUE_PARAMETER BRIDGE name:p1 index:0 type:kotlin.Any?
+              VALUE_PARAMETER BRIDGE name:p2 index:1 type:kotlin.Any?
+              EXPRESSION_BODY
+                RETURN type=kotlin.Nothing from='public open fun invoke (p1: kotlin.Any?, p2: kotlin.Any?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>'
+                  CALL 'public final fun invoke (p1: kotlinx.coroutines.CoroutineScope, p2: kotlin.coroutines.Continuation<kotlin.Unit>?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.Any? origin=BRIDGE_DELEGATION
+                    $this: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invoke' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                    p1: TYPE_OP type=kotlinx.coroutines.CoroutineScope origin=IMPLICIT_CAST typeOperand=kotlinx.coroutines.CoroutineScope
+                      GET_VAR 'p1: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invoke' type=kotlin.Any? origin=null
+                    p2: TYPE_OP type=kotlin.coroutines.Continuation<*> origin=IMPLICIT_CAST typeOperand=kotlin.coroutines.Continuation<*>
+                      GET_VAR 'p2: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invoke' type=kotlin.Any? origin=null
+          CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $email: kotlin.String, $completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>>?) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+            this$0: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+            $email: GET_VAR 'email: kotlin.String declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword' type=kotlin.String origin=null
+            $completion: CONST Null type=kotlin.Nothing? value=null
+        $mask0: CONST Int type=kotlin.Int value=3
+        $handler: CONST Null type=kotlin.Any? value=null
+      COMPOSITE type=kotlin.Unit origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:48)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:41)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:407)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:424)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:169)
+	at org.jetbrains.kotlin.backend.jvm.FileCodegen.lower(JvmPhases.kt:39)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseFactoriesKt.createFilePhase$lambda$4(PhaseFactories.kt:71)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt$createSimpleNamedCompilerPhase$1.phaseBody(PhaseBuilders.kt:69)
+	at org.jetbrains.kotlin.backend.common.phaser.SimpleNamedCompilerPhase.phaseBody(CompilerPhase.kt:226)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:52)
+	... 46 more
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN name:invokeSuspend visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>, $result:kotlin.Result<kotlin.Any?>) returnType:kotlin.Any?
+  overridden:
+    protected abstract fun invokeSuspend ($result: kotlin.Result<kotlin.Any?>): kotlin.Any? declared in kotlin.coroutines.jvm.internal.SuspendLambda
+  $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>
+  VALUE_PARAMETER name:$result index:0 type:kotlin.Result<kotlin.Any?>
+  BLOCK_BODY
+    CALL 'public abstract fun collect (collector: kotlinx.coroutines.flow.FlowCollector<T of kotlinx.coroutines.flow.Flow>, $completion: kotlin.coroutines.Continuation<kotlin.Unit>): kotlin.Any? [suspend] declared in kotlinx.coroutines.flow.Flow' type=kotlin.Unit origin=null
+      $this: CALL 'public final fun invoke (email: kotlin.String): kotlinx.coroutines.flow.Flow<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)])> [operator] declared in com.example.pockie.domain.usecase.ResetPasswordUseCase' type=kotlinx.coroutines.flow.Flow<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)])> origin=null
+        $this: CALL 'public final fun access$getResetPasswordUseCase$p ($this: com.example.pockie.presentation.ui.authentication.email.EmailViewModel): com.example.pockie.domain.usecase.ResetPasswordUseCase declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel' type=com.example.pockie.domain.usecase.ResetPasswordUseCase origin=null
+          $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+            receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+        email: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:$email type:kotlin.String visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=kotlin.String origin=null
+          receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+      collector: BLOCK type=@[RawType] kotlinx.coroutines.flow.FlowCollector<T of kotlinx.coroutines.flow.FlowCollector> origin=null
+        VAR IR_TEMPORARY_VARIABLE name:tmp type:kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> [val]
+          TYPE_OP type=kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> origin=IMPLICIT_CAST typeOperand=kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit>
+            BLOCK type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+              CLASS SUSPEND_LAMBDA CLASS name:<no name provided> modality:FINAL visibility:public/*package*/ superTypes:[kotlin.coroutines.jvm.internal.SuspendLambda; kotlin.jvm.functions.Function2<com.example.pockie.presentation.utils.networkstate.NetworkState, kotlin.coroutines.Continuation<kotlin.Unit>?, kotlin.Any?>]
+                $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                FIELD name:label type:kotlin.Int visibility:public/*package*/
+                FIELD FIELD_FOR_CAPTURED_VALUE name:L$0 type:kotlin.Any? visibility:public/*package*/
+                CONSTRUCTOR SUSPEND_LAMBDA visibility:public/*package*/ <> (this$0:com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $completion:kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?) returnType:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [primary]
+                  VALUE_PARAMETER BOUND_RECEIVER_PARAMETER name:this$0 index:0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel
+                  VALUE_PARAMETER name:$completion index:1 type:kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?
+                  BLOCK_BODY
+                    SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Unit origin=INITIALIZER_OF_FIELD_FOR_CAPTURED_VALUE
+                      receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                      value: GET_VAR 'this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.<init>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                    DELEGATING_CONSTRUCTOR_CALL 'public constructor <init> (arity: kotlin.Int, $completion: kotlin.coroutines.Continuation<kotlin.Any?>?) declared in kotlin.coroutines.jvm.internal.SuspendLambda'
+                      arity: CONST Int type=kotlin.Int value=2
+                      $completion: GET_VAR '$completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.<init>' type=kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>? origin=null
+                    BLOCK type=kotlin.Unit origin=null
+                FUN name:invokeSuspend visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, $result:kotlin.Result<kotlin.Any?>) returnType:kotlin.Any?
+                  overridden:
+                    protected abstract fun invokeSuspend ($result: kotlin.Result<kotlin.Any?>): kotlin.Any? declared in kotlin.coroutines.jvm.internal.SuspendLambda
+                  $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                  VALUE_PARAMETER name:$result index:0 type:kotlin.Result<kotlin.Any?>
+                  BLOCK_BODY
+                    VAR name:it type:com.example.pockie.presentation.utils.networkstate.NetworkState [val]
+                      BLOCK type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                        GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:L$0 type:kotlin.Any? visibility:public/*package*/ declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                          receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                    CALL 'public abstract fun <set-value> (<set-?>: T of kotlinx.coroutines.flow.MutableStateFlow): kotlin.Unit declared in kotlinx.coroutines.flow.MutableStateFlow' type=kotlin.Unit origin=EQ
+                      $this: CALL 'public final fun access$get_resetPasswordState$p ($this: com.example.pockie.presentation.ui.authentication.email.EmailViewModel): kotlinx.coroutines.flow.MutableStateFlow<com.example.pockie.presentation.utils.networkstate.NetworkState> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel' type=kotlinx.coroutines.flow.MutableStateFlow<com.example.pockie.presentation.utils.networkstate.NetworkState> origin=null
+                        $this: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                          receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                      <set-?>: GET_VAR 'val it: com.example.pockie.presentation.utils.networkstate.NetworkState [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                FUN name:create visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, value:kotlin.Any?, $completion:kotlin.coroutines.Continuation<kotlin.Nothing>) returnType:kotlin.coroutines.Continuation<kotlin.Unit>
+                  overridden:
+                    public open fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in kotlin.coroutines.jvm.internal.SuspendLambda
+                  $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                  VALUE_PARAMETER name:value index:0 type:kotlin.Any?
+                  VALUE_PARAMETER name:$completion index:1 type:kotlin.coroutines.Continuation<kotlin.Nothing>
+                  BLOCK_BODY
+                    VAR IR_TEMPORARY_VARIABLE name:tmp0_result type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [val]
+                      CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                        this$0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                          receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                        $completion: GET_VAR '$completion: kotlin.coroutines.Continuation<kotlin.Nothing> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=kotlin.coroutines.Continuation<kotlin.Nothing> origin=null
+                    SET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:L$0 type:kotlin.Any? visibility:public/*package*/ declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Unit origin=null
+                      receiver: GET_VAR 'val tmp0_result: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                      value: GET_VAR 'value: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=kotlin.Any? origin=null
+                    RETURN type=kotlin.Nothing from='public final fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>'
+                      GET_VAR 'val tmp0_result: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.create' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                FUN name:invoke visibility:public modality:FINAL <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, p1:com.example.pockie.presentation.utils.networkstate.NetworkState, p2:kotlin.coroutines.Continuation<kotlin.Unit>?) returnType:kotlin.Any?
+                  overridden:
+                    public abstract fun invoke (p1: P1 of kotlin.jvm.functions.Function2, p2: P2 of kotlin.jvm.functions.Function2): R of kotlin.jvm.functions.Function2 declared in kotlin.jvm.functions.Function2
+                  $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                  VALUE_PARAMETER name:p1 index:0 type:com.example.pockie.presentation.utils.networkstate.NetworkState
+                  VALUE_PARAMETER name:p2 index:1 type:kotlin.coroutines.Continuation<kotlin.Unit>?
+                  BLOCK_BODY
+                    RETURN type=kotlin.Nothing from='public final fun invoke (p1: com.example.pockie.presentation.utils.networkstate.NetworkState, p2: kotlin.coroutines.Continuation<kotlin.Unit>?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>'
+                      CALL 'public final fun invokeSuspend ($result: kotlin.Result<kotlin.Any?>): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Any? origin=null
+                        $this: TYPE_OP type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=IMPLICIT_CAST typeOperand=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                          CALL 'public final fun create (value: kotlin.Any?, $completion: kotlin.coroutines.Continuation<kotlin.Nothing>): kotlin.coroutines.Continuation<kotlin.Unit> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.coroutines.Continuation<kotlin.Unit> origin=null
+                            $this: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                            value: GET_VAR 'p1: com.example.pockie.presentation.utils.networkstate.NetworkState declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=null
+                            $completion: GET_VAR 'p2: kotlin.coroutines.Continuation<kotlin.Unit>? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=kotlin.coroutines.Continuation<kotlin.Unit>? origin=null
+                        $result: CALL 'public final fun <unsafe-coerce> <T, R> (v: T of kotlin.jvm.internal.<unsafe-coerce>): R of kotlin.jvm.internal.<unsafe-coerce> declared in kotlin.jvm.internal' type=kotlin.Result<kotlin.Any?> origin=null
+                          <T>: kotlin.Any?
+                          <R>: kotlin.Result<kotlin.Any?>
+                          v: GET_FIELD 'FIELD FIELD_FOR_OBJECT_INSTANCE name:INSTANCE type:kotlin.Unit visibility:public [final,static] declared in kotlin.Unit' type=kotlin.Unit origin=null
+                FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final]
+                FUN BRIDGE name:invoke visibility:public modality:OPEN <> ($this:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>, p1:kotlin.Any?, p2:kotlin.Any?) returnType:kotlin.Any?
+                  $this: VALUE_PARAMETER INSTANCE_RECEIVER name:<this> type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>
+                  VALUE_PARAMETER BRIDGE name:p1 index:0 type:kotlin.Any?
+                  VALUE_PARAMETER BRIDGE name:p2 index:1 type:kotlin.Any?
+                  EXPRESSION_BODY
+                    RETURN type=kotlin.Nothing from='public open fun invoke (p1: kotlin.Any?, p2: kotlin.Any?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>'
+                      CALL 'public final fun invoke (p1: com.example.pockie.presentation.utils.networkstate.NetworkState, p2: kotlin.coroutines.Continuation<kotlin.Unit>?): kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=kotlin.Any? origin=BRIDGE_DELEGATION
+                        $this: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                        p1: TYPE_OP type=com.example.pockie.presentation.utils.networkstate.NetworkState origin=IMPLICIT_CAST typeOperand=com.example.pockie.presentation.utils.networkstate.NetworkState
+                          GET_VAR 'p1: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=kotlin.Any? origin=null
+                        p2: TYPE_OP type=kotlin.coroutines.Continuation<*> origin=IMPLICIT_CAST typeOperand=kotlin.coroutines.Continuation<*>
+                          GET_VAR 'p2: kotlin.Any? declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>.invoke' type=kotlin.Any? origin=null
+              CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (this$0: com.example.pockie.presentation.ui.authentication.email.EmailViewModel, $completion: kotlin.coroutines.Continuation<com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>>?) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend.<no name provided> origin=null
+                this$0: GET_FIELD 'FIELD FIELD_FOR_CAPTURED_VALUE name:this$0 type:com.example.pockie.presentation.ui.authentication.email.EmailViewModel visibility:public/*package*/ [final] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel origin=null
+                  receiver: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+                $completion: CONST Null type=kotlin.Nothing? value=null
+        CONSTRUCTOR_CALL 'public/*package*/ constructor <init> (function: @[RawType] kotlin.coroutines.SuspendFunction1<P1 of kotlin.coroutines.SuspendFunction1, R of kotlin.coroutines.SuspendFunction1>) [primary] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.sam$kotlinx_coroutines_flow_FlowCollector$0' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.sam$kotlinx_coroutines_flow_FlowCollector$0 origin=null
+          function: GET_VAR 'val tmp: kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> [val] declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=kotlin.coroutines.SuspendFunction1<IrErrorType([Error type: Unresolved type for Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)]), kotlin.Unit> origin=null
+      $completion: GET_VAR '<this>: com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> declared in com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided>.invokeSuspend' type=com.example.pockie.presentation.ui.authentication.email.EmailViewModel.resetPassword.<no name provided> origin=null
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:48)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:41)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:407)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:424)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:169)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitClass(ExpressionCodegen.kt:952)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitClass(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.declarations.IrClass.accept(IrClass.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:524)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:538)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitBlock(IrElementVisitor.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:409)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.gen(ExpressionCodegen.kt:213)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrCallGenerator.genValueAndPut(IrCallGenerator.kt:48)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:561)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:589)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:524)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:538)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitComposite(IrElementVisitor.kt:129)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitComposite(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitComposite(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrComposite.accept(IrComposite.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:524)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:529)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:236)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:124)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:45)
+	... 56 more
+Caused by: java.lang.IllegalStateException: Cannot serialize error type: ERROR CLASS: Inconsistent type: com/example/pockie/presentation/utils/networkstate/NetworkState<kotlin/String> (parameters.size = 0, arguments.size = 1)
+	at org.jetbrains.kotlin.fir.serialization.FirSerializerExtension.serializeErrorType(FirSerializerExtension.kt:128)
+	at org.jetbrains.kotlin.fir.backend.jvm.FirJvmSerializerExtension.serializeErrorType(FirJvmSerializerExtension.kt:330)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.typeOrTypealiasProto(FirElementSerializer.kt:976)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.typeOrTypealiasProto$default(FirElementSerializer.kt:963)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.typeProto(FirElementSerializer.kt:932)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.typeProto$default(FirElementSerializer.kt:919)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.typeProto(FirElementSerializer.kt:916)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.typeProto$default(FirElementSerializer.kt:915)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.valueParameterProto(FirElementSerializer.kt:853)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.valueParameterProto$default(FirElementSerializer.kt:818)
+	at org.jetbrains.kotlin.fir.serialization.FirElementSerializer.functionProto(FirElementSerializer.kt:692)
+	at org.jetbrains.kotlin.fir.backend.jvm.FirMetadataSerializer.serialize(FirMetadataSerializer.kt:138)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateKotlinMetadataAnnotation$lambda$16(ClassCodegen.kt:319)
+	at org.jetbrains.kotlin.codegen.WriteAnnotationUtilKt.writeKotlinMetadata(writeAnnotationUtil.kt:48)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateKotlinMetadataAnnotation(ClassCodegen.kt:317)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateAnnotations(ClassCodegen.kt:272)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:186)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitClass(ExpressionCodegen.kt:952)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitClass(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.declarations.IrClass.accept(IrClass.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:524)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:538)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitBlock(IrElementVisitor.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:409)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitTypeOperator(ExpressionCodegen.kt:1076)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitTypeOperator(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrTypeOperatorCall.accept(IrTypeOperatorCall.kt:26)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:735)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.declarations.IrVariable.accept(IrVariable.kt:36)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:524)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:538)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitBlock(IrElementVisitor.kt:126)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:409)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.gen(ExpressionCodegen.kt:213)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrCallGenerator.genValueAndPut(IrCallGenerator.kt:48)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:561)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:589)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:524)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:529)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:134)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:236)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:124)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:45)
+	... 90 more
+
+

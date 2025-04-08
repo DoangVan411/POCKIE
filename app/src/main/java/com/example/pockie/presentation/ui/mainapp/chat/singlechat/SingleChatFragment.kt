@@ -1,10 +1,12 @@
 package com.example.pockie.presentation.ui.mainapp.chat.singlechat
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -12,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pockie.databinding.FragmentSingleChatBinding
 import com.example.pockie.domain.model.Chat
+import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -66,9 +69,25 @@ class SingleChatFragment(): Fragment() {
 
     private fun observeMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.messages.collectLatest { messages ->
-                adapter.submitList(messages)
-                binding.rvMessages.scrollToPosition(messages.size - 1)
+            viewModel.messageState.collectLatest { state ->
+                when (state) {
+                    is NetworkState.Init -> { /* Hide all UI or do nothing */ }
+                    is NetworkState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.rvMessages.visibility = View.GONE
+                    }
+                    is NetworkState.Success<*> -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.rvMessages.visibility = View.VISIBLE
+                        val messages = state.data as? List<Chat> ?: emptyList()
+                        Log.d("Messages", "${messages.size}")
+                        adapter.submitList(messages)
+                    }
+                    is NetworkState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
     }

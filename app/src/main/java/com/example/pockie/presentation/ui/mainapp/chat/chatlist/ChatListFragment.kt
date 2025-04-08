@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentChatListBinding
+import com.example.pockie.domain.model.Account
+import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -63,9 +66,24 @@ class ChatListFragment : Fragment() {
 
     private fun observeAccounts() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.userList.collectLatest { userList ->
-                adapter.submitList(userList)
-                binding.rvChats.scrollToPosition(userList.size - 1)
+            viewModel.usersState.collectLatest { state ->
+                when(state) {
+                    is NetworkState.Init -> {}
+                    is NetworkState.Loading -> {
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.rvChats.visibility = View.GONE
+                    }
+                    is NetworkState.Success<*> -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.rvChats.visibility = View.VISIBLE
+                        val accounts = state.data as? List<Account> ?: emptyList()
+                        adapter.submitList(accounts)
+                    }
+                    is NetworkState.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
     }
