@@ -1,10 +1,16 @@
 package com.example.pockie.di
 
+import com.example.pockie.domain.repository.AccountRepository
 import com.example.pockie.domain.repository.AuthRepository
-import com.example.pockie.domain.usecases.LoginUseCase
-import com.example.pockie.domain.usecases.RegisterUseCase
-import com.example.pockie.domain.usecases.ResetPasswordUseCase
-import com.example.pockie.domain.usecases.SaveAccountUseCase
+import com.example.pockie.domain.repository.ChatRepository
+import com.example.pockie.domain.usecase.GetAccountUseCase
+import com.example.pockie.domain.usecase.GetAccountsUseCase
+import com.example.pockie.domain.usecase.GetMessagesUseCase
+import com.example.pockie.domain.usecase.SendMessageUseCase
+import com.example.pockie.domain.usecase.LoginUseCase
+import com.example.pockie.domain.usecase.RegisterUseCase
+import com.example.pockie.domain.usecase.ResetPasswordUseCase
+import com.example.pockie.domain.usecase.SaveAccountUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +20,29 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object UseCaseModule {
+    @Provides
+    @Singleton
+    fun provideGetAccountUseCase(accountRepository: AccountRepository): GetAccountUseCase {
+        return GetAccountUseCase(accountRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetAccountsUseCase(accountRepository: AccountRepository): GetAccountsUseCase {
+        return GetAccountsUseCase(accountRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetMessagesUseCase(chatRepository: ChatRepository): GetMessagesUseCase {
+        return GetMessagesUseCase(chatRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSendMessageUseCase(chatRepository: ChatRepository): SendMessageUseCase {
+        return SendMessageUseCase(chatRepository)
+    }
 
     @Provides
     @Singleton
@@ -27,7 +56,7 @@ object UseCaseModule {
     @Singleton
     fun provideLoginUseCase(
         repository: AuthRepository
-    ): LoginUseCase{
+    ): LoginUseCase {
         return LoginUseCase(repository)
     }
 
@@ -35,7 +64,7 @@ object UseCaseModule {
     @Singleton
     fun provideSaveAccountUseCase(
         repository: AuthRepository
-    ): SaveAccountUseCase{
+    ): SaveAccountUseCase {
         return SaveAccountUseCase(repository)
     }
 
@@ -43,7 +72,7 @@ object UseCaseModule {
     @Singleton
     fun provideResetPasswordUseCase(
         repository: AuthRepository
-    ): ResetPasswordUseCase{
+    ): ResetPasswordUseCase {
         return ResetPasswordUseCase(repository)
     }
-} 
+}

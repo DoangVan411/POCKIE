@@ -3,15 +3,13 @@ package com.example.pockie.presentation.ui.authentication.nameuser
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pockie.domain.model.Account
-import com.example.pockie.domain.usecases.SaveAccountUseCase
+import com.example.pockie.domain.usecase.SaveAccountUseCase
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @HiltViewModel

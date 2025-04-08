@@ -123,7 +123,11 @@
     <fragment
         android:id="@+id/singleChatFragment"
         android:name="com.example.pockie.presentation.ui.mainapp.chat.singlechat.SingleChatFragment"
-        android:label="SingleChatFragment" />
+        android:label="SingleChatFragment" >
+        <argument
+            android:name="uid"
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>

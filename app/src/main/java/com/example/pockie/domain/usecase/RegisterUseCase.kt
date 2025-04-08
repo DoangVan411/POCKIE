@@ -1,4 +1,4 @@
-package com.example.pockie.domain.usecases
+package com.example.pockie.domain.usecase
 
 import com.example.pockie.domain.repository.AuthRepository
 import javax.inject.Inject

@@ -2,11 +2,9 @@ package com.example.pockie.presentation.ui.authentication.password
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pockie.domain.usecases.LoginUseCase
-import com.example.pockie.domain.usecases.RegisterUseCase
+import com.example.pockie.domain.usecase.LoginUseCase
+import com.example.pockie.domain.usecase.RegisterUseCase
 import com.example.pockie.presentation.utils.networkstate.NetworkState
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
