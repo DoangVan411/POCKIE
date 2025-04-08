@@ -8,27 +8,32 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pockie.databinding.ReceivedMessageItemBinding
 import com.example.pockie.databinding.SentMessageItemBinding
-import com.example.pockie.domain.model.Message
+import com.example.pockie.domain.model.Chat
 
-class SingleChatAdapter(): ListAdapter<Message, RecyclerView.ViewHolder>(MessageDiffUtilCallback()) {
+class SingleChatAdapter:
+    ListAdapter<Chat, RecyclerView.ViewHolder>(MessageDiffUtilCallback()) {
 
-    inner class SentMessageViewHolder(private val binding: SentMessageItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(message: Message) {
+    inner class SentMessageViewHolder(private val binding: SentMessageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(chat: Chat) {
             with(binding) {
-                tvMessage.text = message.content
+                tvMessage.text = chat.content
                 itemView.setOnClickListener {
-                    binding.tvTime.visibility = if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+                    binding.tvTime.visibility =
+                        if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE
                 }
             }
         }
     }
 
-    inner class ReceivedMessageViewHolder(private val binding: ReceivedMessageItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(message: Message) {
+    inner class ReceivedMessageViewHolder(private val binding: ReceivedMessageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(message: Chat) {
             with(binding) {
                 tvMessage.text = message.content
                 itemView.setOnClickListener {
-                    binding.tvTime.visibility = if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+                    binding.tvTime.visibility =
+                        if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE
                 }
             }
         }
@@ -39,21 +44,28 @@ class SingleChatAdapter(): ListAdapter<Message, RecyclerView.ViewHolder>(Message
         private const val VIEW_TYPE_RECEIVED = 2
     }
 
+    var currentUid: String = ""
+
     override fun getItemViewType(position: Int): Int {
         val message = getItem(position)
-        if (message.type == "sent") {
-            return VIEW_TYPE_SENT
+        return if (message.senderId == currentUid) {
+            VIEW_TYPE_SENT
         } else {
-            return VIEW_TYPE_RECEIVED
+            VIEW_TYPE_RECEIVED
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return if(viewType == VIEW_TYPE_SENT) {
-            val binding = SentMessageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return if (viewType == VIEW_TYPE_SENT) {
+            val binding =
+                SentMessageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             SentMessageViewHolder(binding)
         } else {
-            val binding = ReceivedMessageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding = ReceivedMessageItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
             ReceivedMessageViewHolder(binding)
         }
     }
@@ -62,18 +74,17 @@ class SingleChatAdapter(): ListAdapter<Message, RecyclerView.ViewHolder>(Message
         val message = getItem(position)
         if (holder is SentMessageViewHolder) {
             holder.bind(message)
-        }
-        else if (holder is ReceivedMessageViewHolder) {
+        } else if (holder is ReceivedMessageViewHolder) {
             holder.bind(message)
         }
     }
 
-    class MessageDiffUtilCallback: DiffUtil.ItemCallback<Message>() {
-        override fun areItemsTheSame(oldItem: Message, newItem: Message): Boolean {
+    class MessageDiffUtilCallback : DiffUtil.ItemCallback<Chat>() {
+        override fun areItemsTheSame(oldItem: Chat, newItem: Chat): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Message, newItem: Message): Boolean {
+        override fun areContentsTheSame(oldItem: Chat, newItem: Chat): Boolean {
             return oldItem == newItem
         }
 

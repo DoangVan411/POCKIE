@@ -5,22 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pockie.R
 import com.example.pockie.databinding.ChatItemBinding
-import com.example.pockie.domain.model.User
+import com.example.pockie.domain.model.Account
 
-class ChatListAdapter(private val onClick: (User) -> Unit): ListAdapter<User, RecyclerView.ViewHolder>(
+class ChatListAdapter(private val onClick: (Account) -> Unit): ListAdapter<Account, RecyclerView.ViewHolder>(
     ChatListDiffUtilCallback()
 ) {
 
     inner class ChatListViewHolder(private val binding: ChatItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
+        fun bind(account: Account) {
             with(binding) {
-                ivAvatar.setImageResource(user.avatar)
-                tvName.text = user.fullName
-                tvLatestMes.text = user.latestMessage
-                tvTime.text = user.time
+                ivAvatar.setImageResource(R.drawable.setting)
+                tvName.text = account.fullName
+                tvLatestMes.text = "No"
+                tvTime.text = "19h"
                 itemView.setOnClickListener {
-                    onClick(user)
+                    onClick(account)
                 }
             }
         }
@@ -36,12 +37,12 @@ class ChatListAdapter(private val onClick: (User) -> Unit): ListAdapter<User, Re
         (holder as ChatListViewHolder).bind(user)
     }
 
-    class ChatListDiffUtilCallback: DiffUtil.ItemCallback<User>() {
-        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+    class ChatListDiffUtilCallback: DiffUtil.ItemCallback<Account>() {
+        override fun areItemsTheSame(oldItem: Account, newItem: Account): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+        override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
             return oldItem == newItem
         }
     }

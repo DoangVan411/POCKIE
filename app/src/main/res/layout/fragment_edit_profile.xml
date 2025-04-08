@@ -6,7 +6,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
-    tools:context=".presentation.ui.profile.edit_profile.EditProfileFragment">
+    tools:context=".presentation.ui.mainapp.profile.edit_profile.EditProfileFragment">
 
     <Toolbar
         android:id="@+id/toolbar"
