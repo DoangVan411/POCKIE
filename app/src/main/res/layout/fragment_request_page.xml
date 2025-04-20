@@ -16,6 +16,7 @@
         android:layout_margin="20dp"
         android:iconifiedByDefault="false"
         android:background="@drawable/background_field"
+
         />
 
     <androidx.core.widget.NestedScrollView
@@ -26,16 +27,33 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvFindUsers"
+                tools:listitem="@layout/friend_item"
+                android:layout_margin="5dp"
+                android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/tvRequestReceive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Request sent (4)"
+                android:text="Pending requests (4)"
                 android:textColor="@color/gray_text"
                 android:fontFamily="@font/poppins_medium"
                 android:textSize="15sp"
                 android:layout_marginHorizontal="20dp"
                 />
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/white"/>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRequestReceive"
@@ -52,6 +70,7 @@
                 android:text="@string/show_more"
                 android:paddingHorizontal="10dp"
                 android:layout_marginVertical="5dp"
+                android:textSize="13sp"
                 android:background="@drawable/background_field"
                 android:textColor="@color/gray_text"
                 android:fontFamily="@font/poppins_medium"
@@ -62,12 +81,20 @@
                 android:id="@+id/tvRequestSent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pending request (4)"
+                android:text="Sent requests (4)"
                 android:textColor="@color/gray_text"
                 android:fontFamily="@font/poppins_medium"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:layout_marginHorizontal="20dp"
                 />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/white"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRequestSent"
@@ -87,7 +114,7 @@
                 android:background="@drawable/background_field"
                 android:textColor="@color/gray_text"
                 android:fontFamily="@font/poppins_medium"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:layout_gravity="center"
                 />
 

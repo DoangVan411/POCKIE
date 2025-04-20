@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.2"
+agp = "8.9.1"
 cameraCore = " 1.3.0"
 ccp = "2.5.2"
 coreSplashscreen = "1.0.1"
@@ -16,6 +16,7 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
+materialVersion = "1.6.0"
 navigationUiKtx = "2.8.9"
 navigationFragmentKtx = "2.8.9"
 retrofit = "2.9.0"
@@ -52,6 +53,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-v160 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }

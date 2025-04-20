@@ -2,6 +2,7 @@ package com.example.pockie.data.source.remote
 
 import com.example.pockie.domain.model.Account
 import com.example.pockie.presentation.utils.networkstate.NetworkState
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +16,7 @@ class FirebaseUserDataSource @Inject constructor(private val firestore: Firebase
         return snapshot?.toObject(Account::class.java) ?: Account()
     }
 
-    fun getAccounts(): Flow<NetworkState> = callbackFlow {
+    fun getAllAccounts(): Flow<NetworkState> = callbackFlow {
         val listener = firestore.collection("accounts")
             .addSnapshotListener { snapshot, _ ->
                 val accounts = snapshot?.toObjects(Account::class.java) ?: emptyList()

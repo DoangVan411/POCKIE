@@ -21,12 +21,19 @@
         android:id="@+id/tvFriendsCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Friend(120)"
         android:textColor="@color/gray_text"
         android:fontFamily="@font/poppins_medium"
         android:textSize="15sp"
         android:layout_marginHorizontal="20dp"
         />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFriends"

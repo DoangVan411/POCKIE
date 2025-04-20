@@ -3,14 +3,20 @@ package com.example.pockie.di
 import com.example.pockie.domain.repository.AccountRepository
 import com.example.pockie.domain.repository.AuthRepository
 import com.example.pockie.domain.repository.ChatRepository
+import com.example.pockie.domain.repository.FriendRepository
 import com.example.pockie.domain.usecase.GetAccountUseCase
 import com.example.pockie.domain.usecase.GetAccountsUseCase
+import com.example.pockie.domain.usecase.GetCurrentUserIdUseCase
+import com.example.pockie.domain.usecase.GetFriendsUseCase
 import com.example.pockie.domain.usecase.GetMessagesUseCase
+import com.example.pockie.domain.usecase.GetReceivedRequestsUseCase
+import com.example.pockie.domain.usecase.GetSentRequestsUseCase
 import com.example.pockie.domain.usecase.SendMessageUseCase
 import com.example.pockie.domain.usecase.LoginUseCase
 import com.example.pockie.domain.usecase.RegisterUseCase
 import com.example.pockie.domain.usecase.ResetPasswordUseCase
 import com.example.pockie.domain.usecase.SaveAccountUseCase
+import com.example.pockie.domain.usecase.SearchUserUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -74,5 +80,48 @@ object UseCaseModule {
         repository: AuthRepository
     ): ResetPasswordUseCase {
         return ResetPasswordUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchUserUseCase (
+        accountRepository: AccountRepository,
+        getCurrentUserIdUseCase: GetCurrentUserIdUseCase
+    ): SearchUserUseCase {
+        return SearchUserUseCase(accountRepository, getCurrentUserIdUseCase)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetCurrentUserIdUseCase (
+        authRepository: AuthRepository
+    ): GetCurrentUserIdUseCase {
+        return GetCurrentUserIdUseCase(authRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetFriendsUseCase (
+        friendRepository: FriendRepository
+    ): GetFriendsUseCase {
+        return GetFriendsUseCase(friendRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetSentRequestsUseCase (
+        accountRepository: AccountRepository,
+        friendRepository: FriendRepository
+    ): GetSentRequestsUseCase {
+        return GetSentRequestsUseCase(accountRepository, friendRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetReceivedRequestsUseCase (
+        accountRepository: AccountRepository,
+        friendRepository: FriendRepository
+    ): GetReceivedRequestsUseCase {
+        return GetReceivedRequestsUseCase(accountRepository, friendRepository)
     }
 }

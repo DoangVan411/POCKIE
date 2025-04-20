@@ -1,6 +1,7 @@
 package com.example.pockie.di
 
 import com.example.pockie.data.source.remote.FirebaseChatDataSource
+import com.example.pockie.data.source.remote.FirebaseFriendDataSource
 import com.example.pockie.data.source.remote.FirebaseUserDataSource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -43,6 +44,12 @@ object NetworkModule {
     @Singleton
     fun provideFirebaseUserDataSource(firestore: FirebaseFirestore): FirebaseUserDataSource {
         return FirebaseUserDataSource(firestore)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseFriendDataSource(firestore: FirebaseFirestore, firebaseAuth: FirebaseAuth, firebaseUserDataSource: FirebaseUserDataSource): FirebaseFriendDataSource {
+        return FirebaseFriendDataSource(firestore, firebaseAuth, firebaseUserDataSource)
     }
 }
 

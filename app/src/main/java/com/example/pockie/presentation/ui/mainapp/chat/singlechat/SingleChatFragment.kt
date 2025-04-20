@@ -55,7 +55,7 @@ class SingleChatFragment(): Fragment() {
         viewModel.getMessages(viewModel.getChatId(viewModel.getCurrentUserUid(), args.uid))
         setUpRecyclerView()
         getAccountName()
-        observeMessages()
+        collectMessages()
     }
 
     private fun setUpRecyclerView() {
@@ -67,7 +67,7 @@ class SingleChatFragment(): Fragment() {
         }
     }
 
-    private fun observeMessages() {
+    private fun collectMessages() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.messageState.collectLatest { state ->
                 when (state) {
