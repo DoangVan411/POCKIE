@@ -44,6 +44,11 @@ class EmailFragment : Fragment() {
         binding.next.setOnClickListener {
             if (checkValidEmail()){
                 if(status == "ForgotPass"){
+
+                    val name: String? = null
+                    print(name!!)
+
+
                     viewModel.resetPassword(binding.email.text.toString())
                     viewLifecycleOwner.lifecycleScope.launch {
                         viewModel.resetPasswordState.collect{result ->

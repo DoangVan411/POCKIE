@@ -1,8 +1,10 @@
 package com.example.pockie.presentation.ui.mainactivity
 
 import android.os.Bundle
+import android.view.WindowInsets
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.pockie.presentation.ui.mainapp.profile.ProfileFragment
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
 
     override fun onDestroy() {

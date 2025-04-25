@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/setting"
+        app:shapeAppearanceOverlay="@style/RoundedImageView"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:text="Vân Đoàn"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="\@vandoan"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="13sp"
+
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvAddFriend"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/gray_bg"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/tvName"
+        app:layout_constraintEnd_toStartOf="@id/cvRemove"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/ivAddFriend"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/add_friend"
+            android:background="@color/gray_bg"
+            android:layout_gravity="center"
+            android:tag="not_sent"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRemove"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/gray_bg"
+        app:cardCornerRadius="20dp"
+        android:layout_marginStart="5dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/cvAddFriend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/ivRemove"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/remove"
+            android:background="@color/gray_bg"
+            android:layout_gravity="center"
+            android:tag="not_sent"
+            />
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class AccountRepositoryImpl @Inject constructor(private val firebaseUserDataSource: FirebaseUserDataSource): AccountRepository {
     override fun getAccounts(): Flow<NetworkState> {
-        return firebaseUserDataSource.getAccounts()
+        return firebaseUserDataSource.getAllAccounts()
     }
 
     override suspend fun getAccount(uid: String): Account {
