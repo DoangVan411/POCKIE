@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pockie.databinding.PostItemBinding
 import com.example.pockie.domain.model.Post
 import com.example.pockie.presentation.utils.Utils.getTime
@@ -15,7 +16,7 @@ class ProfileAdapter(private val onClick: (Post) -> Unit): ListAdapter<Post, Rec
 
     inner class ProfileViewHolder(private val binding: PostItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(post: Post) {
-            binding.iv.setImageResource(post.imageUrl)
+            Glide.with(binding.iv).load(post.imageUrl).into(binding.iv)
             binding.tvDate.text = getTime(post.createAt)
             binding.tvLikeCount.text = "${post.likeCount}"
             itemView.setOnClickListener {

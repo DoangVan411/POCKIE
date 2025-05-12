@@ -43,4 +43,5 @@
     <string name="type_a_message">Type a message...</string>
     <string name="abc_example_com">abc@example.com</string>
     <string name="what_s_your_email">What\'s your email?</string>
+    <string name="no_post_recently">No post recently</string>
 </resources>

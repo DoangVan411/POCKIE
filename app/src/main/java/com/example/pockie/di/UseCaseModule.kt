@@ -3,9 +3,12 @@ package com.example.pockie.di
 import com.example.pockie.domain.repository.AccountRepository
 import com.example.pockie.domain.repository.AuthRepository
 import com.example.pockie.domain.repository.ChatRepository
+import com.example.pockie.domain.repository.PostRepository
+import com.example.pockie.domain.usecase.GenerateLinkPhotoUseCase
 import com.example.pockie.domain.repository.FriendRepository
 import com.example.pockie.domain.usecase.GetAccountUseCase
 import com.example.pockie.domain.usecase.GetAccountsUseCase
+import com.example.pockie.domain.usecase.GetAllPostUseCase
 import com.example.pockie.domain.usecase.GetCurrentUserIdUseCase
 import com.example.pockie.domain.usecase.GetFriendsUseCase
 import com.example.pockie.domain.usecase.GetMessagesUseCase
@@ -17,6 +20,7 @@ import com.example.pockie.domain.usecase.RegisterUseCase
 import com.example.pockie.domain.usecase.ResetPasswordUseCase
 import com.example.pockie.domain.usecase.SaveAccountUseCase
 import com.example.pockie.domain.usecase.SearchUserUseCase
+import com.example.pockie.domain.usecase.UploadPhotoUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -84,6 +88,14 @@ object UseCaseModule {
 
     @Provides
     @Singleton
+    fun provideGenerateLinkPhotoUseCase(
+        repository: PostRepository
+    ): GenerateLinkPhotoUseCase{
+        return GenerateLinkPhotoUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
     fun provideSearchUserUseCase (
         accountRepository: AccountRepository,
         getCurrentUserIdUseCase: GetCurrentUserIdUseCase
@@ -123,5 +135,21 @@ object UseCaseModule {
         friendRepository: FriendRepository
     ): GetReceivedRequestsUseCase {
         return GetReceivedRequestsUseCase(accountRepository, friendRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUploadPhotoUseCase(
+        postRepository: PostRepository
+    ): UploadPhotoUseCase{
+        return UploadPhotoUseCase(postRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetAllPostUseCase(
+        postRepository: PostRepository
+    ): GetAllPostUseCase{
+        return GetAllPostUseCase(postRepository)
     }
 }

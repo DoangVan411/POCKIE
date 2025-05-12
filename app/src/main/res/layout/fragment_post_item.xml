@@ -11,29 +11,13 @@
        android:id="@+id/image"
        android:layout_width="0dp"
        android:layout_height="400dp"
+       android:scaleType="centerCrop"
        app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintWidth_percent="0.95"
        android:background="@drawable/background_field"
-       app:layout_constraintVertical_bias="0.2"/>
-
-   <EditText
-       android:id="@+id/message"
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       app:layout_constraintWidth_percent="0.9"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       android:background="@drawable/background_field"
-       android:hint="@string/send_a_message"
-       android:padding="10dp"
-       android:textColorHint="@color/gray_text"
-       app:layout_constraintVertical_bias="0.7"
-       android:textColor="@color/white"/>
+       android:layout_marginTop="20dp"/>
 
    <View
        android:id="@+id/reaction"
@@ -56,7 +40,7 @@
        android:background="@drawable/button_take_photo"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintVertical_bias="0.7"
+       app:layout_constraintVertical_bias="0.5"
        app:layout_constraintWidth_percent="0.5"
        app:layout_constraintHeight_percent="0.15"/>
 
@@ -71,5 +55,38 @@
        android:background="@drawable/ic_menu"
        app:layout_constraintHeight_percent="0.06"
        app:layout_constraintDimensionRatio="1:1" />
+
+   <LinearLayout
+       android:id="@+id/layoutInput"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:padding="8dp"
+       android:background="@color/black"
+       app:layout_constraintBottom_toBottomOf="parent">
+
+      <EditText
+          android:id="@+id/etMessage"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginHorizontal="8dp"
+          android:background="@drawable/background_field"
+          android:padding="12dp"
+          android:textColor="@color/white"
+          android:textColorHint="@color/gray_text"
+          android:hint="@string/type_a_message"
+          android:maxLines="4"/>
+
+      <ImageButton
+          android:id="@+id/btnSend"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:background="@color/black"
+          android:scaleType="fitCenter"
+          android:layout_gravity="center"
+          android:src="@drawable/send"/>
+
+   </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

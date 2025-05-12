@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -21,6 +23,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+
+        val url = properties.getProperty("URL")
+        buildConfigField("String", "URL", "\"$url\"")
+
+        val apiKey = properties.getProperty("API_KEY")
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
     }
 
     buildTypes {
@@ -42,6 +52,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -80,6 +91,22 @@ dependencies {
 
     implementation (libs.emoji.google)
 
+    implementation (libs.guava)
+
+    implementation (libs.androidx.camera.core)
+    implementation (libs.androidx.camera.camera2)
+    implementation (libs.androidx.camera.lifecycle)
+    implementation (libs.camera.video)
+    implementation (libs.androidx.camera.view)
+    implementation (libs.camera.extensions)
+
+    implementation("io.github.jan-tennert.supabase:supabase-kt:3.1.4")
+    implementation("io.github.jan-tennert.supabase:storage-kt:3.1.4")// Sử dụng phiên bản mới nhất
+    // Ktor client cho Android
+    implementation("io.ktor:ktor-client-android:3.1.1") // Phải tương thích với Supabase
+    implementation("io.ktor:ktor-client-core:2.3.10")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.10")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.10")
 }
 
 kapt {
