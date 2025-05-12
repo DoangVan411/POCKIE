@@ -50,20 +50,15 @@ class ProfileFragment : Fragment() {
 
     private fun setUpRecyclerView () {
         val sampleList = listOf(
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-            Post("", R.drawable.setting),
-
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
+            Post("", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRP9fy5-QNpKRSWAtMw1WqC4twnkQyJbaXjA&s", Date(), ""),
         )
         val profileAdapter = ProfileAdapter(){}
         binding.rvPost.adapter = profileAdapter

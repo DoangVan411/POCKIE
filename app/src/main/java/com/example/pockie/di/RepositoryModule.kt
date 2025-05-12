@@ -9,8 +9,12 @@ import com.example.pockie.domain.repository.ChatRepository
 import com.example.pockie.data.repository.AuthRepositoryImpl
 import com.example.pockie.data.repository.FriendRepositoryImpl
 import com.example.pockie.data.source.remote.FirebaseFriendDataSource
+import com.example.pockie.data.repository.PostRepositoryImpl
+import com.example.pockie.data.source.remote.FirebasePostDataSource
+import com.example.pockie.data.source.remote.SupabasePostDataSource
 import com.example.pockie.domain.repository.AuthRepository
 import com.example.pockie.domain.repository.FriendRepository
+import com.example.pockie.domain.repository.PostRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -40,6 +44,11 @@ object RepositoryModule {
         return AuthRepositoryImpl(firebaseAuth, firestore)
     }
 
+    @Provides
+    @Singleton
+    fun providePostRepositoryImpl(supabasePostDataSource: SupabasePostDataSource, firebasePostDataSource: FirebasePostDataSource): PostRepository{
+        return PostRepositoryImpl(supabasePostDataSource, firebasePostDataSource)
+    }
     @Provides
     @Singleton
     fun provideFriendRepository(firebaseFriendDataSource: FirebaseFriendDataSource): FriendRepository {

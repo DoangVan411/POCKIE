@@ -10,27 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentPostItemBinding
+import com.example.pockie.domain.model.Post
 import com.example.pockie.domain.model.PostItem
 import com.example.pockie.presentation.utils.OnPostItemClickListener
 import com.vanniktech.emoji.EmojiManager
 import com.vanniktech.emoji.EmojiPopup
 import com.vanniktech.emoji.google.GoogleEmojiProvider
 
-class ImagePagerAdapter(private val listener: OnPostItemClickListener) : ListAdapter<PostItem, RecyclerView.ViewHolder>(PostItemDiffUtilCallback()) {
+class ImagePagerAdapter(private val listener: OnPostItemClickListener) : ListAdapter<Post, RecyclerView.ViewHolder>(PostItemDiffUtilCallback()) {
 
     inner class ImageViewHolder(private val binding: FragmentPostItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val image = binding.image
-        fun bind(postItem: PostItem){
+        fun bind(post: Post){
             Glide.with(image.context)
-                .load(postItem.imageUrl)
+                .load(post.imageUrl)
                 .into(image)
-
-            binding.reaction.setOnClickListener {
-                EmojiManager.install(GoogleEmojiProvider())
-                val emojiPopUp = EmojiPopup.Builder.fromRootView(binding.root).build(binding.message)
-                emojiPopUp.toggle()
-
-            }
 
             binding.takePhoto.setOnClickListener {
                 listener.onPostItemClicked()
@@ -68,12 +62,12 @@ class ImagePagerAdapter(private val listener: OnPostItemClickListener) : ListAda
         (holder as ImageViewHolder).bind(currentPostItem)
     }
 
-    class PostItemDiffUtilCallback: DiffUtil.ItemCallback<PostItem>(){
-        override fun areItemsTheSame(oldItem: PostItem, newItem: PostItem): Boolean {
+    class PostItemDiffUtilCallback: DiffUtil.ItemCallback<Post>(){
+        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: PostItem, newItem: PostItem): Boolean {
+        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem == newItem
         }
 

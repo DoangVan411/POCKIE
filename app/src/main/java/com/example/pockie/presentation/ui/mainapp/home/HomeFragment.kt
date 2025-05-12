@@ -53,6 +53,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Check quyền camera + notification
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             PermissionManager.requestPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS, notificationPermissionLauncher )
         }
@@ -66,7 +67,7 @@ class HomeFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if(position == 1){
-                    binding.navBar.visibility = View.VISIBLE
+                    binding.navBar.visibility = View.INVISIBLE
                 }
                 else{
                     binding.navBar.visibility = View.VISIBLE
