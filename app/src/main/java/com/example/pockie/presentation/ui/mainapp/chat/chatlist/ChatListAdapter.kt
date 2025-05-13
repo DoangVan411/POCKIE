@@ -8,20 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pockie.R
 import com.example.pockie.databinding.ChatItemBinding
 import com.example.pockie.domain.model.Account
+import com.example.pockie.presentation.ui.mainapp.chat.ChatListItem
 
-class ChatListAdapter(private val onClick: (Account) -> Unit): ListAdapter<Account, RecyclerView.ViewHolder>(
+class ChatListAdapter(private val onClick: (Account) -> Unit): ListAdapter<ChatListItem, RecyclerView.ViewHolder>(
     ChatListDiffUtilCallback()
 ) {
 
     inner class ChatListViewHolder(private val binding: ChatItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(account: Account) {
+        fun bind(chatListItem: ChatListItem) {
             with(binding) {
                 ivAvatar.setImageResource(R.drawable.setting)
-                tvName.text = account.fullName
-                tvLatestMes.text = "No"
-                tvTime.text = "19h"
+                tvName.text = chatListItem.account.fullName
+                tvLatestMes.text = chatListItem.lastMessage
+                tvTime.text = chatListItem.lastMessageTimestamp
                 itemView.setOnClickListener {
-                    onClick(account)
+                    onClick(chatListItem.account)
                 }
             }
         }
@@ -33,16 +34,16 @@ class ChatListAdapter(private val onClick: (Account) -> Unit): ListAdapter<Accou
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val user = getItem(position)
-        (holder as ChatListViewHolder).bind(user)
+        val chatListItem = getItem(position)
+        (holder as ChatListViewHolder).bind(chatListItem)
     }
 
-    class ChatListDiffUtilCallback: DiffUtil.ItemCallback<Account>() {
-        override fun areItemsTheSame(oldItem: Account, newItem: Account): Boolean {
+    class ChatListDiffUtilCallback: DiffUtil.ItemCallback<ChatListItem>() {
+        override fun areItemsTheSame(oldItem: ChatListItem, newItem: ChatListItem): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
+        override fun areContentsTheSame(oldItem: ChatListItem, newItem: ChatListItem): Boolean {
             return oldItem == newItem
         }
     }

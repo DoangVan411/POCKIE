@@ -8,4 +8,8 @@ object Utils {
         val formatter = SimpleDateFormat("dd/MM/yyyy")
         return formatter.format(date)
     }
+
+    fun getChatId(senderId: String, receiverId: String): String {
+        return if(senderId < receiverId) "$senderId-$receiverId" else "$receiverId-$senderId"
+    }
 }

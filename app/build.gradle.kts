@@ -89,16 +89,15 @@ dependencies {
     implementation (libs.androidx.core.splashscreen)
     implementation (libs.glide)
 
-    implementation (libs.emoji.google)
 
-    implementation (libs.guava)
+    implementation ("com.google.guava:guava:32.1.2-android")
 
-    implementation (libs.androidx.camera.core)
-    implementation (libs.androidx.camera.camera2)
-    implementation (libs.androidx.camera.lifecycle)
-    implementation (libs.camera.video)
-    implementation (libs.androidx.camera.view)
-    implementation (libs.camera.extensions)
+    implementation ("androidx.camera:camera-core:1.4.2")
+    implementation ("androidx.camera:camera-camera2:1.4.2")
+    implementation ("androidx.camera:camera-lifecycle:1.4.2")
+    implementation ("androidx.camera:camera-video:1.4.2")
+    implementation ("androidx.camera:camera-view:1.4.2")
+    implementation ("androidx.camera:camera-extensions:1.4.2")
 
     implementation("io.github.jan-tennert.supabase:supabase-kt:3.1.4")
     implementation("io.github.jan-tennert.supabase:storage-kt:3.1.4")// Sử dụng phiên bản mới nhất

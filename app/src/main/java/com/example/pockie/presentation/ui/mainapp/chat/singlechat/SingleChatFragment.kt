@@ -52,7 +52,7 @@ class SingleChatFragment(): Fragment() {
                 sendMessage()
             }
         }
-        viewModel.getMessages(viewModel.getChatId(viewModel.getCurrentUserUid(), args.uid))
+        viewModel.getMessages(args.uid)
         setUpRecyclerView()
         getAccountName()
         collectMessages()

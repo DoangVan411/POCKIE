@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentChatListBinding
 import com.example.pockie.domain.model.Account
+import com.example.pockie.presentation.ui.mainapp.chat.ChatListItem
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -76,8 +77,8 @@ class ChatListFragment : Fragment() {
                     is NetworkState.Success<*> -> {
                         binding.progressBar.visibility = View.GONE
                         binding.rvChats.visibility = View.VISIBLE
-                        val accounts = state.data as? List<Account> ?: emptyList()
-                        adapter.submitList(accounts)
+                        val chatListItems = state.data as? List<ChatListItem> ?: emptyList()
+                        adapter.submitList(chatListItems)
                     }
                     is NetworkState.Error -> {
                         binding.progressBar.visibility = View.GONE

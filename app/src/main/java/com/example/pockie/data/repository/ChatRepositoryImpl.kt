@@ -17,6 +17,10 @@ class ChatRepositoryImpl @Inject constructor(private val firebaseChatDataSource:
         return firebaseChatDataSource.getMessages(chatId)
     }
 
+    override suspend fun getMessagesOnce(chatId: String): List<Chat> {
+        return firebaseChatDataSource.getMessagesOnce(chatId)
+    }
+
     private fun getChatId(sender: String, receiver: String): String{
         return if(sender < receiver) "$sender-$receiver" else "$receiver-$sender"
     }

@@ -13,9 +13,6 @@ import com.example.pockie.databinding.FragmentPostItemBinding
 import com.example.pockie.domain.model.Post
 import com.example.pockie.domain.model.PostItem
 import com.example.pockie.presentation.utils.OnPostItemClickListener
-import com.vanniktech.emoji.EmojiManager
-import com.vanniktech.emoji.EmojiPopup
-import com.vanniktech.emoji.google.GoogleEmojiProvider
 
 class ImagePagerAdapter(private val listener: OnPostItemClickListener) : ListAdapter<Post, RecyclerView.ViewHolder>(PostItemDiffUtilCallback()) {
 

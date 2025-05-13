@@ -11,6 +11,7 @@ import com.example.pockie.domain.usecase.GetAccountsUseCase
 import com.example.pockie.domain.usecase.GetAllPostUseCase
 import com.example.pockie.domain.usecase.GetCurrentUserIdUseCase
 import com.example.pockie.domain.usecase.GetFriendsUseCase
+import com.example.pockie.domain.usecase.GetMessagesOnceUseCase
 import com.example.pockie.domain.usecase.GetMessagesUseCase
 import com.example.pockie.domain.usecase.GetReceivedRequestsUseCase
 import com.example.pockie.domain.usecase.GetSentRequestsUseCase
@@ -44,8 +45,8 @@ object UseCaseModule {
 
     @Provides
     @Singleton
-    fun provideGetMessagesUseCase(chatRepository: ChatRepository): GetMessagesUseCase {
-        return GetMessagesUseCase(chatRepository)
+    fun provideGetMessagesUseCase(chatRepository: ChatRepository, getCurrentUserIdUseCase: GetCurrentUserIdUseCase): GetMessagesUseCase {
+        return GetMessagesUseCase(chatRepository, getCurrentUserIdUseCase)
     }
 
     @Provides
@@ -151,5 +152,14 @@ object UseCaseModule {
         postRepository: PostRepository
     ): GetAllPostUseCase{
         return GetAllPostUseCase(postRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetMessagesOnceUseCase(
+        chatRepository: ChatRepository,
+        getCurrentUserId: GetCurrentUserIdUseCase
+    ): GetMessagesOnceUseCase {
+        return GetMessagesOnceUseCase(chatRepository, getCurrentUserId)
     }
 }
