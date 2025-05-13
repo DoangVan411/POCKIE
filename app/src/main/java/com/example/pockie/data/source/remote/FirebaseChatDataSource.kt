@@ -33,4 +33,13 @@ class FirebaseChatDataSource @Inject constructor(private val firestore: Firebase
             }
         awaitClose { listener.remove() }
     }
+
+    suspend fun getMessagesOnce(chatId: String): List<Chat> {
+        val snapshot = firestore.collection("chats")
+            .document(chatId)
+            .collection("messages")
+            .get()
+            .await()
+        return snapshot.toObjects(Chat::class.java)
+    }
 }

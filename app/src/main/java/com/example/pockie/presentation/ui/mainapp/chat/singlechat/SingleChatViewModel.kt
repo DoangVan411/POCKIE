@@ -50,10 +50,6 @@ class SingleChatViewModel @Inject constructor(
         }
     }
 
-    fun getChatId(senderId: String, receiverId: String): String {
-        return if(senderId < receiverId) "$senderId-$receiverId" else "$receiverId-$senderId"
-    }
-
     fun sendMessage(senderId: String, receiverId: String, content: String, createdAt: Date) {
         val chat = Chat(senderId, receiverId, content, createdAt)
         viewModelScope.launch {
