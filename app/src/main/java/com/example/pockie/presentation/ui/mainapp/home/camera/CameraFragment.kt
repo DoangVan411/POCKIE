@@ -1,9 +1,7 @@
 package com.example.pockie.presentation.ui.mainapp.home.camera
 
-import android.Manifest
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.Build
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -20,16 +17,11 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.transition.Visibility
 import com.bumptech.glide.Glide
-import com.example.pockie.R
 import com.example.pockie.databinding.FragmentCameraBinding
 import com.example.pockie.domain.model.Post
-import com.example.pockie.presentation.ui.PermissionManager
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -56,9 +48,12 @@ class CameraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.takePhoto.setOnClickListener {
             binding.takePhoto.visibility = View.INVISIBLE
             binding.loading.visibility = View.VISIBLE
+            binding.caption.text.clear()
             takePhoto()
         }
 
@@ -146,6 +141,7 @@ class CameraFragment : Fragment() {
                 }
 
                 override fun onError(exception: ImageCaptureException) {
+                    Toast.makeText(context, exception.message.toString(), Toast.LENGTH_SHORT).show()
                     Log.e("Camera", exception.message.toString())
                 }
 
@@ -165,17 +161,20 @@ class CameraFragment : Fragment() {
                     is NetworkState.Success<*> -> {
                         binding.loading.visibility = View.INVISIBLE
                         val post = Post(
+                            "",
                             content = binding.caption.text.toString(),
                             imageUrl = value.data.toString(),
                             Date(),
                             "",
-                            0
+                            mutableListOf()
                         )
 
                         uploadPhoto(post)
+
                     }
 
                     else -> {
+                        Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
                         Log.d("Camera", value.toString())
                     }
                 }
