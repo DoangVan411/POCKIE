@@ -86,8 +86,8 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-    implementation (libs.androidx.core.splashscreen)
-    implementation (libs.glide)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.glide)
 
 
     implementation ("com.google.guava:guava:32.1.2-android")
