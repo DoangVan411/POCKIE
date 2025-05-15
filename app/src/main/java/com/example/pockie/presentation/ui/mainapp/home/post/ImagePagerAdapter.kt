@@ -20,6 +20,7 @@ class ImagePagerAdapter(
     private val listener: OnPostItemClickListener,
     private val onLikeClicked: (Post) -> Unit,
     private val onDownload: (Post) -> Unit,
+    private val onReplyPost: (String, Post) -> Unit,
 ) : ListAdapter<PostItem, RecyclerView.ViewHolder>(PostItemDiffUtilCallback()) {
 
     inner class ImageViewHolder(private val binding: FragmentPostItemBinding) :
@@ -54,13 +55,11 @@ class ImagePagerAdapter(
                     post.post.likedBy.add(currentId)
                     binding.likeCount.text = post.post.likedBy.size.toString()
                     onLikeClicked(post.post)
-                    Log.d("Post", post.post.likedBy.toString())
                 } else {
                     binding.reaction.setBackgroundResource(R.drawable.ic_unfavourite)
                     post.post.likedBy.remove(currentId)
                     binding.likeCount.text = post.post.likedBy.size.toString()
                     onLikeClicked(post.post)
-                    Log.d("Post", post.post.likedBy.toString())
                 }
             }
 
@@ -82,6 +81,11 @@ class ImagePagerAdapter(
                     }
                 }
                 popUpMenu.show()
+            }
+
+            binding.btnSend.setOnClickListener{
+                onReplyPost(binding.etMessage.text.toString(), post.post)
+                binding.etMessage.text.clear()
             }
         }
     }

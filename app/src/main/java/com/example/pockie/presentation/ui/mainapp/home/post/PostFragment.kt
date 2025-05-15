@@ -99,6 +99,9 @@ class PostFragment : Fragment(), OnPostItemClickListener {
                             },
                             onDownload = { post ->
                                 downloadImg(post)
+                            },
+                            onReplyPost = { message, post ->
+                                replyPost(message, post)
                             })
                         viewPager.adapter = adapter
                         adapter.submitList(result.data as List<PostItem>)
@@ -151,6 +154,10 @@ class PostFragment : Fragment(), OnPostItemClickListener {
 
         val downloadManager = context?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         downloadManager.enqueue(request)
+    }
+
+    private fun replyPost(message: String, post: Post){
+        viewModel.replyPost(message, post)
     }
 
     override fun onDestroyView() {
