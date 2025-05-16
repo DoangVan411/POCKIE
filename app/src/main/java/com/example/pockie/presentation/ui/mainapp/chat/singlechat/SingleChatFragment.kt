@@ -81,7 +81,6 @@ class SingleChatFragment(): Fragment() {
                         binding.progressBar.visibility = View.GONE
                         binding.rvMessages.visibility = View.VISIBLE
                         val messages = state.data as? List<Chat> ?: emptyList()
-                        Log.d("Messages", "${messages.size}")
                         adapter.submitList(messages) {
                             binding.rvMessages.postDelayed ({
                                 if(messages.isNotEmpty()) {

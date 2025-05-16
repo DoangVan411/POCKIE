@@ -23,6 +23,7 @@ import com.example.pockie.domain.usecase.RegisterUseCase
 import com.example.pockie.domain.usecase.ResetPasswordUseCase
 import com.example.pockie.domain.usecase.SaveAccountUseCase
 import com.example.pockie.domain.usecase.SearchUserUseCase
+import com.example.pockie.domain.usecase.UpdatePostUseCase
 import com.example.pockie.domain.usecase.UploadPhotoUseCase
 import dagger.Module
 import dagger.Provides
@@ -171,5 +172,13 @@ object UseCaseModule {
         notificationRepository: NotificationRepository
     ): PushNotificationUseCase {
         return PushNotificationUseCase(notificationRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUpdatePostUseCase(
+        postRepository: PostRepository
+    ): UpdatePostUseCase{
+        return UpdatePostUseCase(postRepository)
     }
 }

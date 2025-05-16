@@ -9,4 +9,5 @@ interface PostRepository {
     fun generateLinkPhoto(fileName: String, filePhoto: File): Flow<NetworkState>
     fun uploadPhoto(post: Post): Flow<NetworkState>
     fun getAllPost(): Flow<NetworkState>
+    fun updatePost(post: Post): Flow<NetworkState>
 }
