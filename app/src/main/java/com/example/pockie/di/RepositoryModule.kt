@@ -8,12 +8,15 @@ import com.example.pockie.domain.repository.AccountRepository
 import com.example.pockie.domain.repository.ChatRepository
 import com.example.pockie.data.repository.AuthRepositoryImpl
 import com.example.pockie.data.repository.FriendRepositoryImpl
+import com.example.pockie.data.repository.NotificationRepositoryImpl
 import com.example.pockie.data.source.remote.FirebaseFriendDataSource
 import com.example.pockie.data.repository.PostRepositoryImpl
+import com.example.pockie.data.source.remote.APIService
 import com.example.pockie.data.source.remote.FirebasePostDataSource
 import com.example.pockie.data.source.remote.SupabasePostDataSource
 import com.example.pockie.domain.repository.AuthRepository
 import com.example.pockie.domain.repository.FriendRepository
+import com.example.pockie.domain.repository.NotificationRepository
 import com.example.pockie.domain.repository.PostRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -53,6 +56,12 @@ object RepositoryModule {
     @Singleton
     fun provideFriendRepository(firebaseFriendDataSource: FirebaseFriendDataSource): FriendRepository {
         return FriendRepositoryImpl(firebaseFriendDataSource)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNotificationRepository(apiService: APIService): NotificationRepository {
+        return NotificationRepositoryImpl(apiService)
     }
 
 }

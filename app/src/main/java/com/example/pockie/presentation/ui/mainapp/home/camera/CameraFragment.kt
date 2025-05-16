@@ -83,7 +83,7 @@ class CameraFragment : Fragment() {
         }
 
         startCamera()
-
+        viewModel.getFCMToken()
     }
 
     private fun updateUI(isVisibility: Boolean) {

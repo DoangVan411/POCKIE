@@ -15,9 +15,10 @@ class FirebaseChatDataSource @Inject constructor(private val firestore: Firebase
         firestore.collection("chats").document(chatId).collection("messages")
             .add(chat).await()
 
-        val snapshot = firestore.collection("users")
+        val snapshot = firestore.collection("accounts")
             .document(chat.receiverId)
             .get().await()
+
 
         val fcmToken = snapshot.getString("fcmToken")
         return fcmToken

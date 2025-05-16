@@ -44,4 +44,5 @@
     <string name="abc_example_com">abc@example.com</string>
     <string name="what_s_your_email">What\'s your email?</string>
     <string name="no_post_recently">No post recently</string>
+    <string name="default_notification_channel_id">DEFAULT_NOTIFICATION_CHANNEL_ID</string>
 </resources>

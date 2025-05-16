@@ -1,6 +1,5 @@
 package com.example.pockie.data.dto
 
-import com.example.pockie.domain.model.Notification
 
 data class FCMRequest (
     val message: Message

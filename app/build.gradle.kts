@@ -54,6 +54,10 @@ android {
         viewBinding = true
         buildConfig = true
     }
+
+    packaging {
+        resources.excludes.add ("META-INF/DEPENDENCIES")
+    }
 }
 
 dependencies {
@@ -106,6 +110,11 @@ dependencies {
     implementation("io.ktor:ktor-client-core:2.3.10")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.10")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.10")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.19.0")
 }
 
 kapt {
