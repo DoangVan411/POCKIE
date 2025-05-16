@@ -56,6 +56,7 @@ class SingleChatFragment(): Fragment() {
         setUpRecyclerView()
         getAccountName()
         collectMessages()
+
     }
 
     private fun setUpRecyclerView() {
@@ -80,8 +81,16 @@ class SingleChatFragment(): Fragment() {
                         binding.progressBar.visibility = View.GONE
                         binding.rvMessages.visibility = View.VISIBLE
                         val messages = state.data as? List<Chat> ?: emptyList()
-                        Log.d("Messages", "${messages.size}")
-                        adapter.submitList(messages)
+                        adapter.submitList(messages) {
+                            binding.rvMessages.postDelayed ({
+                                if(messages.isNotEmpty()) {
+                                    binding.rvMessages.post {
+                                        binding.rvMessages.scrollToPosition(adapter.itemCount - 1)
+                                    }
+                                }
+                            }, 100)
+                        }
+
                     }
                     is NetworkState.Error -> {
                         binding.progressBar.visibility = View.GONE
@@ -95,9 +104,11 @@ class SingleChatFragment(): Fragment() {
     private fun sendMessage() {
         val message = binding.etMessage.text.toString()
         if(message.isEmpty()) return
-        viewModel.sendMessage(viewModel.getCurrentUserUid(), args.uid, message, Date())
+        viewModel.sendMessage(viewModel.getCurrentUserUid(), args.uid, message, Date(), requireActivity())
         binding.etMessage.text.clear()
     }
+
+
 
     private fun getAccountName() {
         viewLifecycleOwner.lifecycleScope.launch {

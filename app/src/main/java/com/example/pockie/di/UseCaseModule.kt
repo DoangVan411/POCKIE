@@ -6,6 +6,7 @@ import com.example.pockie.domain.repository.ChatRepository
 import com.example.pockie.domain.repository.PostRepository
 import com.example.pockie.domain.usecase.GenerateLinkPhotoUseCase
 import com.example.pockie.domain.repository.FriendRepository
+import com.example.pockie.domain.repository.NotificationRepository
 import com.example.pockie.domain.usecase.GetAccountUseCase
 import com.example.pockie.domain.usecase.GetAccountsUseCase
 import com.example.pockie.domain.usecase.GetAllPostUseCase
@@ -17,6 +18,7 @@ import com.example.pockie.domain.usecase.GetReceivedRequestsUseCase
 import com.example.pockie.domain.usecase.GetSentRequestsUseCase
 import com.example.pockie.domain.usecase.SendMessageUseCase
 import com.example.pockie.domain.usecase.LoginUseCase
+import com.example.pockie.domain.usecase.PushNotificationUseCase
 import com.example.pockie.domain.usecase.RegisterUseCase
 import com.example.pockie.domain.usecase.ResetPasswordUseCase
 import com.example.pockie.domain.usecase.SaveAccountUseCase
@@ -162,6 +164,14 @@ object UseCaseModule {
         getCurrentUserId: GetCurrentUserIdUseCase
     ): GetMessagesOnceUseCase {
         return GetMessagesOnceUseCase(chatRepository, getCurrentUserId)
+    }
+
+    @Provides
+    @Singleton
+    fun providePushNotificationUseCase(
+        notificationRepository: NotificationRepository
+    ): PushNotificationUseCase {
+        return PushNotificationUseCase(notificationRepository)
     }
 
     @Provides

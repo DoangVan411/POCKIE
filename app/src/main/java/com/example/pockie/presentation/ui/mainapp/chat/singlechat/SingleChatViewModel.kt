@@ -1,15 +1,21 @@
 package com.example.pockie.presentation.ui.mainapp.chat.singlechat
 
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pockie.data.source.remote.AccessToken
 import com.example.pockie.domain.model.Account
 import com.example.pockie.domain.model.Chat
 import com.example.pockie.domain.usecase.GetAccountUseCase
-import com.example.pockie.domain.usecase.GetAccountsUseCase
+import com.example.pockie.domain.usecase.GetCurrentUserIdUseCase
 import com.example.pockie.domain.usecase.GetMessagesUseCase
+import com.example.pockie.domain.usecase.PushNotificationUseCase
 import com.example.pockie.domain.usecase.SendMessageUseCase
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,7 +29,8 @@ class SingleChatViewModel @Inject constructor(
     private val sendMessageUseCase: SendMessageUseCase,
     private val getMessagesUseCase: GetMessagesUseCase,
     private val getAccountUseCase: GetAccountUseCase,
-    private val auth: FirebaseAuth
+    private val auth: FirebaseAuth,
+    private val pushNotificationUseCase: PushNotificationUseCase
 ) : ViewModel() {
 
     private val _messageState = MutableStateFlow<NetworkState>(NetworkState.Init)
@@ -50,10 +57,15 @@ class SingleChatViewModel @Inject constructor(
         }
     }
 
-    fun sendMessage(senderId: String, receiverId: String, content: String, createdAt: Date) {
+
+    fun sendMessage(senderId: String, receiverId: String, content: String, createdAt: Date, context: Context) {
         val chat = Chat(senderId, receiverId, content, createdAt)
         viewModelScope.launch {
-            sendMessageUseCase(chat)
+            val fcmToken = sendMessageUseCase(chat)
+
+            if(fcmToken != null) {
+                pushNoti(fcmToken, account.value.fullName, content, context)
+            }
         }
     }
 
@@ -62,5 +74,14 @@ class SingleChatViewModel @Inject constructor(
             _account.value = getAccountUseCase(uid)
         }
 
+    }
+
+
+
+    private fun pushNoti(token: String, title: String, body: String, context: Context) {
+        viewModelScope.launch {
+            val accessToken = AccessToken.getAccessToken(context)
+            pushNotificationUseCase(accessToken!!, token, title, body)
+        }
     }
 }

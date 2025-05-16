@@ -1,6 +1,7 @@
 package com.example.pockie.di
 
 import com.example.pockie.BuildConfig
+import com.example.pockie.data.source.remote.APIService
 import com.example.pockie.data.source.remote.FirebaseChatDataSource
 import com.example.pockie.data.source.remote.FirebaseFriendDataSource
 import com.example.pockie.data.source.remote.FirebasePostDataSource
@@ -9,6 +10,7 @@ import com.example.pockie.data.source.remote.SupabasePostDataSource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,6 +19,8 @@ import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.storage.Storage
 import io.github.jan.supabase.storage.storage
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -39,6 +43,15 @@ object NetworkModule {
     @Provides
     fun provideFirebaseMessaging(): FirebaseMessaging{
         return FirebaseMessaging.getInstance()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://fcm.googleapis.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
     @Provides
@@ -82,6 +95,12 @@ object NetworkModule {
     @Singleton
     fun provideFirebasePostDataSource(firebaseAuth: FirebaseAuth, firestore: FirebaseFirestore): FirebasePostDataSource{
         return FirebasePostDataSource(firebaseAuth, firestore)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAPIService(retrofit: Retrofit): APIService {
+        return retrofit.create(APIService::class.java)
     }
 }
 
