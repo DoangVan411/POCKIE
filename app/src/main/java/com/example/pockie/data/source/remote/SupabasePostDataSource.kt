@@ -1,5 +1,7 @@
 package com.example.pockie.data.source.remote
 
+import android.content.Context
+import android.net.Uri
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.storage.Storage
@@ -22,6 +24,25 @@ class SupabasePostDataSource @Inject constructor(
             val publicUrl = storage.from("post-picture").publicUrl(fileName)
 
             trySend(NetworkState.Success<String>(publicUrl))
+        }
+        catch (e: Exception){
+            trySend(NetworkState.Error(e.message.toString()))
+        }
+        awaitClose{}
+    }
+
+    fun generateAvtLinkPhoto(fileName: String, uri: Uri, context: Context): Flow<NetworkState> = callbackFlow{
+        trySend(NetworkState.Loading)
+        try {
+            val inputStream = context.contentResolver.openInputStream(uri)
+
+            storage.from("avatar").upload(
+                path = fileName,
+                data = inputStream!!.readBytes(),
+            )
+            val publicUrl = storage.from("avatar").publicUrl(fileName)
+
+            trySend(NetworkState.Success(publicUrl))
         }
         catch (e: Exception){
             trySend(NetworkState.Error(e.message.toString()))

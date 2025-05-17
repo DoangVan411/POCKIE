@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pockie.R
 import com.example.pockie.databinding.RequestItemBinding
 import com.example.pockie.domain.model.Account
@@ -18,7 +19,7 @@ class FriendsPageAdapter(private val onButtonRemoveClick: (Account) -> Unit, pri
     inner class RequestPageViewHolder(private val binding: RequestItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(account: Account) {
             with(binding) {
-                ivAddFriend.setImageResource(R.drawable.friend)
+                Glide.with(ivAvatar.context).load(account.avtUrl).into(ivAvatar)
                 cvRemove.visibility = View.VISIBLE
                 tvName.text = account.fullName
                 tvUserName.text = account.email

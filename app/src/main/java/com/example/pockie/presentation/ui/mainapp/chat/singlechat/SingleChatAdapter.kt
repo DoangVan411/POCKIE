@@ -6,18 +6,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pockie.databinding.ReceivedMessageItemBinding
 import com.example.pockie.databinding.SentMessageItemBinding
 import com.example.pockie.domain.model.Chat
+import com.example.pockie.domain.model.ChatItem
 import com.example.pockie.presentation.utils.Utils.getTime
 
 class SingleChatAdapter:
-    ListAdapter<Chat, RecyclerView.ViewHolder>(MessageDiffUtilCallback()) {
+    ListAdapter<ChatItem, RecyclerView.ViewHolder>(MessageDiffUtilCallback()) {
 
     inner class SentMessageViewHolder(private val binding: SentMessageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(chat: Chat) {
+        fun bind(chat: Chat, avt: String) {
             with(binding) {
+                Glide.with(ivAvatar.context).load(avt).into(ivAvatar)
                 tvMessage.text = chat.content
                 tvTime.text = getTime(chat.createdAt)
                 itemView.setOnClickListener {
@@ -30,8 +33,9 @@ class SingleChatAdapter:
 
     inner class ReceivedMessageViewHolder(private val binding: ReceivedMessageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(chat: Chat) {
+        fun bind(chat: Chat, avt: String) {
             with(binding) {
+                Glide.with(ivAvatar.context).load(avt).into(ivAvatar)
                 tvMessage.text = chat.content
                 tvTime.text = getTime(chat.createdAt)
                 itemView.setOnClickListener {
@@ -51,7 +55,7 @@ class SingleChatAdapter:
 
     override fun getItemViewType(position: Int): Int {
         val message = getItem(position)
-        return if (message.senderId == currentUid) {
+        return if (message.chat.senderId == currentUid) {
             VIEW_TYPE_SENT
         } else {
             VIEW_TYPE_RECEIVED
@@ -76,18 +80,18 @@ class SingleChatAdapter:
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = getItem(position)
         if (holder is SentMessageViewHolder) {
-            holder.bind(message)
+            holder.bind(message.chat, message.senderAvt)
         } else if (holder is ReceivedMessageViewHolder) {
-            holder.bind(message)
+            holder.bind(message.chat, message.receiverAvt)
         }
     }
 
-    class MessageDiffUtilCallback : DiffUtil.ItemCallback<Chat>() {
-        override fun areItemsTheSame(oldItem: Chat, newItem: Chat): Boolean {
+    class MessageDiffUtilCallback : DiffUtil.ItemCallback<ChatItem>() {
+        override fun areItemsTheSame(oldItem: ChatItem, newItem: ChatItem): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Chat, newItem: Chat): Boolean {
+        override fun areContentsTheSame(oldItem: ChatItem, newItem: ChatItem): Boolean {
             return oldItem == newItem
         }
 

@@ -18,7 +18,7 @@ class ProfileAdapter(private val onClick: (Post) -> Unit): ListAdapter<Post, Rec
         fun bind(post: Post) {
             Glide.with(binding.iv).load(post.imageUrl).into(binding.iv)
             binding.tvDate.text = getTime(post.createAt)
-//            binding.tvLikeCount.text = "${post.likeCount}"
+            binding.tvLikeCount.text = "${post.likedBy.size}"
             itemView.setOnClickListener {
                 onClick(post)
             }

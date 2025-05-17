@@ -15,5 +15,6 @@ data class Post(
 
 data class PostItem(
     val post: Post,
-    val fullname: String
+    val fullname: String,
+    val avtUrl: String,
 )

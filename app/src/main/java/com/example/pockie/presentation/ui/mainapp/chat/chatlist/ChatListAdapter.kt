@@ -1,10 +1,12 @@
 package com.example.pockie.presentation.ui.mainapp.chat.chatlist
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pockie.R
 import com.example.pockie.databinding.ChatItemBinding
 import com.example.pockie.domain.model.Account
@@ -17,7 +19,8 @@ class ChatListAdapter(private val onClick: (Account) -> Unit): ListAdapter<ChatL
     inner class ChatListViewHolder(private val binding: ChatItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(chatListItem: ChatListItem) {
             with(binding) {
-                ivAvatar.setImageResource(R.drawable.setting)
+                Log.d("Post", chatListItem.account.avtUrl)
+                Glide.with(ivAvatar.context).load(chatListItem.account.avtUrl).into(ivAvatar)
                 tvName.text = chatListItem.account.fullName
                 tvLatestMes.text = chatListItem.lastMessage
                 tvTime.text = chatListItem.lastMessageTimestamp

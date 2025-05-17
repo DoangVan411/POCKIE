@@ -25,7 +25,6 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:background="@color/black"
-                android:src="@drawable/uzui"
                 app:layout_collapseMode="parallax" />
             
             <Toolbar
@@ -53,7 +52,6 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Van Doan"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:fontFamily="@font/poppins_semibold"
@@ -75,27 +73,14 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
-                android:id="@+id/tvUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="\@meomeo"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginHorizontal="10dp"
-                android:textColor="@color/gray"
-                app:layout_constraintTop_toBottomOf="@id/tvName"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
                 android:id="@+id/tvBio"
                 android:fontFamily="@font/poppins"
-                android:text="oi doi oi"
                 android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvUserName"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <Button
@@ -113,7 +98,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPost"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:backgroundTint="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -121,6 +106,27 @@
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintTop_toBottomOf="@id/btnAddFriend"/>
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/btnAddFriend"
+                android:indeterminateTint="@color/white"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_post_recently"
+                app:layout_constraintTop_toBottomOf="@id/btnAddFriend"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

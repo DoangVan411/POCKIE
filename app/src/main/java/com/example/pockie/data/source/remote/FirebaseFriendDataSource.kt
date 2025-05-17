@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -60,10 +61,21 @@ class FirebaseFriendDataSource @Inject constructor(private val firestore: Fireba
             .collection("friends")
 
         val listener = ref.addSnapshotListener { snapshot, _ ->
-            val accounts = snapshot?.documents?.mapNotNull { it.toObject(Account::class.java) } ?: emptyList()
-            trySend(NetworkState.Success<List<Account>>(accounts))
-        }
+            val friends = snapshot?.documents?.mapNotNull { it.id } ?: emptyList()
 
+            launch {
+                try {
+                    val accounts = friends.mapNotNull { friendId ->
+                        val doc = firestore.collection("accounts").document(friendId).get().await()
+                        doc.toObject(Account::class.java)
+                    }
+                    trySend(NetworkState.Success<List<Account>>(accounts))
+                }
+                catch (e: Exception){
+                    trySend(NetworkState.Error(e.message.toString()))
+                }
+            }
+        }
         awaitClose { listener.remove() }
     }
 

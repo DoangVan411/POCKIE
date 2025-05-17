@@ -12,8 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.pockie.databinding.FragmentSingleChatBinding
 import com.example.pockie.domain.model.Chat
+import com.example.pockie.domain.model.ChatItem
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -56,7 +58,6 @@ class SingleChatFragment(): Fragment() {
         setUpRecyclerView()
         getAccountName()
         collectMessages()
-
     }
 
     private fun setUpRecyclerView() {
@@ -80,7 +81,7 @@ class SingleChatFragment(): Fragment() {
                     is NetworkState.Success<*> -> {
                         binding.progressBar.visibility = View.GONE
                         binding.rvMessages.visibility = View.VISIBLE
-                        val messages = state.data as? List<Chat> ?: emptyList()
+                        val messages = state.data as? List<ChatItem> ?: emptyList()
                         adapter.submitList(messages) {
                             binding.rvMessages.postDelayed ({
                                 if(messages.isNotEmpty()) {
@@ -108,12 +109,11 @@ class SingleChatFragment(): Fragment() {
         binding.etMessage.text.clear()
     }
 
-
-
     private fun getAccountName() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getAccount(args.uid)
             viewModel.account.collectLatest { account ->
+                Glide.with(binding.ivAvatar.context).load(account.avtUrl).into(binding.ivAvatar)
                 binding.tvName.text = account.fullName
             }
         }
