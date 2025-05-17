@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pockie.R
 import com.example.pockie.databinding.RequestItemBinding
 import com.example.pockie.domain.model.Account
@@ -24,7 +25,7 @@ class ReceivedRequestAdapter(private val onButtonClick: (Account) -> Unit, priva
     inner class RequestPageViewHolder(private val binding: RequestItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(account: Account) {
             with(binding) {
-                ivAddFriend.setImageResource(R.drawable.accept)
+                Glide.with(ivAvatar.context).load(account.avtUrl).into(ivAvatar)
                 tvName.text = account.fullName
                 tvUserName.text = account.email
                 ivAddFriend.setOnClickListener {

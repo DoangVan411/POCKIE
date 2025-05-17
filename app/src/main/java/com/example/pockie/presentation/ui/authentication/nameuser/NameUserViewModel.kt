@@ -28,7 +28,8 @@ class NameUserViewModel @Inject constructor(
                     firebaseAuth.currentUser?.uid ?: "null",
                     name,
                     email,
-                    password
+                    password,
+                    avtUrl = "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
                 )
             ).collect{_saveDataState.value = it}
         }

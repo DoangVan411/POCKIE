@@ -5,5 +5,7 @@ data class Account(
     val fullName: String = "",
     val email: String = "",
     val password: String = "",
-    val fcmToken: String = ""
+    val fcmToken: String = "",
+    val bio: String = "",
+    val avtUrl: String = "",
 )

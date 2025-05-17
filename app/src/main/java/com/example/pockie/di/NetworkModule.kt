@@ -75,8 +75,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideFirebaseUserDataSource(firestore: FirebaseFirestore): FirebaseUserDataSource {
-        return FirebaseUserDataSource(firestore)
+    fun provideFirebaseUserDataSource(firestore: FirebaseFirestore, auth: FirebaseAuth): FirebaseUserDataSource {
+        return FirebaseUserDataSource(firestore, auth)
     }
 
     @Provides

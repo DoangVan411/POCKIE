@@ -100,7 +100,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.pockie.presentation.ui.mainapp.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatListFragment"
         android:name="com.example.pockie.presentation.ui.mainapp.chat.chatlist.ChatListFragment"
@@ -126,6 +130,21 @@
         android:label="SingleChatFragment" >
         <argument
             android:name="uid"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.pockie.presentation.ui.mainapp.profile.edit_profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="bio"
+            app:argType="string" />
+        <argument
+            android:name="avtUrl"
             app:argType="string" />
     </fragment>
 

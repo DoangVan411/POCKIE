@@ -55,9 +55,11 @@ class FirebasePostDataSource @Inject constructor(
                                     firestore.collection("accounts").document(post.userId).get()
                                         .await()
                                 val fullName = users.data?.get("fullName").toString()
-                                PostItem(post = post, fullname = fullName)
-                            }
+                                val avtUrl = users.data?.get("avtUrl").toString()
 
+                                Log.d("Post", avtUrl)
+                                PostItem(post = post, fullname = fullName, avtUrl = avtUrl)
+                            }
 
                             trySend(NetworkState.Success(postItems))
                         } catch (e: Exception) {
@@ -76,6 +78,24 @@ class FirebasePostDataSource @Inject constructor(
         try {
             firestore.collection("posts").document(post.id).update("likedBy", post.likedBy).await()
             trySend(NetworkState.Success<Unit>())
+        } catch (e: Exception) {
+            trySend(NetworkState.Error(e.message.toString()))
+        }
+        awaitClose { }
+    }
+
+    fun getPostsUser(): Flow<NetworkState> = callbackFlow {
+        trySend(NetworkState.Loading)
+        try {
+            val currentUser = auth.currentUser!!.uid
+            firestore.collection("posts").orderBy("createAt", Query.Direction.DESCENDING)
+                .addSnapshotListener { snapshot, _ ->
+                    val posts =
+                        snapshot?.toObjects(Post::class.java)?.filter { it.userId == currentUser }
+                            ?: emptyList()
+
+                    trySend(NetworkState.Success(posts))
+                }
         } catch (e: Exception) {
             trySend(NetworkState.Error(e.message.toString()))
         }

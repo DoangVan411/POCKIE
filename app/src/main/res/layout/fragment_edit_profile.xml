@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="@string/full_name"
-                android:textColor="@color/gray_text"
+                android:textColor="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="50dp"
@@ -79,36 +79,12 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/gray_text"
                 android:padding="12dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tvFullName"/>
-
-
-            <TextView
-                android:id="@+id/tvUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="@string/username"
-                android:textColor="@color/gray_text"
                 android:fontFamily="@font/poppins_medium"
-                android:layout_marginHorizontal="24dp"
-                app:layout_constraintTop_toBottomOf="@id/etFullName"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="10dp"/>
-
-            <EditText
-                android:id="@+id/etUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/username"
-                android:background="@drawable/background_field"
-                android:textColor="@color/white"
-                android:textColorHint="@color/gray_text"
-                android:padding="12dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername"/>
+                app:layout_constraintTop_toBottomOf="@id/tvFullName"
+                android:imeOptions="actionDone"/>
 
             <TextView
                 android:id="@+id/tvBio"
@@ -116,10 +92,10 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="@string/bio"
-                android:textColor="@color/gray_text"
+                android:textColor="@color/white"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginHorizontal="24dp"
-                app:layout_constraintTop_toBottomOf="@id/etUsername"
+                app:layout_constraintTop_toBottomOf="@id/etFullName"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="10dp"/>
 
@@ -127,22 +103,24 @@
                 android:id="@+id/etBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/username"
+                android:hint="@string/bio"
                 android:background="@drawable/background_field"
                 android:textColor="@color/white"
                 android:textColorHint="@color/gray_text"
                 android:padding="12dp"
-                android:lines="3"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tvBio"/>
+                app:layout_constraintTop_toBottomOf="@id/tvBio"
+                android:imeOptions="actionDone"/>
 
             <Button
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="@string/save"
+                android:text="@string/cancel"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
                 android:background="@drawable/white_button"
@@ -150,7 +128,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etBio"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.42"
+                app:layout_constraintHorizontal_bias="0"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/save"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:background="@drawable/white_button"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintStart_toEndOf="@id/btnCancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etBio"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintWidth_percent="0.42"
+                app:layout_constraintHorizontal_bias="1"
+                android:textAllCaps="false"/>
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/btnSave"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:indeterminateTint="@color/white"
+                android:visibility="invisible"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

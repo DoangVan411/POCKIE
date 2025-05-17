@@ -7,6 +7,7 @@ import com.example.pockie.domain.repository.PostRepository
 import com.example.pockie.domain.usecase.GenerateLinkPhotoUseCase
 import com.example.pockie.domain.repository.FriendRepository
 import com.example.pockie.domain.repository.NotificationRepository
+import com.example.pockie.domain.usecase.EditAccountUseCase
 import com.example.pockie.domain.usecase.GetAccountUseCase
 import com.example.pockie.domain.usecase.GetAccountsUseCase
 import com.example.pockie.domain.usecase.GetAllPostUseCase
@@ -14,6 +15,7 @@ import com.example.pockie.domain.usecase.GetCurrentUserIdUseCase
 import com.example.pockie.domain.usecase.GetFriendsUseCase
 import com.example.pockie.domain.usecase.GetMessagesOnceUseCase
 import com.example.pockie.domain.usecase.GetMessagesUseCase
+import com.example.pockie.domain.usecase.GetPostUserUseCase
 import com.example.pockie.domain.usecase.GetReceivedRequestsUseCase
 import com.example.pockie.domain.usecase.GetSentRequestsUseCase
 import com.example.pockie.domain.usecase.SendMessageUseCase
@@ -180,5 +182,21 @@ object UseCaseModule {
         postRepository: PostRepository
     ): UpdatePostUseCase{
         return UpdatePostUseCase(postRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetPostUserUseCase(
+        postRepository: PostRepository
+    ): GetPostUserUseCase{
+        return GetPostUserUseCase(postRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideEditAccountUseCase(
+        accountRepository: AccountRepository
+    ): EditAccountUseCase{
+        return EditAccountUseCase(accountRepository)
     }
 }

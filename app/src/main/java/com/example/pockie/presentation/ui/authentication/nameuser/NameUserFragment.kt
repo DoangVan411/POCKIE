@@ -39,8 +39,8 @@ class NameUserFragment : Fragment() {
         val password = args.password
 
         binding.next.setOnClickListener {
-            val firstName = binding.firstName.text.toString()
-            val lastName = binding.lastName.text.toString()
+            val firstName = binding.firstName.text.toString().trim()
+            val lastName = binding.lastName.text.toString().trim()
             if (checkName(firstName, lastName)) {
                 viewModel.saveUserToFireStore(email, password, "$firstName $lastName")
                 viewLifecycleOwner.lifecycleScope.launch {
@@ -71,9 +71,8 @@ class NameUserFragment : Fragment() {
     }
 
     private fun checkName(firstName: String, lastName: String): Boolean {
-
-        val isFirstNameValid = firstName.matches("^[a-zA-Z]+\$".toRegex())
-        val isLastNameValid = lastName.matches("^[a-zA-Z]+\$".toRegex())
+        val isFirstNameValid = firstName.isNotEmpty()
+        val isLastNameValid = lastName.isNotEmpty()
         if (!isFirstNameValid) {
             binding.firstNameLayout.helperText = "Please enter valid first name"
             binding.firstName.setBackgroundResource(R.drawable.background_field_error)

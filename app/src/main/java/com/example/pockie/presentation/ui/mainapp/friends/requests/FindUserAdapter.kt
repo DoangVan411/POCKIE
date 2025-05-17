@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pockie.R
 import com.example.pockie.databinding.RequestItemBinding
 import com.example.pockie.domain.model.Account
@@ -20,6 +21,7 @@ class FindUserAdapter(private val onButtonClick: (Account) -> Unit, private val 
     inner class RequestPageViewHolder(private val binding: RequestItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(searchResult: SearchResult) {
             with(binding) {
+                Glide.with(ivAvatar.context).load(searchResult.account.avtUrl).into(ivAvatar)
                 tvName.text = searchResult.account.fullName
                 tvUserName.text = searchResult.account.email
                 when (searchResult.status) {

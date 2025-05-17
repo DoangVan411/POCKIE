@@ -25,11 +25,10 @@ class ImagePagerAdapter(
 
     inner class ImageViewHolder(private val binding: FragmentPostItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val image = binding.image
         fun bind(post: PostItem) {
-            Glide.with(image.context)
+            Glide.with(binding.image.context)
                 .load(post.post.imageUrl)
-                .into(image)
+                .into(binding.image)
 
             binding.takePhoto.setOnClickListener {
                 listener.onPostItemClicked()
@@ -40,7 +39,9 @@ class ImagePagerAdapter(
                 binding.caption.visibility = View.VISIBLE
             }
 
-            binding.infor.text = "${post.fullname} - ${Utils.formatDate(post.post.createAt)}"
+            Glide.with(binding.ivAvatar.context).load(post.avtUrl).into(binding.ivAvatar)
+
+            binding.nameTime.text = "${post.fullname} - ${Utils.formatDate(post.post.createAt)}"
 
             val currentId = FirebaseAuth.getInstance().currentUser?.uid.toString()
             val userLiked = post.post.likedBy

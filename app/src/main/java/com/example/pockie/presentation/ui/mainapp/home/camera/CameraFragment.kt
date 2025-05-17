@@ -22,6 +22,7 @@ import com.example.pockie.databinding.FragmentCameraBinding
 import com.example.pockie.domain.model.Post
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -170,7 +171,7 @@ class CameraFragment : Fragment() {
                         )
 
                         uploadPhoto(post)
-
+                        this.cancel()
                     }
 
                     else -> {

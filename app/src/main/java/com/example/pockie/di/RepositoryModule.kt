@@ -37,8 +37,8 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideAccountRepository(firebaseUserDataSource: FirebaseUserDataSource): AccountRepository {
-        return AccountRepositoryImpl(firebaseUserDataSource)
+    fun provideAccountRepository(firebaseUserDataSource: FirebaseUserDataSource, supabasePostDataSource: SupabasePostDataSource): AccountRepository {
+        return AccountRepositoryImpl(firebaseUserDataSource, supabasePostDataSource)
     }
 
     @Provides

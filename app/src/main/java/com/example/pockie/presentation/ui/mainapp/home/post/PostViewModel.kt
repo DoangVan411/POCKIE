@@ -31,9 +31,6 @@ class PostViewModel @Inject constructor(
     private val _updatePost = MutableStateFlow<NetworkState>(NetworkState.Init)
     val updatePost: StateFlow<NetworkState> get() = _updatePost
 
-    private val _replyPost = MutableStateFlow<NetworkState>(NetworkState.Init)
-    val replyPost: StateFlow<NetworkState> get() = _replyPost
-
     fun getAllPost(){
         _allPost.value = NetworkState.Loading
         viewModelScope.launch {
@@ -48,7 +45,6 @@ class PostViewModel @Inject constructor(
     }
 
     fun replyPost(message: String, post: Post){
-        _replyPost.value = NetworkState.Loading
         viewModelScope.launch {
             sendMessageUseCase.invoke(Chat(auth.currentUser!!.uid, post.userId, message, Date()))
         }

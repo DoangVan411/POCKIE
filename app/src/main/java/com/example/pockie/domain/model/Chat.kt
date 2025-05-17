@@ -10,3 +10,9 @@ data class Chat (
     @ServerTimestamp
     val createdAt: Date = Date()
 )
+
+data class ChatItem(
+    val chat: Chat,
+    val senderAvt: String,
+    val receiverAvt: String
+)
