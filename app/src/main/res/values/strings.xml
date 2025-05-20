@@ -45,4 +45,5 @@
     <string name="what_s_your_email">What\'s your email?</string>
     <string name="no_post_recently">No post recently</string>
     <string name="default_notification_channel_id">DEFAULT_NOTIFICATION_CHANNEL_ID</string>
+    <string name="you_don_t_have_anyone_in_your_friend_list_yet">You don\'t have anyone in your friend list yet.</string>
 </resources>

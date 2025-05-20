@@ -26,6 +26,7 @@ class SentRequestsAdapter(private val onButtonClick: (Account) -> Unit, private 
         fun bind(account: Account) {
             with(binding) {
                 Glide.with(ivAvatar.context).load(account.avtUrl).into(ivAvatar)
+                ivAddFriend.setImageResource(R.drawable.arrow_sent)
                 tvName.text = account.fullName
                 tvUserName.text = account.email
                 ivAddFriend.setOnClickListener {

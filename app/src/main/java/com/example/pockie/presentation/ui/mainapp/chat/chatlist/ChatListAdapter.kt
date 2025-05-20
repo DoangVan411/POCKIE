@@ -22,7 +22,11 @@ class ChatListAdapter(private val onClick: (Account) -> Unit): ListAdapter<ChatL
                 Log.d("Post", chatListItem.account.avtUrl)
                 Glide.with(ivAvatar.context).load(chatListItem.account.avtUrl).into(ivAvatar)
                 tvName.text = chatListItem.account.fullName
-                tvLatestMes.text = chatListItem.lastMessage
+                if(chatListItem.lastMessage != "") {
+                    tvLatestMes.text = chatListItem.lastMessage
+                } else {
+                    tvLatestMes.text = "No message"
+                }
                 tvTime.text = chatListItem.lastMessageTimestamp
                 itemView.setOnClickListener {
                     onClick(chatListItem.account)

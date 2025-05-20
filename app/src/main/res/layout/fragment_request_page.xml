@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:paddingVertical="5dp"
         android:layout_margin="20dp"
-        android:iconifiedByDefault="false"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search"
         android:background="@drawable/background_field"
-
         />
 
     <androidx.core.widget.NestedScrollView
