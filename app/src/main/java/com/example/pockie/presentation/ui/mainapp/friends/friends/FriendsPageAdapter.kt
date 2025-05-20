@@ -1,6 +1,7 @@
 package com.example.pockie.presentation.ui.mainapp.friends.friends
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,9 @@ class FriendsPageAdapter(private val onButtonRemoveClick: (Account) -> Unit, pri
                     onButtonRemoveClick(account)
                 }
                 itemView.setOnClickListener {
+                    onItemClick(account)
+                }
+                ivAddFriend.setOnClickListener {
                     onItemClick(account)
                 }
             }

@@ -46,7 +46,7 @@ class PostViewModel @Inject constructor(
 
     fun replyPost(message: String, post: Post){
         viewModelScope.launch {
-            sendMessageUseCase.invoke(Chat(auth.currentUser!!.uid, post.userId, message, Date()))
+            sendMessageUseCase.invoke(Chat(senderId = auth.currentUser!!.uid, receiverId = post.userId, imgUrl = post.imageUrl, content = message, createdAt = Date()))
         }
     }
 }

@@ -10,9 +10,10 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.fragment.findNavController
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentFriendsBinding
+import com.example.pockie.presentation.utils.FriendsPageNavigator
 import com.google.android.material.tabs.TabLayoutMediator
 
-class FriendsFragment : Fragment() {
+class FriendsFragment : Fragment(), FriendsPageNavigator {
 
     private var _binding: FragmentFriendsBinding? = null
     private val binding get() = _binding!!
@@ -50,5 +51,9 @@ class FriendsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun navigateToFriendDetail(uid: String) {
+        findNavController().navigate(FriendsFragmentDirections.actionFriendsFragmentToProfileFragment(uid))
     }
 }

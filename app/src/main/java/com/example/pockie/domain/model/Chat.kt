@@ -7,6 +7,7 @@ data class Chat (
     val senderId: String = "",
     val receiverId: String = "",
     val content: String = "",
+    val imgUrl: String = "",
     @ServerTimestamp
     val createdAt: Date = Date()
 )

@@ -27,6 +27,13 @@ class SingleChatAdapter:
                     binding.tvTime.visibility =
                         if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE
                 }
+
+                if(!chat.imgUrl.isNullOrEmpty()){
+                    tvMessage.visibility = View.INVISIBLE
+                    Glide.with(img.context).load(chat.imgUrl).into(img)
+                    tvMessageReply.text = chat.content
+                    replyPost.visibility = View.VISIBLE
+                }
             }
         }
     }
@@ -41,6 +48,13 @@ class SingleChatAdapter:
                 itemView.setOnClickListener {
                     binding.tvTime.visibility =
                         if (binding.tvTime.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+                }
+
+                if(!chat.imgUrl.isNullOrEmpty()){
+                    tvMessage.visibility = View.INVISIBLE
+                    Glide.with(img.context).load(chat.imgUrl).into(img)
+                    tvMessageReply.text = chat.content
+                    replyPost.visibility = View.VISIBLE
                 }
             }
         }

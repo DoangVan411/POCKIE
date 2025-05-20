@@ -29,7 +29,7 @@ class PostRepositoryImpl @Inject constructor(
         return firebasePostDataSource.updatePost(post)
     }
 
-    override fun getPostUser(): Flow<NetworkState> {
-        return firebasePostDataSource.getPostsUser()
+    override fun getPostUser(uid: String): Flow<NetworkState> {
+        return firebasePostDataSource.getPostsUser(uid)
     }
 }

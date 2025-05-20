@@ -20,7 +20,6 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val getAccountUseCase: GetAccountUseCase,
     private val getPostUserUseCase: GetPostUserUseCase,
-    private val auth: FirebaseAuth,
 ): ViewModel() {
     private val _account = MutableStateFlow(Account())
     val account: StateFlow<Account> = _account.asStateFlow()
@@ -28,17 +27,16 @@ class ProfileViewModel @Inject constructor(
     private val _posts = MutableStateFlow<NetworkState>(NetworkState.Init)
     val posts: StateFlow<NetworkState> get() = _posts
 
-    fun getAccount() {
-        val currentUser = auth.currentUser!!.uid
+    fun getAccount(uid: String) {
         viewModelScope.launch {
-            _account.value = getAccountUseCase(currentUser)
+            _account.value = getAccountUseCase(uid)
         }
     }
 
-    fun getPosts(){
+    fun getPosts(uid: String){
         _posts.value = NetworkState.Loading
         viewModelScope.launch {
-            getPostUserUseCase.invoke().collect{_posts.value = it}
+            getPostUserUseCase.invoke(uid).collect{_posts.value = it}
         }
     }
 }

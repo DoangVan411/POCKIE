@@ -12,7 +12,8 @@ import javax.inject.Inject
 
 class FirebaseUserDataSource @Inject constructor(private val firestore: FirebaseFirestore, private val auth: FirebaseAuth) {
     suspend fun getAccount(uid: String): Account {
-        val snapshot = firestore.collection("accounts").document(uid).get().await()
+        var userId = if(uid.isNullOrEmpty()) auth.currentUser?.uid.toString() else uid
+        val snapshot = firestore.collection("accounts").document(userId).get().await()
         return snapshot?.toObject(Account::class.java) ?: Account()
     }
 

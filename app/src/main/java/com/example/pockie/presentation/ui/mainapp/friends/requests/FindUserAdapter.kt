@@ -55,6 +55,7 @@ class FindUserAdapter(private val onButtonClick: (Account) -> Unit, private val 
                         }
                     }
                 }
+
                 itemView.setOnClickListener {
                     onItemClick(searchResult.account)
                 }

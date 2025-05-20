@@ -1,5 +1,6 @@
 package com.example.pockie.presentation.ui.mainapp.friends.requests
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pockie.R
 import com.example.pockie.databinding.FragmentRequestPageBinding
 import com.example.pockie.domain.model.Account
+import com.example.pockie.presentation.utils.FriendsPageNavigator
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -30,10 +32,19 @@ class RequestPage : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: RequestPageViewModel by viewModels()
-
+    private var navigator: FriendsPageNavigator? = null
     private lateinit var adapterSent: SentRequestsAdapter
     private lateinit var adapterReceive: ReceivedRequestAdapter
     private lateinit var adapterSearch: FindUserAdapter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        navigator = when {
+            parentFragment is FriendsPageNavigator -> parentFragment as FriendsPageNavigator
+            context is FriendsPageNavigator -> context
+            else -> null
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -150,20 +161,24 @@ class RequestPage : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        adapterSent = SentRequestsAdapter({
-        }){
-            //on item click
-        }
-        adapterReceive = ReceivedRequestAdapter({
-            viewModel.acceptRequest(it.uid)
-        }){
-            //on item click
-        }
-        adapterSearch = FindUserAdapter ({
-            viewModel.sendRequest(it.uid)
-        }){
+        adapterSent = SentRequestsAdapter(onButtonClick = {
+            navigator?.navigateToFriendDetail(it.uid)
+        },onItemClick = {
+            navigator?.navigateToFriendDetail(it.uid)
+        })
 
-        }
+        adapterReceive = ReceivedRequestAdapter(onButtonClick = {
+            viewModel.acceptRequest(it.uid)
+        }, onItemClick = {
+            navigator?.navigateToFriendDetail(it.uid)
+        })
+
+        adapterSearch = FindUserAdapter (onButtonClick = {
+            viewModel.sendRequest(it.uid)
+        }, onItemClick = {
+            navigator?.navigateToFriendDetail(it.uid)
+        })
+
         with(binding) {
             rvRequestSent.adapter = adapterSent
             rvRequestReceive.adapter = adapterReceive

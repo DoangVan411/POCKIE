@@ -35,6 +35,7 @@ class SentRequestsAdapter(private val onButtonClick: (Account) -> Unit, private 
                 itemView.setOnClickListener {
                     onItemClick(account)
                 }
+
             }
         }
     }

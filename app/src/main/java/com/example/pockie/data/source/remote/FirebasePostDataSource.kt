@@ -84,14 +84,14 @@ class FirebasePostDataSource @Inject constructor(
         awaitClose { }
     }
 
-    fun getPostsUser(): Flow<NetworkState> = callbackFlow {
+    fun getPostsUser(uid: String): Flow<NetworkState> = callbackFlow {
         trySend(NetworkState.Loading)
         try {
-            val currentUser = auth.currentUser!!.uid
+            var userId = if(uid.isNullOrEmpty()) auth.currentUser?.uid.toString() else uid
             firestore.collection("posts").orderBy("createAt", Query.Direction.DESCENDING)
                 .addSnapshotListener { snapshot, _ ->
                     val posts =
-                        snapshot?.toObjects(Post::class.java)?.filter { it.userId == currentUser }
+                        snapshot?.toObjects(Post::class.java)?.filter { it.userId == userId }
                             ?: emptyList()
 
                     trySend(NetworkState.Success(posts))

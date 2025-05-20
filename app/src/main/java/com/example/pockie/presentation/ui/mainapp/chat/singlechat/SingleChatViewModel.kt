@@ -59,7 +59,7 @@ class SingleChatViewModel @Inject constructor(
 
 
     fun sendMessage(senderId: String, receiverId: String, content: String, createdAt: Date, context: Context) {
-        val chat = Chat(senderId, receiverId, content, createdAt)
+        val chat = Chat(senderId = senderId, receiverId = receiverId, content = content, createdAt = createdAt)
         viewModelScope.launch {
             val fcmToken = sendMessageUseCase(chat)
 
