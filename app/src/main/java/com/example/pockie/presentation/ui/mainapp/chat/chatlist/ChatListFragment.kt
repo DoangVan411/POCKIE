@@ -79,6 +79,11 @@ class ChatListFragment : Fragment() {
                         binding.rvChats.visibility = View.VISIBLE
                         val chatListItems = state.data as? List<ChatListItem> ?: emptyList()
                         adapter.submitList(chatListItems)
+                        if(chatListItems.isEmpty()) {
+                            binding.tvNobody.visibility = View.VISIBLE
+                        } else {
+                            binding.tvNobody.visibility = View.GONE
+                        }
                     }
                     is NetworkState.Error -> {
                         binding.progressBar.visibility = View.GONE

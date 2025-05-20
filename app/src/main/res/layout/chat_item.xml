@@ -44,7 +44,7 @@
         android:textColor="@color/gray"
         android:text="19h"
         android:fontFamily="@font/poppins_medium"
-        android:textSize="15sp"
+        android:textSize="13sp"
 
         android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toEndOf="@id/tvName"
