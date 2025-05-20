@@ -1,6 +1,7 @@
 package com.example.pockie.presentation.ui.mainapp.friends.friends
 
 import android.app.AlertDialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -14,10 +15,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pockie.databinding.FragmentFriendsPageBinding
 import com.example.pockie.domain.model.Account
 import com.example.pockie.presentation.ui.friends.friends.FriendsPageViewModel
+import com.example.pockie.presentation.ui.mainapp.friends.FriendsFragment
+import com.example.pockie.presentation.utils.FriendsPageNavigator
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,8 +34,17 @@ class FriendsPage : Fragment() {
     private var _binding: FragmentFriendsPageBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: FriendsPageAdapter
-
+    private var navigator: FriendsPageNavigator? = null
     private val viewModel: FriendsPageViewModel by viewModels()
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        navigator = when {
+            parentFragment is FriendsPageNavigator -> parentFragment as FriendsPageNavigator
+            context is FriendsPageNavigator -> context
+            else -> null
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,7 +79,7 @@ class FriendsPage : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        adapter = FriendsPageAdapter({
+        adapter = FriendsPageAdapter(onButtonRemoveClick = {
             AlertDialog.Builder(requireContext())
                 .setTitle("Unfriend ${it.fullName}?")
                 .setNegativeButton("Cancel") { dialog, _ ->
@@ -77,7 +90,9 @@ class FriendsPage : Fragment() {
                     dialog.dismiss()
                 }
                 .show()
-        }){}
+        }, onItemClick = {
+            navigator?.navigateToFriendDetail(it.uid)
+        })
         binding.rvFriends.adapter = adapter
         binding.rvFriends.layoutManager = LinearLayoutManager(requireContext())
     }

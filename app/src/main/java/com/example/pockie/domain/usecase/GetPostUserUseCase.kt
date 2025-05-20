@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetPostUserUseCase @Inject constructor(
     private val postRepository: PostRepository
 ) {
-    operator fun invoke() = postRepository.getPostUser()
+    operator fun invoke(uid: String) = postRepository.getPostUser(uid)
 }

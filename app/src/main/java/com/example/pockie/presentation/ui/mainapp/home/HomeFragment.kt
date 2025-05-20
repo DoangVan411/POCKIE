@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.profile.setOnClickListener{
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment(""))
         }
 
         binding.chat.setOnClickListener{

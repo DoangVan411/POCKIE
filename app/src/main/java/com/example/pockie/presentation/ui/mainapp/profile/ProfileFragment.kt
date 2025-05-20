@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.pockie.databinding.FragmentProfileBinding
@@ -24,6 +25,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ProfileViewModel by viewModels()
+    private val args: ProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val uid = args.uid
         with(binding) {
             toolbar.setOnClickListener{
                 findNavController().popBackStack()
@@ -46,14 +49,15 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        init()
-        setUpRecyclerView()
+        if(!uid.isNullOrEmpty()) binding.btnAddFriend.visibility = View.GONE
+        init(uid)
+        setUpRecyclerView(uid)
 
     }
 
-    private fun init(){
+    private fun init(uid: String){
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getAccount()
+            viewModel.getAccount(uid)
             viewModel.account.collectLatest { account ->
                 Glide.with(requireContext()).load(account.avtUrl).into(binding.ivAvatar)
                 binding.tvName.text = account.fullName
@@ -65,9 +69,9 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun setUpRecyclerView () {
+    private fun setUpRecyclerView (uid: String) {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getPosts()
+            viewModel.getPosts(uid)
             viewModel.posts.collectLatest { result ->
                 when(result){
                     is NetworkState.Init, is NetworkState.Loading -> {

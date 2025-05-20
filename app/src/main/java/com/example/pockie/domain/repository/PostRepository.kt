@@ -10,5 +10,5 @@ interface PostRepository {
     fun uploadPhoto(post: Post): Flow<NetworkState>
     fun getAllPost(): Flow<NetworkState>
     fun updatePost(post: Post): Flow<NetworkState>
-    fun getPostUser(): Flow<NetworkState>
+    fun getPostUser(uid: String): Flow<NetworkState>
 }
