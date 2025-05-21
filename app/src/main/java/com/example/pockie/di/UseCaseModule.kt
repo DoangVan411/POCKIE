@@ -7,6 +7,7 @@ import com.example.pockie.domain.repository.PostRepository
 import com.example.pockie.domain.usecase.GenerateLinkPhotoUseCase
 import com.example.pockie.domain.repository.FriendRepository
 import com.example.pockie.domain.repository.NotificationRepository
+import com.example.pockie.domain.usecase.DeleteAccountUseCase
 import com.example.pockie.domain.usecase.DeletePostUseCase
 import com.example.pockie.domain.usecase.EditAccountUseCase
 import com.example.pockie.domain.usecase.GetAccountUseCase
@@ -207,5 +208,13 @@ object UseCaseModule {
         postRepository: PostRepository
     ): DeletePostUseCase{
         return DeletePostUseCase(postRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDeleteAccountUseCase(
+        authRepository: AuthRepository
+    ): DeleteAccountUseCase{
+        return DeleteAccountUseCase(authRepository)
     }
 }

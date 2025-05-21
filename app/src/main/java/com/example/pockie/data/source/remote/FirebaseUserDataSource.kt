@@ -1,7 +1,9 @@
 package com.example.pockie.data.source.remote
 
+import android.util.Log
 import com.example.pockie.domain.model.Account
 import com.example.pockie.presentation.utils.networkstate.NetworkState
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
@@ -42,4 +44,30 @@ class FirebaseUserDataSource @Inject constructor(private val firestore: Firebase
         }
         awaitClose {  }
     }
+
+    suspend fun deleteAccount(account: Account): NetworkState {
+        return try {
+            val user = auth.currentUser
+            val uid = user?.uid
+
+            if (uid != null && user.email != null) {
+                val credential = EmailAuthProvider.getCredential(user.email!!, account.password)
+                user.reauthenticate(credential).await()
+
+                firestore.collection("accounts").document(uid).delete().await()
+                user.delete().await()
+
+                Log.d("DeleteAccount", "Account deleted successfully")
+                NetworkState.Success("Delete successfully!")
+            } else {
+                Log.d("DeleteAccount", "Account deleted failed")
+                NetworkState.Error("Could not delete account")
+            }
+        } catch (e: Exception) {
+            Log.d("DeleteAccount", e.message.toString())
+            NetworkState.Error(e.message ?: "Unknown error")
+        }
+    }
+
+
 }

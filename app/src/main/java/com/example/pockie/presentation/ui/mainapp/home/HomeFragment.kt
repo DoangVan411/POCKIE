@@ -94,8 +94,8 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFriendsFragment())
         }
 
-        binding.notification.setOnClickListener{
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNotificationFragment())
+        binding.settings.setOnClickListener{
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment())
         }
 
     }

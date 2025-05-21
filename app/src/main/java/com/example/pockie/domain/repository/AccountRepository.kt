@@ -11,4 +11,5 @@ interface AccountRepository {
     suspend fun getAccount(uid: String): Account
     fun editProfile(fullName: String, bio: String, avtUrl: String): Flow<NetworkState>
     fun generateAvtLinkPhoto(fileName: String, uri: Uri, context: Context): Flow<NetworkState>
+
 }
