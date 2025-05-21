@@ -1,10 +1,12 @@
 package com.example.pockie.presentation.ui.mainapp.home.post
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pockie.domain.model.Chat
 import com.example.pockie.domain.model.Post
+import com.example.pockie.domain.usecase.DeletePostUseCase
 import com.example.pockie.domain.usecase.GetAllPostUseCase
 import com.example.pockie.domain.usecase.SendMessageUseCase
 import com.example.pockie.domain.usecase.UpdatePostUseCase
@@ -23,6 +25,7 @@ class PostViewModel @Inject constructor(
     private val getAllPostUseCase: GetAllPostUseCase,
     private val updatePostUseCase: UpdatePostUseCase,
     private val sendMessageUseCase: SendMessageUseCase,
+    private val deletePostUseCase: DeletePostUseCase,
     private val auth: FirebaseAuth
 ): ViewModel() {
     private val _allPost = MutableStateFlow<NetworkState>(NetworkState.Init)
@@ -31,10 +34,10 @@ class PostViewModel @Inject constructor(
     private val _updatePost = MutableStateFlow<NetworkState>(NetworkState.Init)
     val updatePost: StateFlow<NetworkState> get() = _updatePost
 
-    fun getAllPost(){
+    fun getAllPost(tagId: Int){
         _allPost.value = NetworkState.Loading
         viewModelScope.launch {
-            getAllPostUseCase.invoke().collect{_allPost.value = it}
+            getAllPostUseCase.invoke(tagId).collect{_allPost.value = it}
         }
     }
 
@@ -47,6 +50,12 @@ class PostViewModel @Inject constructor(
     fun replyPost(message: String, post: Post){
         viewModelScope.launch {
             sendMessageUseCase.invoke(Chat(senderId = auth.currentUser!!.uid, receiverId = post.userId, imgUrl = post.imageUrl, content = message, createdAt = Date()))
+        }
+    }
+
+    fun deletePost(post: Post){
+        viewModelScope.launch {
+            deletePostUseCase.invoke(post)
         }
     }
 }

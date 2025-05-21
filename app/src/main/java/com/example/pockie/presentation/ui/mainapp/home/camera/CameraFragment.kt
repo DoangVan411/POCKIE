@@ -17,9 +17,13 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.pockie.R
 import com.example.pockie.databinding.FragmentCameraBinding
 import com.example.pockie.domain.model.Post
+import com.example.pockie.domain.model.Tag
+import com.example.pockie.presentation.utils.Utils
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.cancel
@@ -35,6 +39,7 @@ class CameraFragment : Fragment() {
     private var fileName: String? = null
     private var photoFile: File? = null
     private lateinit var imageCapture: ImageCapture
+    private var tag = Tag()
     private var cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     private val viewModel: CameraViewModel by viewModels()
 
@@ -49,19 +54,20 @@ class CameraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         binding.takePhoto.setOnClickListener {
             binding.takePhoto.visibility = View.INVISIBLE
             binding.loading.visibility = View.VISIBLE
             binding.caption.text.clear()
             takePhoto()
+
         }
 
         binding.cancel.setOnClickListener {
             updateUI(false)
             binding.camera.visibility = View.VISIBLE
             binding.photo.visibility = View.INVISIBLE
+            binding.tvTag.visibility = View.GONE
+            binding.tagRecyclerView.visibility = View.GONE
         }
 
         binding.send.setOnClickListener {
@@ -69,6 +75,8 @@ class CameraFragment : Fragment() {
             generateLinkPhoto()
             binding.camera.visibility = View.VISIBLE
             binding.photo.visibility = View.INVISIBLE
+            binding.tvTag.visibility = View.GONE
+            binding.tagRecyclerView.visibility = View.GONE
         }
 
         binding.reverse.setOnClickListener {
@@ -88,8 +96,8 @@ class CameraFragment : Fragment() {
         binding.send.visibility = if (isVisibility) View.VISIBLE else View.INVISIBLE
         binding.takePhoto.visibility = if (isVisibility) View.INVISIBLE else View.VISIBLE
         binding.reverse.visibility = if (isVisibility) View.INVISIBLE else View.VISIBLE
-        binding.text.visibility = if(isVisibility) View.INVISIBLE else View.VISIBLE
-        binding.iconHistory.visibility = if(isVisibility) View.INVISIBLE else View.VISIBLE
+        binding.text.visibility = if (isVisibility) View.INVISIBLE else View.VISIBLE
+        binding.iconHistory.visibility = if (isVisibility) View.INVISIBLE else View.VISIBLE
     }
 
     private fun startCamera() {
@@ -135,9 +143,12 @@ class CameraFragment : Fragment() {
                     }
                     Glide.with(binding.photo).load(photoFile).centerCrop().into(binding.photo)
 
+                    initTagList()
                     binding.photo.visibility = View.VISIBLE
                     binding.camera.visibility = View.INVISIBLE
                     binding.loading.visibility = View.INVISIBLE
+                    binding.tvTag.visibility = View.VISIBLE
+                    binding.tagRecyclerView.visibility = View.VISIBLE
                     updateUI(true)
                 }
 
@@ -167,7 +178,8 @@ class CameraFragment : Fragment() {
                             imageUrl = value.data.toString(),
                             Date(),
                             "",
-                            mutableListOf()
+                            mutableListOf(),
+                            tag = tag
                         )
 
                         uploadPhoto(post)
@@ -211,6 +223,20 @@ class CameraFragment : Fragment() {
             preScale(-1f, 1f) // lật ngang
         }
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+    }
+
+    private fun initTagList() {
+        binding.tvTag.visibility = View.VISIBLE
+        binding.tagRecyclerView.visibility = View.VISIBLE
+
+        val adapter = TagAdapter(
+            onClick = {
+                tag = it
+            }
+        )
+        binding.tagRecyclerView.adapter = adapter
+        adapter.submitList(Utils.listTag)
+        binding.tagRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     }
 
     override fun onDestroyView() {

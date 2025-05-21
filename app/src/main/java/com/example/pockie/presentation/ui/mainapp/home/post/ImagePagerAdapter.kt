@@ -21,6 +21,7 @@ class ImagePagerAdapter(
     private val onLikeClicked: (Post) -> Unit,
     private val onDownload: (Post) -> Unit,
     private val onReplyPost: (String, Post) -> Unit,
+    private val onDelete: (Post) -> Unit,
 ) : ListAdapter<PostItem, RecyclerView.ViewHolder>(PostItemDiffUtilCallback()) {
 
     inner class ImageViewHolder(private val binding: FragmentPostItemBinding) :
@@ -40,6 +41,11 @@ class ImagePagerAdapter(
             }
 
             Glide.with(binding.ivAvatar.context).load(post.avtUrl).into(binding.ivAvatar)
+
+            binding.icon.setBackgroundResource(post.post.tag.icon)
+            Log.d("Tag", post.post.tag.icon.toString())
+            Log.d("Tag", post.post.tag.name)
+            binding.name.text = post.post.tag.name
 
             binding.nameTime.text = "${post.fullname} - ${Utils.formatDate(post.post.createAt)}"
 
@@ -74,6 +80,10 @@ class ImagePagerAdapter(
                     when (item.itemId) {
                         R.id.download -> {
                             onDownload(post.post)
+                            true
+                        }
+                        R.id.delete -> {
+                            onDelete(post.post)
                             true
                         }
                         else -> {

@@ -1,10 +1,11 @@
 package com.example.pockie.domain.usecase
 
+import com.example.pockie.domain.model.Post
 import com.example.pockie.domain.repository.PostRepository
 import javax.inject.Inject
 
-class GetAllPostUseCase @Inject constructor(
+class DeletePostUseCase @Inject constructor(
     private val postRepository: PostRepository
 ) {
-    operator fun invoke(tagId: Int) = postRepository.getAllPost(tagId)
+    suspend operator fun invoke(post: Post) = postRepository.deletePost(post)
 }
