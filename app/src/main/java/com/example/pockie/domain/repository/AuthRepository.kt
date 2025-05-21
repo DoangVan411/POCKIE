@@ -10,4 +10,5 @@ interface AuthRepository {
     fun saveAccountToFireStore(account: Account): Flow<NetworkState>
     fun resetPassword(email: String): Flow<NetworkState>
     suspend fun getCurrentUseId(): String?
+    suspend fun deleteAccount(account: Account): NetworkState
 }

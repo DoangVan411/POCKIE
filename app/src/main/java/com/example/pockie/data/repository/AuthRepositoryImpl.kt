@@ -1,5 +1,6 @@
 package com.example.pockie.data.repository
 
+import com.example.pockie.data.source.remote.FirebaseUserDataSource
 import com.example.pockie.domain.model.Account
 import com.example.pockie.domain.repository.AuthRepository
 import com.example.pockie.presentation.utils.networkstate.NetworkState
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    private val firestore: FirebaseFirestore
+    private val firestore: FirebaseFirestore,
+    private val firebaseUserDataSource: FirebaseUserDataSource
 ): AuthRepository {
     override fun register(email: String, password: String): Flow<NetworkState> = callbackFlow{
         trySend(NetworkState.Loading)
@@ -70,5 +72,9 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun getCurrentUseId(): String? {
         return firebaseAuth.currentUser?.uid
+    }
+
+    override suspend fun deleteAccount(account: Account): NetworkState {
+        return firebaseUserDataSource.deleteAccount(account)
     }
 }
