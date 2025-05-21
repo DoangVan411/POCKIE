@@ -8,7 +8,8 @@ import java.io.File
 interface PostRepository {
     fun generateLinkPhoto(fileName: String, filePhoto: File): Flow<NetworkState>
     fun uploadPhoto(post: Post): Flow<NetworkState>
-    fun getAllPost(): Flow<NetworkState>
+    fun getAllPost(tagId: Int): Flow<NetworkState>
     fun updatePost(post: Post): Flow<NetworkState>
     fun getPostUser(uid: String): Flow<NetworkState>
+    suspend fun deletePost(post: Post)
 }

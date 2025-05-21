@@ -1,5 +1,6 @@
 package com.example.pockie.data.repository
 
+import android.util.Log
 import com.example.pockie.data.source.remote.FirebasePostDataSource
 import com.example.pockie.data.source.remote.SupabasePostDataSource
 import com.example.pockie.domain.model.Post
@@ -21,8 +22,8 @@ class PostRepositoryImpl @Inject constructor(
         return firebasePostDataSource.uploadPost(post)
     }
 
-    override fun getAllPost(): Flow<NetworkState> {
-        return firebasePostDataSource.getAllPost()
+    override fun getAllPost(tagId: Int): Flow<NetworkState> {
+        return firebasePostDataSource.getAllPost(tagId)
     }
 
     override fun updatePost(post: Post): Flow<NetworkState> {
@@ -31,5 +32,9 @@ class PostRepositoryImpl @Inject constructor(
 
     override fun getPostUser(uid: String): Flow<NetworkState> {
         return firebasePostDataSource.getPostsUser(uid)
+    }
+
+    override suspend fun deletePost(post: Post){
+        return firebasePostDataSource.deletePost(post)
     }
 }

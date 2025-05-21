@@ -2,6 +2,7 @@ package com.example.pockie.presentation.ui.mainapp.home.post
 
 import ImagePagerAdapter
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
@@ -14,6 +15,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
@@ -23,6 +26,7 @@ import com.example.pockie.domain.model.Post
 import com.example.pockie.domain.model.PostItem
 import com.example.pockie.presentation.ui.mainapp.home.HomeFragment
 import com.example.pockie.presentation.utils.OnPostItemClickListener
+import com.example.pockie.presentation.utils.Utils
 import com.example.pockie.presentation.utils.networkstate.NetworkState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -47,10 +51,28 @@ class PostFragment : Fragment(), OnPostItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initPosts()
+        initSpinner()
         checkPosition()
 
     }
+
+    private fun initSpinner(){
+        val tagNames = listOf("All", "Other", "Study", "Entertainment", "Food", "School")
+        val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, tagNames)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = adapter
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>, view: View?, position: Int, id: Long
+            ) {
+                val selectedTag = position
+                initPosts(selectedTag)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+    }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun checkPosition() {
@@ -80,8 +102,8 @@ class PostFragment : Fragment(), OnPostItemClickListener {
         }
     }
 
-    private fun initPosts() {
-        viewModel.getAllPost()
+    private fun initPosts(tagId: Int) {
+        viewModel.getAllPost(tagId)
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.allPost.collectLatest { result ->
                 when (result) {
@@ -102,6 +124,9 @@ class PostFragment : Fragment(), OnPostItemClickListener {
                             },
                             onReplyPost = { message, post ->
                                 replyPost(message, post)
+                            },
+                            onDelete = {
+                                deletePost(it)
                             })
                         viewPager.adapter = adapter
                         adapter.submitList(result.data as List<PostItem>)
@@ -158,6 +183,21 @@ class PostFragment : Fragment(), OnPostItemClickListener {
 
     private fun replyPost(message: String, post: Post){
         viewModel.replyPost(message, post)
+    }
+
+    private fun deletePost(post: Post){
+        AlertDialog.Builder(requireContext())
+            .setTitle("Do you want to delete post")
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Yes") { dialog, _ ->
+                viewModel.deletePost(post)
+                dialog.dismiss()
+                Toast.makeText(requireContext(), "Delete successfully!", Toast.LENGTH_SHORT).show()
+            }
+            .show()
+
     }
 
     override fun onDestroyView() {

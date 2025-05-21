@@ -34,7 +34,7 @@ class FirebasePostDataSource @Inject constructor(
         awaitClose { }
     }
 
-    fun getAllPost(): Flow<NetworkState> = callbackFlow {
+    fun getAllPost(tagId: Int): Flow<NetworkState> = callbackFlow {
         trySend(NetworkState.Loading)
         try {
             val currentId = auth.currentUser?.uid.toString()
@@ -46,7 +46,7 @@ class FirebasePostDataSource @Inject constructor(
 
             firestore.collection("posts").orderBy("createAt", Query.Direction.DESCENDING)
                 .addSnapshotListener { snapshot, _ ->
-                    val posts = snapshot?.toObjects(Post::class.java)?.filter { it.userId in friends } ?: emptyList()
+                    val posts = snapshot?.toObjects(Post::class.java)?.filter { it.userId in friends && (tagId == 0 || it.tag.id == tagId) } ?: emptyList()
 
                     launch {
                         try {
@@ -100,5 +100,20 @@ class FirebasePostDataSource @Inject constructor(
             trySend(NetworkState.Error(e.message.toString()))
         }
         awaitClose { }
+    }
+
+    fun deletePost(post: Post){
+        Log.d("Post", "${post.id}")
+        try {
+            firestore.collection("posts").document(post.id).delete().addOnSuccessListener {
+                Log.d("Post", "delete")
+            }.addOnFailureListener {
+                Log.d("Post", "Failed")
+                Log.d("Post", it.message.toString())
+            }
+
+        } catch (e: Exception) {
+            Log.d("Post", e.message.toString())
+        }
     }
 }

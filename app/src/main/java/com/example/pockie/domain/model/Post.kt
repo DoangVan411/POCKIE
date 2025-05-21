@@ -11,6 +11,7 @@ data class Post(
     val createAt: Date = Date(),
     val userId: String = "",
     val likedBy: MutableList<String> = mutableListOf(),
+    val tag: Tag = Tag(),
 )
 
 data class PostItem(

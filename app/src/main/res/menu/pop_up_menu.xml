@@ -5,6 +5,10 @@
         android:title="@string/download"/>
 
     <item
+        android:id="@+id/delete"
+        android:title="@string/delete"/>
+
+    <item
         android:id="@+id/cancel"
         android:title="@string/cancel"/>
 
