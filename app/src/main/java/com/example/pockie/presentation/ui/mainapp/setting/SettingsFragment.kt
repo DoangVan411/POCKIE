@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
                 findNavController().popBackStack()
             }
             layoutInfo.setOnClickListener {
-                findNavController().navigate(R.id.introductionFragment)
+                findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToIntroductionFragment())
             }
         }
 

@@ -75,13 +75,6 @@ class HomeFragment : Fragment() {
             }
         })
 
-        binding.nameApp.setOnClickListener {
-            //Tam cai Pockie la nut dang xuat
-            viewModel.LogOut()
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToOnboardingFragment(), navOptions = NavOptions.Builder().setPopUpTo(
-                R.id.homeFragment, true).build())
-        }
-
         binding.profile.setOnClickListener{
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment(""))
         }

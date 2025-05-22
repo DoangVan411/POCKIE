@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/cream_white"
     tools:context=".presentation.ui.authentication.onboarding.OnboardingFragment">
 
     <TextView
@@ -17,7 +17,7 @@
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textColor="@color/white"
+        android:textColor="@color/primary_pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintHeight_percent="0.1"
@@ -36,7 +36,7 @@
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintVertical_bias="0"
         android:text="@string/treasure_the_beautiful_moments_shared_with_those_you_love"
-        android:textColor="@color/gray_text"
+        android:textColor="@color/primary_pink"
         android:autoSizeMaxTextSize="20dp"
         android:autoSizeMinTextSize="10dp"
         android:autoSizeTextType="uniform"

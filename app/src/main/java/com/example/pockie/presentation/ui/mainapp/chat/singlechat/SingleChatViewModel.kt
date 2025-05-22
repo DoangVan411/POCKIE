@@ -69,9 +69,9 @@ class SingleChatViewModel @Inject constructor(
         }
     }
 
-    fun getAccount(uid: String) {
+    fun getAccount() {
         viewModelScope.launch {
-            _account.value = getAccountUseCase(uid)
+            _account.value = getAccountUseCase(auth.currentUser!!.uid)
         }
 
     }
