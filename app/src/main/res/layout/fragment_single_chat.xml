@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/cream_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.mainapp.chat.singlechat.SingleChatFragment">
 
@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/cream_white"
         android:navigationIcon="@drawable/back_arrow"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Username"/>
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_gravity="center"
-        android:indeterminateTint="@color/white"
+        android:indeterminateTint="@color/lighter_pink"
         app:layout_constraintTop_toTopOf="@id/rvMessages"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -63,7 +63,6 @@
         android:padding="8dp"
         android:clipToPadding="false"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        android:background="@color/black"
         app:layout_constraintBottom_toTopOf="@id/layoutInput"/>
 
     <LinearLayout
@@ -72,7 +71,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:background="@color/black"
+        android:background="@color/cream_white"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
@@ -80,9 +79,9 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/camera"
-            android:background="@color/black"
             android:scaleType="fitCenter"
             android:layout_gravity="center"
+            android:background="@color/white"
             app:shapeAppearanceOverlay="@style/RoundedImageView"/>
 
         <EditText
@@ -93,7 +92,7 @@
             android:layout_marginHorizontal="8dp"
             android:background="@drawable/background_field"
             android:padding="12dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/gray_text"
             android:hint="@string/type_a_message"
             android:maxLines="4"/>
@@ -102,10 +101,10 @@
             android:id="@+id/btnSend"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@color/black"
             android:scaleType="fitCenter"
             android:layout_gravity="center"
-            android:src="@drawable/send"/>
+            android:src="@drawable/send"
+            android:background="@color/cream_white"/>
 
     </LinearLayout>
 

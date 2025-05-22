@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/black"
+    android:background="@color/cream_white"
     tools:context=".presentation.ui.mainapp.friends.friends.FriendsPage">
 
     <androidx.appcompat.widget.SearchView
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_gravity="center"
-        android:indeterminateTint="@color/white"/>
+        android:indeterminateTint="@color/lighter_pink"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFriends"

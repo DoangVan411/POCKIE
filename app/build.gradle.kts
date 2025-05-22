@@ -116,6 +116,9 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.auth:google-auth-library-oauth2-http:1.19.0")
+
+    implementation ("com.google.android.material:material:1.10.0")
+
 }
 
 kapt {

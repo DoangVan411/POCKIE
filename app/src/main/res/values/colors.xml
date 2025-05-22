@@ -19,4 +19,6 @@
     <color name="pastel_pink">#FCDDE1</color>
     <color name="super_light_pink">#FFF0F2</color>
     <color name="cream_white">#FFFDFD</color>
+    <color name="text_pink">#8A4C57</color>
+    <color name="gray_trans">#88000000</color>
 </resources>

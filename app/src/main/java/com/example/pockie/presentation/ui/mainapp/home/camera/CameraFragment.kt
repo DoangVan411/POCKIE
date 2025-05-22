@@ -65,7 +65,7 @@ class CameraFragment : Fragment() {
         binding.cancel.setOnClickListener {
             updateUI(false)
             binding.camera.visibility = View.VISIBLE
-            binding.photo.visibility = View.INVISIBLE
+            binding.cardView.visibility = View.INVISIBLE
             binding.tvTag.visibility = View.GONE
             binding.tagRecyclerView.visibility = View.GONE
         }
@@ -74,7 +74,7 @@ class CameraFragment : Fragment() {
             updateUI(false)
             generateLinkPhoto()
             binding.camera.visibility = View.VISIBLE
-            binding.photo.visibility = View.INVISIBLE
+            binding.cardView.visibility = View.INVISIBLE
             binding.tvTag.visibility = View.GONE
             binding.tagRecyclerView.visibility = View.GONE
         }
@@ -144,7 +144,7 @@ class CameraFragment : Fragment() {
                     Glide.with(binding.photo).load(photoFile).centerCrop().into(binding.photo)
 
                     initTagList()
-                    binding.photo.visibility = View.VISIBLE
+                    binding.cardView.visibility = View.VISIBLE
                     binding.camera.visibility = View.INVISIBLE
                     binding.loading.visibility = View.INVISIBLE
                     binding.tvTag.visibility = View.VISIBLE

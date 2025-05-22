@@ -21,6 +21,7 @@ class FriendsPageAdapter(private val onButtonRemoveClick: (Account) -> Unit, pri
         fun bind(account: Account) {
             with(binding) {
                 Glide.with(ivAvatar.context).load(account.avtUrl).into(ivAvatar)
+                ivAddFriend.setImageResource(R.drawable.friend)
                 cvRemove.visibility = View.VISIBLE
                 tvName.text = account.fullName
                 tvUserName.text = account.email

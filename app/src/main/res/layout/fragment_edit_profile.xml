@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black"
+    android:background="@color/cream_white"
     tools:context=".presentation.ui.mainapp.profile.edit_profile.EditProfileFragment">
 
     <Toolbar
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:textSize="18sp"
             android:text="@string/edit_profile"/>
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="@string/full_name"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="50dp"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/full_name"
                 android:background="@drawable/background_field"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/gray_text"
                 android:padding="12dp"
                 android:textSize="16sp"
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="@string/bio"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginHorizontal="24dp"
                 app:layout_constraintTop_toBottomOf="@id/etFullName"
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/bio"
                 android:background="@drawable/background_field"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/gray_text"
                 android:padding="12dp"
                 android:textSize="16sp"
@@ -120,18 +120,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:text="@string/cancel"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"
                 android:background="@drawable/white_button"
-                app:layout_constraintVertical_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etBio"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintWidth_percent="0.42"
-                app:layout_constraintHorizontal_bias="0"
-                android:textAllCaps="false"/>
+                app:layout_constraintHorizontal_bias="0.067"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etBio"
+                app:layout_constraintVertical_bias="0.503"
+                app:layout_constraintWidth_percent="0.42" />
 
             <Button
                 android:id="@+id/btnSave"
@@ -141,7 +141,7 @@
                 android:text="@string/save"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_medium"
-                android:background="@drawable/white_button"
+                android:background="@drawable/black_button"
                 app:layout_constraintVertical_bias="0.5"
                 app:layout_constraintStart_toEndOf="@id/btnCancel"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -160,7 +160,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:indeterminateTint="@color/white"
+                android:indeterminateTint="@color/lighter_pink"
                 android:visibility="invisible"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

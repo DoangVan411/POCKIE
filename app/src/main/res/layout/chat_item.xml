@@ -5,7 +5,7 @@
     android:padding="5dp"
     android:layout_marginVertical="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black">
+    android:background="@color/cream_white">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivAvatar"
@@ -29,7 +29,7 @@
         android:text="Vân Đoàn"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="15sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
 
         app:layout_constraintVertical_bias="0.25"
         app:layout_constraintStart_toEndOf="@id/ivAvatar"
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
 
         android:text="Một đoạn văn bản rất dài để kiểm tra việc hiển thị dấu chấm ba chấm"
-        android:textColor="@color/gray"
+        android:textColor="@color/gray_text"
         android:fontFamily="@font/poppins_medium"
         android:textSize="15sp"
         android:maxLines="1"

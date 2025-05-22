@@ -61,7 +61,10 @@ class FriendsPage : Fragment() {
         val searchEditText = binding.searchView.findViewById<EditText>(
             androidx.appcompat.R.id.search_src_text
         )
-        searchEditText.setTextColor(Color.WHITE)
+        searchEditText.setTextColor(Color.BLACK)
+        val searchPlate = binding.searchView.findViewById<View>(androidx.appcompat.R.id.search_plate)
+        searchPlate?.setBackgroundColor(Color.TRANSPARENT)
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
