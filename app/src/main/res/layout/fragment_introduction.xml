@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/cream_white"
     android:orientation="vertical"
     tools:context=".presentation.ui.mainapp.setting.IntroductionFragment">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:navigationIcon="@drawable/back_arrow"
-        android:background="@color/black">
+        android:background="@color/cream_white">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
             android:text="@string/introduction"
             android:textSize="18sp"
             android:layout_gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"/>
 
     </Toolbar>
@@ -28,11 +28,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_marginHorizontal="15dp"
         android:textSize="15sp"
         android:fontFamily="@font/poppins"
         android:justificationMode="inter_word"
-        android:text="      POCKIE is a simple and personal way to stay connected with the people you care about most. Inspired by the idea behind Locket Widget, POCKIE brings your loved ones closer by letting you share real-time moments directly to their home screen — no feeds, no likes, just pure connection.\n      With POCKIE, every message, photo, or feeling you send appears instantly in a private space — like a digital window into each other's world. It’s designed for close friends, couples, or families who want to stay emotionally connected throughout the day. \n     Our mission is to make digital connection feel more human, more meaningful, and more you.\n\n                                                  - Van and Tham -" />
+        android:text="      POCKIE is a simple and personal way to stay connected with the people you care about most. Inspired by the idea behind Locket Widget, POCKIE brings your loved ones closer by letting you share real-time moments directly to their home screen — no feeds, no likes, just pure connection.\n      With POCKIE, every message, photo, or feeling you send appears instantly in a private space — like a digital window into each other's world. It’s designed for close friends, couples, or families who want to stay emotionally connected throughout the day. \n     Our mission is to make digital connection feel more human, more meaningful, and more you.\n\n                                                - Van and Tham -" />
 
 </LinearLayout>

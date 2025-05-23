@@ -44,9 +44,6 @@ class ProfileFragment : Fragment() {
             toolbar.setOnClickListener{
                 findNavController().popBackStack()
             }
-            btnShare.setOnClickListener {
-
-            }
         }
 
         if(!uid.isNullOrEmpty()) binding.btnAddFriend.visibility = View.GONE
@@ -61,7 +58,11 @@ class ProfileFragment : Fragment() {
             viewModel.account.collectLatest { account ->
                 Glide.with(requireContext()).load(account.avtUrl).into(binding.ivAvatar)
                 binding.tvName.text = account.fullName
-                binding.tvBio.text = account.bio
+                if(account.bio != "") {
+                    binding.tvBio.text = account.bio
+                } else {
+                    binding.tvBio.text = "No bio"
+                }
                 binding.btnAddFriend.setOnClickListener {
                     findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment(account.fullName, account.bio, account.avtUrl))
                 }

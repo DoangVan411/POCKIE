@@ -14,4 +14,11 @@
     <color name="green_300">#3DDC84</color>
     <color name="green_500">#00A956</color>
     <color name="orange">#FF9800</color>
+    <color name="primary_pink">#F27C94</color>
+    <color name="lighter_pink">#F9BFC6</color>
+    <color name="pastel_pink">#FCDDE1</color>
+    <color name="super_light_pink">#FFF0F2</color>
+    <color name="cream_white">#FFFDFD</color>
+    <color name="text_pink">#8A4C57</color>
+    <color name="gray_trans">#88000000</color>
 </resources>

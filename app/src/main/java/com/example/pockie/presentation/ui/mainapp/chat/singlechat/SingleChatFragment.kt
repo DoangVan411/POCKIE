@@ -111,7 +111,7 @@ class SingleChatFragment(): Fragment() {
 
     private fun getAccountName() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getAccount(args.uid)
+            viewModel.getAccount()
             viewModel.account.collectLatest { account ->
                 Glide.with(binding.ivAvatar.context).load(account.avtUrl).into(binding.ivAvatar)
                 binding.tvName.text = account.fullName

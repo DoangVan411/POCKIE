@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/cream_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.mainapp.setting.SettingsFragment">
 
@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/cream_white"
         android:navigationIcon="@drawable/back_arrow"
         app:layout_constraintTop_toTopOf="parent"
         >
@@ -21,7 +21,7 @@
             android:text="@string/setting"
             android:textSize="18sp"
             android:layout_gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"/>
     </Toolbar>
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/dangerous_zone"
-        android:textColor="@color/white"
+        android:textColor="@color/gray_text"
         android:textSize="16sp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_out"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:textSize="15sp"
             android:gravity="center"
@@ -107,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/about_pockie"
-        android:textColor="@color/white"
+        android:textColor="@color/gray_text"
         android:fontFamily="@font/poppins_medium"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/layoutSignOut"
@@ -138,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/introduction"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:textSize="15sp"
             android:gravity="center"

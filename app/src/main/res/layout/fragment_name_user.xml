@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black"
+    android:background="@color/cream_white"
     tools:context=".presentation.ui.authentication.nameuser.NameUserFragment">
 
     <TextView
@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintHeight_percent="0.1"
-        android:textColor="@color/white"
+        android:textColor="@color/text_pink"
         app:layout_constraintVertical_bias="0.15"
         android:text="@string/what_s_your_name"
         android:gravity="center"
@@ -46,7 +46,7 @@
             android:textSize="15dp"
             android:inputType="text"
             android:background="@drawable/background_field"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:hint="@string/first_name"
             android:maxLines="1"
@@ -78,7 +78,7 @@
             android:inputType="text"
             android:imeOptions="actionDone"
             android:background="@drawable/background_field"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:hint="@string/last_name"
             android:textColorHint="@color/gray_text"/>
@@ -97,7 +97,8 @@
         android:text="@string/Continue"
         android:textAllCaps="false"
         android:fontFamily="@font/poppins_semibold"
-        android:background="@drawable/white_button"/>
+        android:background="@drawable/white_button"
+        android:backgroundTint="@color/primary_pink"/>
 
     <ProgressBar
         android:id="@+id/loading"
