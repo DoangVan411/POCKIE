@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -56,7 +57,6 @@ class EditProfileFragment: Fragment() {
         val fullName = args.fullName
         val bio = args.bio
         val avtUrl = args.avtUrl
-
         setUp(fullName, bio, avtUrl)
 
         binding.toolbar.setNavigationOnClickListener {
@@ -94,28 +94,34 @@ class EditProfileFragment: Fragment() {
     }
 
     private fun generateAvtLinkPhoto(){
-        val fileName = "avatar_${System.currentTimeMillis()}.jpg"
-        viewModel.generateAvtLinkPhoto(fileName, uriAvt, requireContext())
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.generateAvtLinkPhoto.collectLatest { state ->
-                when (state){
-                    is NetworkState.Init, is NetworkState.Loading -> {
-                        binding.btnSave.isEnabled = false
-                        binding.loading.visibility = View.VISIBLE
-                    }
-                    is NetworkState.Success <*> -> {
-                        Log.d("Post", state.data.toString())
-                        saveProfile(state.data.toString())
-                    }
-                    else -> {
-                        binding.btnSave.isEnabled = false
-                        binding.loading.visibility = View.VISIBLE
-                        Toast.makeText(requireContext(), state.toString(), Toast.LENGTH_SHORT).show()
-                        Log.d("Post", state.toString())
+        if (::uriAvt.isInitialized) {
+            val fileName = "avatar_${System.currentTimeMillis()}.jpg"
+            viewModel.generateAvtLinkPhoto(fileName, uriAvt, requireContext())
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.generateAvtLinkPhoto.collectLatest { state ->
+                    when (state) {
+                        is NetworkState.Init, is NetworkState.Loading -> {
+                            binding.btnSave.isEnabled = false
+                            binding.loading.visibility = View.VISIBLE
+                        }
+
+                        is NetworkState.Success<*> -> {
+                            Log.d("Post", state.data.toString())
+                            saveProfile(state.data.toString())
+                        }
+
+                        else -> {
+                            binding.btnSave.isEnabled = false
+                            binding.loading.visibility = View.VISIBLE
+                            Toast.makeText(requireContext(), state.toString(), Toast.LENGTH_SHORT)
+                                .show()
+                            Log.d("Post", state.toString())
+                        }
                     }
                 }
             }
         }
+        else saveProfile(args.avtUrl)
     }
 
     private fun saveProfile(avtUrl: String) {
@@ -136,6 +142,7 @@ class EditProfileFragment: Fragment() {
                         findNavController().popBackStack()
                     }
                     else -> {
+                        Log.d("Post", state.toString())
                         Toast.makeText(requireContext(), state.toString(), Toast.LENGTH_SHORT).show()
                         binding.btnSave.isEnabled = true
                         binding.loading.visibility = View.VISIBLE

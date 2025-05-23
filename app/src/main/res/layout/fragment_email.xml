@@ -46,7 +46,7 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintVertical_bias="0"
         app:startIconDrawable="@drawable/ic_email"
-        app:startIconTint="@color/white"
+        app:startIconTint="@color/primary_pink"
         app:layout_constraintTop_toBottomOf="@id/text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline1"
